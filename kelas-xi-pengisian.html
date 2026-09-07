@@ -108,20 +108,64 @@ style="display:inline-block;background:#1769aa;color:white;padding:10px 15px;bor
 
 <!-- WAYGROUND -->
 <div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid #dbe4ef;">
+<!-- QUIZ WAYGROUND + QR CODE -->
+<div style="background:#f8fafc;padding:18px;border-radius:12px;border:1px solid #dbe4ef;">
+
 <h3>🎯 Quiz Wayground</h3>
 
 <p>
-Quiz interaktif dapat ditambahkan di sini.
+Scan QR Code atau gunakan tombol untuk mengikuti Quiz Wayground.
 </p>
 
-<a 
-href="#"
-style="display:inline-block;background:#7c3aed;color:white;padding:10px 15px;border-radius:8px;text-decoration:none;font-weight:bold;"
-onclick="alert('Link Wayground belum dimasukkan.');return false;">
+<div style="text-align:center;background:white;padding:15px;border-radius:12px;">
+
+<img id="waygroundQR"
+src=""
+alt="QR Code Wayground"
+style="width:250px;max-width:100%;border-radius:10px;">
+
+<p>
+<b>Kode Quiz:</b>
+<span id="waygroundCode"
+style="font-size:24px;color:#7c3aed;">
+840892
+</span>
+</p>
+
+<a id="waygroundLink"
+href="https://wayground.com/join?gc=840892"
+target="_blank"
+style="display:inline-block;background:#7c3aed;color:white;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">
 
 🎯 Buka Quiz Wayground
 
 </a>
+
+</div>
+
+<hr>
+
+<p><b>🔧 Ganti Kode Quiz</b></p>
+
+<input
+id="waygroundInput"
+type="text"
+value="840892"
+maxlength="20"
+style="width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;font-size:18px;box-sizing:border-box;">
+
+<button
+onclick="ubahKodeWayground()"
+style="background:#1769aa;color:white;padding:11px 18px;border:0;border-radius:8px;margin-top:10px;font-weight:bold;cursor:pointer;">
+
+💾 Perbarui QR Code
+
+</button>
+
+<p style="font-size:13px;color:#64748b;">
+Kode dapat diganti sesuai Quiz Wayground yang sedang digunakan.
+</p>
+
 </div>
 
 </div>
@@ -214,4 +258,38 @@ render('preForm');render('quizForm');render('postForm');
 })();
 </script>
   <script src="media-config.js"></script>
+<script>
+
+function ubahKodeWayground(){
+
+    const kode = document
+        .getElementById("waygroundInput")
+        .value
+        .trim();
+
+    if(kode === ""){
+        alert("Silakan masukkan kode Wayground.");
+        return;
+    }
+
+    const link =
+        "https://wayground.com/join?gc=" +
+        encodeURIComponent(kode);
+
+    const qr =
+        "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
+        encodeURIComponent(link);
+
+    document.getElementById("waygroundCode").textContent = kode;
+
+    document.getElementById("waygroundLink").href = link;
+
+    document.getElementById("waygroundQR").src = qr;
+}
+
+
+// Kode awal
+ubahKodeWayground();
+
+</script>
 </body></html>
