@@ -40,256 +40,207 @@ table{width:100%;border-collapse:collapse;margin:12px 0}th,td{border:1px solid #
 <tr><td>1</td><td>Komponen 1</td><td></td><td></td><td></td></tr><tr><td>2</td><td>Komponen 2</td><td></td><td></td><td></td></tr><tr><td>3</td><td>Komponen 3</td><td></td><td></td><td></td></tr><tr><td>4</td><td>Komponen 4</td><td></td><td></td><td></td></tr><tr><td>5</td><td>Kabel/konektor</td><td></td><td></td><td></td></tr></table>
 <h3>E. Analisis</h3><p>1. Apa hasil pemeriksaan dan apakah sistem bekerja normal?</p><p>........................................................................................................</p><p>2. Apa kemungkinan penyebab jika hasil tidak sesuai?</p><p>........................................................................................................</p>
 <h3>F. Kesimpulan</h3><p>........................................................................................................</p><button onclick="window.print()">🖨️ Cetak LKPD</button>
-</section><section class="card" id="media-pembelajaran">
-<h2>🎬 Media Pembelajaran</h2>
+</section><section id="media-pembelajaran" class="card">
+  <h2>🎬 Media Pembelajaran</h2>
 
-<p>
-Gunakan media berikut untuk memahami cara kerja Sistem Pengisian Sepeda Motor.
-</p>
-
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:20px;">
-
-<!-- GAMBAR -->
-<div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid #dbe4ef;">
-<h3>🖼️ Rangkaian Sistem Pengisian</h3>
-<img 
-src="media/rangkaian_pengisian.jpg"
-alt="Rangkaian Sistem Pengisian"
-style="width:100%;border-radius:10px;">
-</div>
-
-<!-- VIDEO 1 -->
-<div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid #dbe4ef;">
-<h3>▶️ Cara Kerja Sistem Pengisian</h3>
-
-<video controls preload="metadata"
-style="width:100%;border-radius:10px;background:#000;">
-
-<source 
-src="https://raw.githubusercontent.com/wasjaoon-cyber/media-pembelajaran-interaktif/main/sistem-pengisian.mp4"
-type="video/mp4">
-
-Browser Anda tidak mendukung video.
-</video>
-</div>
-
-<!-- VIDEO 2 -->
-<div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid #dbe4ef;">
-<h3>▶️ Analogi Sistem Pengisian</h3>
-
-<video controls preload="metadata"
-style="width:100%;border-radius:10px;background:#000;">
-
-<source 
-src="https://raw.githubusercontent.com/wasjaoon-cyber/media-pembelajaran-interaktif/main/analogi-sistem-pengisian.mp4"
-type="video/mp4">
-
-Browser Anda tidak mendukung video.
-</video>
-</div>
-
-<!-- GOOGLE FORM -->
-<div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid #dbe4ef;">
-<h3>📝 Google Form</h3>
-
-<p>
-Form pembelajaran dapat dibuka melalui tombol berikut.
-</p>
-
-<a 
-href="https://docs.google.com/forms/d/e/1FAIpQLScs9IZuI_OYlM4EhTt7EViHhbTlxMByyi74F13aRS2XidhFfA/viewform"
-target="_blank"
-style="display:inline-block;background:#1769aa;color:white;padding:10px 15px;border-radius:8px;text-decoration:none;font-weight:bold;">
-
-📝 Buka Google Form
-
-</a>
-</div>
-
-<!-- WAYGROUND -->
-<div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid #dbe4ef;">
-<!-- QUIZ WAYGROUND + QR CODE -->
-<div style="background:#f8fafc;padding:18px;border-radius:12px;border:1px solid #dbe4ef;">
-
-<h3>🎯 Quiz Wayground</h3>
-
-<p>
-Scan QR Code atau gunakan tombol untuk mengikuti Quiz Wayground.
-</p>
-
-<div style="text-align:center;background:white;padding:15px;border-radius:12px;">
-
-<img id="waygroundQR"
-src=""
-alt="QR Code Wayground"
-style="width:250px;max-width:100%;border-radius:10px;">
-
-<p>
-<b>Kode Quiz:</b>
-<span id="waygroundCode"
-style="font-size:24px;color:#7c3aed;">
-840892
-</span>
-</p>
-
-<a id="waygroundLink"
-href="https://wayground.com/join?gc=840892"
-target="_blank"
-style="display:inline-block;background:#7c3aed;color:white;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">
-
-🎯 Buka Quiz Wayground
-
-</a>
-
-</div>
-
-<hr>
-
-<p><b>🔧 Ganti Kode Quiz</b></p>
-
-<input
-id="waygroundInput"
-type="text"
-value="840892"
-maxlength="20"
-style="width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;font-size:18px;box-sizing:border-box;">
-
-<button
-onclick="ubahKodeWayground()"
-style="background:#1769aa;color:white;padding:11px 18px;border:0;border-radius:8px;margin-top:10px;font-weight:bold;cursor:pointer;">
-
-💾 Perbarui QR Code
-
-</button>
-
-<p style="font-size:13px;color:#64748b;">
-Kode dapat diganti sesuai Quiz Wayground yang sedang digunakan.
-</p>
-
-</div>
-
-</div>
+  <div id="media-content" class="media-grid"></div>
 </section>
-</main><footer>Media Pembelajaran Interaktif TSM • Kelas XI • Sistem Pengisian</footer>
-<script>
-const qs=[('Fungsi utama sistem pengisian adalah...', ['Mengisi baterai dan menyuplai beban', 'Mendinginkan mesin', 'Mengatur tekanan ban', 'Menggerakkan roda'], 0), ('Komponen penyimpan energi listrik adalah...', ['Busi', 'Baterai', 'Rotor', 'Sekring'], 1), ('Alternator menghasilkan listrik ketika...', ['Mesin berputar', 'Motor dicuci', 'Lampu dimatikan', 'Rem ditarik'], 0), ('Regulator/rectifier berfungsi antara lain...', ['Menyearahkan dan mengatur tegangan', 'Mengatur celah busi', 'Mengisi oli', 'Mengatur ban'], 0), ('Alat umum untuk mengukur tegangan adalah...', ['Multimeter', 'Tang saja', 'Obeng saja', 'Kunci roda'], 0), ('Salah satu K3 sistem pengisian adalah...', ['Mencegah korsleting', 'Membalik polaritas', 'Menyentuhkan terminal', 'Menggunakan kabel rusak'], 0), ('Hasil pengukuran dibandingkan dengan...', ['Spesifikasi pabrikan', 'Warna motor', 'Ukuran ban', 'Perkiraan'], 0), ('Baterai cepat lemah dapat mengarah pada pemeriksaan...', ['Sistem pengisian dan kebocoran arus', 'Warna bodi', 'Spion', 'Ban'], 0), ('Rotor/flywheel magnet berhubungan dengan...', ['Medan magnet pembangkitan listrik', 'Pelumasan', 'Pengereman', 'Bahan bakar'], 0), ('Konektor longgar dapat menyebabkan...', ['Gangguan aliran listrik', 'Kapasitas mesin naik', 'Ban keras', 'Oli bertambah'], 0)];
-const key=qs.map(x=>x[2]);
-function render(id){document.getElementById(id).innerHTML=qs.map((q,i)=>'<div class="question"><b>'+(i+1)+'. '+q[0]+'</b>'+q[1].map((o,j)=>'<label><input type="radio" name="'+id+i+'" value="'+j+'"> '+String.fromCharCode(65+j)+'. '+o+'</label>').join('')+'</div>').join('')}
-function score(id,res,key){let n=0;key.forEach((a,i)=>{let x=document.querySelector('input[name="'+id+i+'"]:checked');if(x&&+x.value===a)n++});document.getElementById(res).innerHTML='Nilai: <b>'+(n*10)+'</b> / 100 — Benar '+n+' dari '+key.length+' soal.'}
-render('preForm');render('quizForm');render('postForm');
-</script>
 
+<style>
+.media-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;
+}
+
+.media-card {
+  background:#fff;
+  border:1px solid #dfe5ec;
+  border-radius:14px;
+  padding:16px;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
+.media-card h3 {
+  margin-top:0;
+}
+
+.media-card img,
+.media-card video {
+  width:100%;
+  border-radius:10px;
+}
+
+.wg-box {
+  text-align:center;
+}
+
+.wg-code {
+  font-size:30px;
+  font-weight:bold;
+  letter-spacing:3px;
+  margin:10px 0;
+}
+
+.wg-qr {
+  width:230px;
+  max-width:100%;
+  display:block;
+  margin:15px auto;
+}
+
+.wg-btn {
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:9px;
+  text-decoration:none;
+  font-weight:bold;
+  background:#1769aa;
+  color:white;
+}
+
+.wg-note {
+  font-size:13px;
+  color:#667;
+}
+
+@media(max-width:600px) {
+  .media-grid {
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
+<!-- WAJIB DI ATAS SCRIPT YANG MENGGUNAKAN MEDIA_CONFIG -->
 <script src="media-config.js"></script>
 
 <script>
-(function () {
-  const cfg = MEDIA_CONFIG["kelas-xi-pengisian.html"];
-  const box = document.getElementById("media-pembelajaran");
+(function(){
 
-  if (!cfg || !box) return;
+  const cfg =
+    (window.MEDIA_CONFIG || {})["kelas-xi-pengisian.html"];
 
-  const content = box.querySelector("div");
+  const box =
+    document.getElementById("media-content");
 
-  if (!content) return;
+  if (!box || !cfg) return;
 
   let html = "";
 
-  if (cfg.images && cfg.images.length) {
-    html += `
-      <div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid #dbe4ef;">
-        <h3>🖼️ Rangkaian Sistem Pengisian</h3>
-        <img src="${cfg.images[0]}"
-             alt="Rangkaian Sistem Pengisian"
-             style="width:100%;border-radius:10px;">
-      </div>
-    `;
+  /* GAMBAR */
+  if (Array.isArray(cfg.images)) {
+    cfg.images.forEach(src => {
+      html += `
+        <div class="media-card">
+          <h3>🖼️ Rangkaian Sistem Pengisian</h3>
+          <img src="${src}"
+               alt="Rangkaian Sistem Pengisian">
+        </div>
+      `;
+    });
   }
 
+  /* VIDEO */
   if (cfg.video) {
     html += `
-      <div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid #dbe4ef;">
+      <div class="media-card">
         <h3>▶️ Cara Kerja Sistem Pengisian</h3>
-        <video controls preload="metadata"
-               style="width:100%;border-radius:10px;background:#000;">
+
+        <video controls playsinline preload="metadata">
           <source src="${cfg.video}" type="video/mp4">
-          Browser tidak mendukung video.
         </video>
+
+        <p class="wg-note">
+          Video cara kerja sistem pengisian.
+        </p>
       </div>
     `;
   }
 
+  /* ANIMASI */
   if (cfg.animation) {
     html += `
-      <div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid #dbe4ef;">
-        <h3>▶️ Analogi Sistem Pengisian</h3>
-        <video controls preload="metadata"
-               style="width:100%;border-radius:10px;background:#000;">
+      <div class="media-card">
+        <h3>🎞️ Analogi Sistem Pengisian</h3>
+
+        <video controls playsinline preload="metadata">
           <source src="${cfg.animation}" type="video/mp4">
-          Browser tidak mendukung video.
         </video>
       </div>
     `;
   }
 
+  /* GOOGLE FORM */
   if (cfg.googleForm) {
     html += `
-      <div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid #dbe4ef;">
+      <div class="media-card">
         <h3>📝 Google Form</h3>
-        <iframe src="${cfg.googleForm}"
-                style="width:100%;height:600px;border:0;border-radius:10px;">
-        </iframe>
+
+        <p>
+          Silakan kerjakan formulir pembelajaran.
+        </p>
+
+        <a class="wg-btn"
+           href="${cfg.googleForm}"
+           target="_blank">
+          📝 Buka Google Form
+        </a>
       </div>
     `;
   }
 
-  if (cfg.wayground) {
+  /* WAYGROUND + QR CODE */
+  const code =
+    String(cfg.waygroundCode || "").trim();
+
+  if (code) {
+
+    const joinUrl =
+      "https://wayground.com/join?gc=" +
+      encodeURIComponent(code);
+
+    const qrUrl =
+      "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
+      encodeURIComponent(joinUrl);
+
     html += `
-      <div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid #dbe4ef;">
-        <h3>🎯 Quiz Wayground</h3>
-        <iframe src="${cfg.wayground}"
-                style="width:100%;height:600px;border:0;border-radius:10px;"
-                allowfullscreen>
-        </iframe>
+      <div class="media-card wg-box">
+
+        <h3>🎯 Evaluasi Wayground</h3>
+
+        <p>
+          Scan QR Code atau masukkan kode berikut:
+        </p>
+
+        <div class="wg-code">
+          ${code}
+        </div>
+
+        <img
+          class="wg-qr"
+          src="${qrUrl}"
+          alt="QR Code Wayground">
+
+        <a
+          class="wg-btn"
+          href="${joinUrl}"
+          target="_blank">
+          🚀 Gabung Wayground
+        </a>
+
+        <p class="wg-note">
+          Kode dapat diganti melalui
+          <b>media-config.js</b>
+        </p>
+
       </div>
     `;
   }
 
-  content.innerHTML = html;
+  box.innerHTML = html;
+
 })();
 </script>
-  <script src="media-config.js"></script>
-<script>
-
-function ubahKodeWayground(){
-
-    const kode = document
-        .getElementById("waygroundInput")
-        .value
-        .trim();
-
-    if(kode === ""){
-        alert("Silakan masukkan kode Wayground.");
-        return;
-    }
-
-    const link =
-        "https://wayground.com/join?gc=" +
-        encodeURIComponent(kode);
-
-    const qr =
-        "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
-        encodeURIComponent(link);
-
-    document.getElementById("waygroundCode").textContent = kode;
-
-    document.getElementById("waygroundLink").href = link;
-
-    document.getElementById("waygroundQR").src = qr;
-}
-
-
-// Kode awal
-ubahKodeWayground();
 
 </script>
 </body></html>
