@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Editor Media Pembelajaran TSM</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#eef4f9;color:#172033}header{background:#123c69;color:#fff;padding:25px;text-align:center}main{max-width:1050px;margin:22px auto;padding:20px;background:#fff;border-radius:16px;box-shadow:0 4px 18px #0001}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{border:1px solid #d9e2ec;border-radius:12px;padding:16px;background:#f9fbfd}label{display:block;font-weight:700;margin:10px 0 6px}input,select,textarea{width:100%;box-sizing:border-box;padding:10px;border:1px solid #b8c6d6;border-radius:8px;font-size:14px}textarea{min-height:80px;font-family:monospace}button{border:0;border-radius:9px;padding:11px 16px;margin:8px 6px 8px 0;cursor:pointer;font-weight:700}button.primary{background:#0b6e4f;color:#fff}button.secondary{background:#e6eef7;color:#123c69}button.warn{background:#fff0d6;color:#8a4b00}pre{background:#111827;color:#e5e7eb;padding:15px;border-radius:10px;overflow:auto;white-space:pre-wrap}small{color:#5b6b7a}.ok{padding:10px;background:#e8f7ee;border-radius:8px;margin-top:10px}.note{padding:12px;background:#fff8df;border-left:4px solid #e1a700;border-radius:6px}.links a{margin-right:15px}.feature{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:15px 0}.feature div{padding:12px;background:#f1f5f9;border-radius:10px;text-align:center}@media(max-width:750px){.grid,.feature{grid-template-columns:1fr}.feature{grid-template-columns:1fr 1fr}}
+</style></head>
+<body>
+<header><h1>🛠️ Editor Media Pembelajaran TSM</h1><p>Gambar • Google Form • Wayground • YouTube • Video MP4 • Animasi GIF/WEBP</p></header>
+<main>
+<div class="feature"><div>🖼️ Gambar</div><div>📝 Google Form</div><div>🎯 Wayground</div><div>▶️ Video</div><div>✨ Animasi</div></div>
+<div class="note"><b>Cara kerja:</b> pilih modul → isi alamat/nama file media → klik <b>Buat media-config.js</b> → upload file hasilnya ke repository GitHub bersama gambar/video/animasi.</div>
+<div class="grid">
+<div class="card"><label>Pilih modul</label><select id="module"></select><label>Gambar (satu atau beberapa, pisahkan koma)</label><input id="images" placeholder="media/sistem-pengisian.jpg, media/rangkaian.jpg"><small>File gambar harus berada di folder <b>media/</b>.</small></div>
+<div class="card"><label>Google Form</label><input id="googleForm" placeholder="https://docs.google.com/forms/d/e/.../viewform"><small>Gunakan link form yang ingin ditampilkan.</small><label>Wayground</label><input id="wayground" placeholder="https://wayground.com/..."><small>Salin link Embed dari Wayground.</small></div>
+<div class="card"><label>YouTube</label><input id="youtube" placeholder="https://www.youtube.com/watch?v=..."><small>Bisa memakai link YouTube biasa.</small></div>
+<div class="card"><label>Video MP4</label><input id="video" placeholder="video/sistem-pengisian.mp4"><small>File MP4 harus berada di folder <b>video/</b>.</small><label>Animasi</label><input id="animation" placeholder="animasi/alur-pengisian.gif"><small>File GIF/WEBP harus berada di folder <b>animasi/</b>.</small></div>
+</div>
+<div>
+<button class="primary" onclick="saveModule()">💾 Simpan Modul</button>
+<button class="secondary" onclick="downloadConfig()">⬇️ Buat media-config.js</button>
+<button class="warn" onclick="resetModule()">↩️ Kosongkan Modul</button>
+</div>
+<div id="status"></div>
+<h2>Pratinjau konfigurasi</h2><pre id="output"></pre>
+<h2>Urutan pemasangan di GitHub</h2>
+<ol><li>Upload file HTML modul yang sudah mendukung media.</li><li>Upload <b>media-config.js</b>.</li><li>Upload gambar ke <b>media/</b>, video MP4 ke <b>video/</b>, dan animasi ke <b>animasi/</b>.</li><li>Commit changes.</li><li>Buka portal dan tekan <b>Ctrl + F5</b>.</li></ol>
+<p class="links"><a href="index.html">🏠 Kembali ke Portal</a> <a href="CARA_MENAMBAH_MEDIA.txt">📖 Panduan lengkap</a></p>
+</main>
+<script>
+const modules={
+'Kelas X - Sejarah Kendaraan':'sejarah-kendaraan.html','Kelas X - Revolusi Industri':'revolusi-industri.html','Kelas X - Motor Bakar':'motor-bakar.html','Kelas X - Teknologi Konvensional':'teknologi-konvensional.html','Kelas X - Teknologi Terkini':'teknologi-terkini.html','Kelas XI - Sistem Pengapian':'kelas-xi-pengapian.html','Kelas XI - Sistem Pengisian':'kelas-xi-pengisian.html','Kelas XI - Sistem Starter':'kelas-xi-starter.html','Kelas XI - Sistem Penerangan dan Tanda':'kelas-xi-penerangan-tanda.html','Kelas XI - Sistem Instrumen dan Sinyal':'kelas-xi-instrumen-sinyal.html','Kelas XI - Remote Control':'kelas-xi-remote-control.html','Kelas XII - Motor Listrik dan Hybrid':'kelas-xii-motor-listrik-hybrid.html','Kelas XII - Engine Management System':'kelas-xii-engine-management-system.html','Kelas XII - Pengelolaan Bengkel':'kelas-xii-pengelolaan-bengkel.html','Kelas XII - Praktik Kerja Industri':'kelas-xii-praktik-kerja-industri.html','Kelas XII - Uji Kompetensi Keahlian':'kelas-xii-uji-kompetensi-keahlian.html'};
+let cfg={};
+Object.values(modules).forEach(f=>cfg[f]={images:[],youtube:'',video:'',animation:'',googleForm:'',wayground:''});
+const sel=document.getElementById('module'); Object.entries(modules).forEach(([n,f])=>{let o=document.createElement('option');o.textContent=n;o.value=f;sel.appendChild(o)});
+sel.onchange=loadModule; function val(id){return document.getElementById(id).value.trim()}
+function loadModule(){let c=cfg[sel.value]||{};document.getElementById('images').value=(c.images||[]).join(', ');document.getElementById('youtube').value=c.youtube||'';document.getElementById('video').value=c.video||'';document.getElementById('animation').value=c.animation||'';document.getElementById('googleForm').value=c.googleForm||'';document.getElementById('wayground').value=c.wayground||'';showOutput()}
+function saveModule(){cfg[sel.value]={images:val('images')?val('images').split(',').map(x=>x.trim()).filter(Boolean):[],youtube:val('youtube'),video:val('video'),animation:val('animation'),googleForm:val('googleForm'),wayground:val('wayground')};document.getElementById('status').innerHTML='<div class="ok">✅ Data modul tersimpan di editor ini.</div>';showOutput()}
+function resetModule(){document.getElementById('images').value='';document.getElementById('youtube').value='';document.getElementById('video').value='';document.getElementById('animation').value='';document.getElementById('googleForm').value='';document.getElementById('wayground').value='';saveModule()}
+function makeJS(){return '/* EDITOR MEDIA PEMBELAJARAN TSM */\nwindow.MEDIA_CONFIG = '+JSON.stringify(cfg,null,2)+';\n'}
+function showOutput(){document.getElementById('output').textContent=makeJS()}
+function downloadConfig(){saveModule();let blob=new Blob([makeJS()],{type:'application/javascript'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='media-config.js';a.click();URL.revokeObjectURL(a.href);document.getElementById('status').innerHTML='<div class="ok">✅ media-config.js sudah dibuat. Upload file ini ke GitHub.</div>'}
+loadModule();
+</script></body></html>
