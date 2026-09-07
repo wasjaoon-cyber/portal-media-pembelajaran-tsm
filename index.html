@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Pembelajaran TSM - SMKN 1 Kabupaten Tangerang</title>
+<style>
+:root{--primary:#0757a0;--secondary:#087f8c;--light:#eef6ff;--dark:#17324d}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f8fc;color:var(--dark)}
+header{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;text-align:center;padding:28px 15px}
+.logo{width:90px;height:90px;background:#fff;border-radius:18px;object-fit:contain;padding:5px}
+header h1{margin:10px 0 5px;font-size:28px}
+header p{margin:4px 0}
+nav{position:sticky;top:0;z-index:5;background:#fff;box-shadow:0 2px 10px #0001;display:flex;justify-content:center;flex-wrap:wrap}
+nav a{padding:14px 17px;text-decoration:none;color:var(--primary);font-weight:bold}
+nav a:hover{background:var(--light)}
+main{max-width:1150px;margin:auto;padding:22px 15px 50px}
+.hero{background:#fff;border-radius:20px;padding:25px;text-align:center;box-shadow:0 8px 25px #0001;margin-bottom:25px}
+.hero h2{color:var(--primary);margin-top:0}
+.section-title{margin:30px 0 15px;color:var(--primary)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:#fff;border-radius:18px;padding:20px;box-shadow:0 7px 22px #0001;border-top:5px solid var(--primary)}
+.card h3{margin:8px 0;color:var(--primary)}
+.card p{line-height:1.5;color:#607386}
+.icon{font-size:42px}
+.badge{display:inline-block;padding:5px 9px;border-radius:20px;background:#e9f7ee;color:#17753d;font-size:12px;font-weight:bold}
+.btn{display:block;background:var(--primary);color:#fff;text-align:center;padding:12px;border-radius:10px;text-decoration:none;font-weight:bold;margin-top:14px}
+.btn:hover{background:#06437b}
+.disabled{background:#8da0b2}
+.info{background:#fff8dc;border-left:5px solid #e0aa16;padding:16px;border-radius:10px;margin-top:20px}
+footer{background:#17324d;color:#fff;text-align:center;padding:22px}
+small{color:#718394}
+@media(max-width:600px){header h1{font-size:22px}nav a{padding:11px 10px;font-size:13px}.hero{padding:18px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div style="font-size:50px">🏫</div>
+  <h1>SMKN 1 KABUPATEN TANGERANG</h1>
+  <p><strong>PORTAL MEDIA PEMBELAJARAN INTERAKTIF</strong></p>
+  <p>Teknik Sepeda Motor (TSM)</p>
+  <p>Guru: <strong>Wasja, S.Pd</strong></p>
+</header>
+
+<nav>
+  <a href="#beranda">Beranda</a>
+  <a href="#kelas-x">Kelas X</a>
+  <a href="#kelas-xi">Kelas XI</a>
+  <a href="#kelas-xii">Kelas XII</a>
+  <a href="#evaluasi">Evaluasi</a>
+  <a href="#lkpd">LKPD</a>
+</nav>
+
+<main>
+<section id="beranda" class="hero">
+  <h2>Selamat Datang di Portal Pembelajaran TSM</h2>
+  <p>Semua media pembelajaran interaktif dapat diakses melalui satu halaman.</p>
+  <p>Materi • Gambar • Video • Animasi • Pre-Test • Quiz • LKPD • Post-Test</p>
+</section>
+
+<h2 id="kelas-x" class="section-title">📘 Kelas X TSM</h2>
+<div class="grid">
+ <article class="card">
+  <div class="icon">🏭</div><span class="badge">SEGERA</span>
+  <h3>Dasar-Dasar Otomotif</h3>
+  <p>Materi dasar otomotif, keselamatan kerja, peralatan bengkel, dan pengenalan kendaraan.</p>
+  <a class="btn disabled" href="#" onclick="alert('Media Kelas X akan ditambahkan.');return false">SEGERA HADIR</a>
+ </article>
+ <article class="card">
+  <div class="icon">⚙️</div><span class="badge">SEGERA</span>
+  <h3>Perkembangan Revolusi Industri</h3>
+  <p>Media interaktif Revolusi Industri 1.0 sampai 4.0 dalam dunia otomotif.</p>
+  <a class="btn disabled" href="#" onclick="alert('Media Revolusi Industri akan ditambahkan.');return false">SEGERA HADIR</a>
+ </article>
+</div>
+
+<h2 id="kelas-xi" class="section-title">📙 Kelas XI TSM</h2>
+<div class="grid">
+ <article class="card">
+  <div class="icon">🔋</div><span class="badge">AKTIF</span>
+  <h3>Sistem Pengisian Sepeda Motor</h3>
+  <p>Materi sistem pengisian, komponen, rangkaian, cara kerja, video, quiz, pre-test dan post-test.</p>
+  <a class="btn" href="https://wasjaoon-cyber.github.io/media-pembelajaran-pengisian-sepeda-motor/" target="_blank">BUKA MEDIA →</a>
+ </article>
+ <article class="card">
+  <div class="icon">⚡</div><span class="badge">SEGERA</span>
+  <h3>Sistem Pengapian AC CDI</h3>
+  <p>Merangkai sistem pengapian AC CDI, komponen, fungsi, pemeriksaan, praktik dan evaluasi.</p>
+  <a class="btn disabled" href="#" onclick="alert('Media AC CDI akan ditambahkan.');return false">SEGERA HADIR</a>
+ </article>
+ <article class="card">
+  <div class="icon">🔌</div><span class="badge">SEGERA</span>
+  <h3>Sistem Starter</h3>
+  <p>Rangkaian starter, komponen, cara kerja, pemeriksaan dan diagnosis gangguan.</p>
+  <a class="btn disabled" href="#" onclick="alert('Media Sistem Starter akan ditambahkan.');return false">SEGERA HADIR</a>
+ </article>
+</div>
+
+<h2 id="kelas-xii" class="section-title">📕 Kelas XII TSM</h2>
+<div class="grid">
+ <article class="card">
+  <div class="icon">💻</div><span class="badge">SEGERA</span>
+  <h3>Engine Management System</h3>
+  <p>EMS/PGM-FI, sensor, aktuator, ECU, cara kerja, diagnosis dan evaluasi.</p>
+  <a class="btn disabled" href="#" onclick="alert('Media EMS akan ditambahkan.');return false">SEGERA HADIR</a>
+ </article>
+ <article class="card">
+  <div class="icon">🛠️</div><span class="badge">SEGERA</span>
+  <h3>Diagnosis Sistem PGM-FI</h3>
+  <p>Pemeriksaan sistem injeksi, pembacaan gejala kerusakan dan langkah diagnosis.</p>
+  <a class="btn disabled" href="#" onclick="alert('Media diagnosis PGM-FI akan ditambahkan.');return false">SEGERA HADIR</a>
+ </article>
+</div>
+
+<h2 id="evaluasi" class="section-title">📝 Evaluasi Pembelajaran</h2>
+<div class="grid">
+ <article class="card">
+  <div class="icon">📋</div>
+  <h3>Pre-Test</h3>
+  <p>Digunakan sebelum pembelajaran untuk mengetahui pengetahuan awal siswa.</p>
+  <a class="btn disabled" href="#" onclick="alert('Link Pre-Test dapat ditambahkan di sini.');return false">TAMBAHKAN LINK</a>
+ </article>
+ <article class="card">
+  <div class="icon">🎯</div>
+  <h3>Quiz</h3>
+  <p>Kuis interaktif untuk mengukur pemahaman siswa setelah mempelajari materi.</p>
+  <a class="btn disabled" href="#" onclick="alert('Quiz dapat ditambahkan di sini.');return false">TAMBAHKAN LINK</a>
+ </article>
+ <article class="card">
+  <div class="icon">🏆</div>
+  <h3>Post-Test</h3>
+  <p>Evaluasi akhir pembelajaran untuk mengetahui pencapaian kompetensi siswa.</p>
+  <a class="btn disabled" href="#" onclick="alert('Link Post-Test dapat ditambahkan di sini.');return false">TAMBAHKAN LINK</a>
+ </article>
+</div>
+
+<h2 id="lkpd" class="section-title">📂 LKPD Praktik</h2>
+<div class="grid">
+ <article class="card">
+  <div class="icon">🔧</div><span class="badge">SEGERA</span>
+  <h3>LKPD Sistem Pengisian</h3>
+  <p>Merangkai sistem pengisian, pemeriksaan baterai, tegangan pengisian dan kebocoran arus.</p>
+  <a class="btn disabled" href="#" onclick="alert('File LKPD dapat ditambahkan di sini.');return false">BUKA LKPD</a>
+ </article>
+ <article class="card">
+  <div class="icon">⚡</div><span class="badge">SEGERA</span>
+  <h3>LKPD AC CDI</h3>
+  <p>Merangkai pengabelan sistem pengapian AC CDI dan melakukan pemeriksaan rangkaian.</p>
+  <a class="btn disabled" href="#" onclick="alert('File LKPD dapat ditambahkan di sini.');return false">BUKA LKPD</a>
+ </article>
+ <article class="card">
+  <div class="icon">📏</div><span class="badge">SEGERA</span>
+  <h3>LKPD Alat Ukur</h3>
+  <p>Penggunaan alat ukur otomotif seperti Cylinder Bore Gauge dan alat ukur lainnya.</p>
+  <a class="btn disabled" href="#" onclick="alert('File LKPD dapat ditambahkan di sini.');return false">BUKA LKPD</a>
+ </article>
+</div>
+
+<div class="info">
+<strong>💡 Untuk Guru:</strong><br>
+Portal ini menjadi halaman utama. Saat media baru selesai dibuat, alamatnya tinggal dimasukkan ke tombol yang sesuai.
+Tidak perlu mengubah struktur portal.
+</div>
+</main>
+
+<footer>
+  <strong>SMKN 1 Kabupaten Tangerang</strong><br>
+  Teknik Sepeda Motor • Media Pembelajaran Interaktif<br>
+  Guru: Wasja, S.Pd<br><br>
+  <small>© 2026</small>
+</footer>
+
+</body>
+</html>
