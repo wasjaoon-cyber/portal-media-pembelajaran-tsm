@@ -1,246 +1,374 @@
-<!DOCTYPE html>
-<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Kelas XI TSM - Sistem Pengisian</title>
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Media Pembelajaran Interaktif | Sistem Pengisian Sepeda Motor</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f7fb;color:#172033}
-header{background:linear-gradient(135deg,#123c69,#16818a);color:#fff;text-align:center;padding:28px 15px}
-header h1{margin:0 0 8px;font-size:27px}header p{margin:5px}
-nav{position:sticky;top:0;background:#fff;padding:10px;text-align:center;box-shadow:0 2px 10px #0002;z-index:5}
-nav a{display:inline-block;padding:9px 12px;margin:3px;border-radius:8px;text-decoration:none;color:#fff;font-size:13px;font-weight:bold}
-.pre{background:#e58a00}.mat{background:#1769aa}.quiz{background:#188754}.post{background:#7c3aed}.lkpd{background:#0f766e}.portal{background:#475569}
-.container{max-width:1000px;margin:24px auto;padding:0 15px}.card{background:#fff;border-radius:14px;padding:22px;margin:18px 0;box-shadow:0 4px 16px #0001}
-h2{color:#075985;border-left:5px solid #16818a;padding-left:10px}h3{color:#123c69}
-.question{background:#f8fafc;border:1px solid #dbe4ef;border-radius:10px;padding:14px;margin:12px 0}
-.question label{display:block;margin:8px 0}button{border:0;border-radius:8px;padding:10px 17px;color:#fff;background:#123c69;font-weight:bold;cursor:pointer}
-.result{font-weight:bold;margin-top:12px;padding:12px;border-radius:8px;background:#eef6ff}
-table{width:100%;border-collapse:collapse;margin:12px 0}th,td{border:1px solid #cbd5e1;padding:9px;text-align:left}th{background:#e8f1f8}
-.flow{display:flex;justify-content:center;margin:18px 0;padding:16px;background:#eef6ff;border-radius:10px;font-weight:bold;text-align:center}
-.note{background:#fff7ed;border-left:5px solid #f59e0b;padding:13px;border-radius:7px}footer{text-align:center;padding:25px;color:#64748b}
-@media(max-width:600px){header h1{font-size:22px}nav a{font-size:12px;padding:8px 9px}}
-@media print{nav,button{display:none}.card{box-shadow:none}}
-</style></head><body>
-<header><h1>🔧 SISTEM PENGISIAN</h1><p>Kelas XI Teknik Sepeda Motor (TSM)</p><p>SMKN 1 Kabupaten Tangerang • Guru: Wasja, S.Pd</p></header>
-<nav><a class="pre" href="#pretest">📝 Pretest</a><a class="mat" href="#materi">📖 Materi</a><a class="quiz" href="#quiz">🎯 Quiz</a><a class="post" href="#posttest">🏆 Post Test</a><a class="lkpd" href="#lkpd">📋 LKPD</a><a class="portal" href="index.html">🏠 Portal</a></nav>
-<main class="container">
-<section class="card" id="pretest"><h2>📝 Pretest</h2><p>Mempelajari fungsi, komponen, prinsip kerja, pemeriksaan baterai dan tegangan pengisian, diagnosis, serta K3.</p><form id="preForm"></form><button onclick="score('preForm','preResult',key)">Periksa Nilai</button><div id="preResult" class="result"></div></section>
-<section class="card" id="materi"><h2>📖 Materi Sistem Pengisian</h2>
-<h3>1. Pengertian dan fungsi</h3><p>Mempelajari fungsi, komponen, prinsip kerja, pemeriksaan baterai dan tegangan pengisian, diagnosis, serta K3.</p>
-<h3>2. Pokok materi</h3><ul><li>Alternator menghasilkan AC saat mesin berputar; regulator/rectifier mengolah dan mengatur energi listrik.</li><li>Baterai menyimpan energi dan menyuplai beban sesuai kebutuhan sistem.</li><li>Pemeriksaan mencakup kondisi baterai, tegangan, output pengisian, konektor, dan massa.</li></ul>
-<h3>3. Alur kerja sederhana</h3><div class="flow">🔄 Mesin → ⚡ Alternator → 🔌 Regulator/Rectifier → 🔋 Baterai</div>
-<h3>4. Pemeriksaan dan diagnosis</h3><ol><li>Identifikasi gejala dan kondisi kendaraan.</li><li>Periksa kondisi fisik, kabel, konektor, sekring, sakelar, dan massa sesuai sistem.</li><li>Gunakan multimeter atau alat khusus sesuai prosedur.</li><li>Bandingkan hasil dengan spesifikasi/manual servis kendaraan.</li><li>Tentukan penyebab dan lakukan perbaikan sesuai prosedur.</li><li>Lakukan pengujian ulang setelah perbaikan.</li></ol>
-<div class="note"><b>K3:</b> Matikan mesin bila diperlukan, cegah korsleting, gunakan alat ukur sesuai fungsi, dan ikuti manual servis. Jangan mengubah spesifikasi komponen secara sembarangan.</div>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef4f8;color:#17212b}
+button,a{font-family:inherit}
+header{
+  position:relative;overflow:hidden;color:#fff;
+  background:linear-gradient(135deg,#075985 0%,#0f766e 55%,#164e63 100%);
+  padding:28px 18px 34px;text-align:center
+}
+header:before,header:after{
+  content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.08)
+}
+header:before{width:260px;height:260px;left:-90px;top:-130px}
+header:after{width:330px;height:330px;right:-120px;bottom:-220px}
+.header-content{position:relative;z-index:1}
+.school-title{font-size:15px;letter-spacing:1.2px;font-weight:bold}
+header h1{margin:8px 0;font-size:32px}
+header p{margin:5px;font-size:16px}
+.wrap{max-width:1120px;margin:auto;padding:18px}
+nav.main-nav{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;
+  position:sticky;top:8px;z-index:100
+}
+.main-nav button{
+  border:0;border-radius:12px;padding:12px 15px;background:#fff;cursor:pointer;
+  font-weight:bold;box-shadow:0 3px 12px rgba(0,0,0,.08);color:#17405a
+}
+.main-nav button:hover{transform:translateY(-1px)}
+.main-nav button.active,.btn.primary{background:#075985;color:#fff}
+section.page{
+  background:#fff;border-radius:20px;padding:25px;margin-bottom:18px;
+  box-shadow:0 5px 20px rgba(0,0,0,.07)
+}
+.hidden{display:none!important}
+
+.hero{
+  position:relative;overflow:hidden;border-radius:22px;
+  background:linear-gradient(135deg,#e0f2fe,#ecfeff 52%,#f0fdf4);
+  padding:30px 25px;text-align:center
+}
+.hero-badge{
+  display:inline-block;padding:7px 13px;border-radius:999px;
+  background:#075985;color:white;font-size:13px;font-weight:bold
+}
+.profile-row{
+  display:flex;align-items:center;justify-content:center;gap:25px;
+  flex-wrap:wrap;margin:22px 0 15px
+}
+.school-logo{
+  width:120px;height:120px;object-fit:contain;background:white;border-radius:22px;
+  padding:8px;box-shadow:0 8px 25px rgba(0,0,0,.15)
+}
+.teacher-wrap{position:relative}
+.teacher-photo{
+  width:170px;height:170px;object-fit:cover;object-position:center top;
+  border-radius:50%;border:6px solid white;box-shadow:0 8px 25px rgba(0,0,0,.18)
+}
+.teacher-wrap:after{
+  content:"✓";position:absolute;right:7px;bottom:8px;width:34px;height:34px;
+  border-radius:50%;display:grid;place-items:center;background:#16a34a;color:white;
+  font-weight:bold;border:3px solid white
+}
+.hero h2{font-size:29px;margin:12px 0 7px;color:#12384d}
+.hero .subtitle{font-size:18px;margin:0 0 8px;color:#075985;font-weight:bold}
+.teacher-name{font-size:16px;margin:4px 0;color:#475569}
+.start-btn{
+  display:inline-flex;align-items:center;gap:9px;margin-top:18px;
+  padding:14px 24px;border:0;border-radius:14px;background:#075985;color:#fff;
+  font-weight:bold;font-size:16px;cursor:pointer;box-shadow:0 7px 18px rgba(7,89,133,.25)
+}
+.start-btn:hover{transform:translateY(-2px)}
+.pulse{animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 7px 18px rgba(7,89,133,.25)}50%{box-shadow:0 7px 26px rgba(7,89,133,.5)}}
+
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:22px}
+.quick-card{
+  background:#fff;border:1px solid #dbe7ee;border-radius:15px;padding:16px;text-align:center;
+  cursor:pointer;transition:.2s
+}
+.quick-card:hover{transform:translateY(-3px);box-shadow:0 7px 18px rgba(0,0,0,.08)}
+.quick-icon{font-size:28px}
+.quick-card h3{font-size:15px;margin:8px 0 4px}
+.quick-card p{font-size:13px;color:#64748b;margin:0}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}
+.card{border:1px solid #d8e1e8;border-radius:14px;padding:16px;background:#fbfdff}
+.card img,.mainimg{width:100%;max-height:500px;object-fit:contain;border-radius:10px;background:#eef2f5}
+.small{color:#5c6872;font-size:14px}
+.notice{background:#eff6ff;border-left:5px solid #075985;padding:14px;border-radius:8px}
+.btn{display:inline-block;padding:12px 18px;border-radius:10px;text-decoration:none;border:0;cursor:pointer;font-weight:bold;background:#075985;color:#fff}
+.flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin:20px 0}
+.flow div{padding:14px;border:2px solid #9bb6c7;border-radius:10px;background:#f8fbfd;font-weight:bold}
+.arrow{font-size:22px;font-weight:bold}
+video{width:100%;max-height:520px;border-radius:12px;background:#111}
+.mini-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.mini-nav button{border:1px solid #cbd5df;border-radius:10px;background:#fff;padding:10px 13px;cursor:pointer;font-weight:bold}
+.mini-nav button.active{background:#075985;color:white;border-color:#075985}
+.flow-buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.mapBtn{border:1px solid #9bb6c7;border-radius:10px;background:#f8fbfd;padding:11px 13px;cursor:pointer;font-weight:bold}
+.mapBtn:hover,.mapBtn.active{border-color:#075985;background:#e0f2fe}
+#mapInfo{min-height:72px}
+footer{text-align:center;padding:24px;color:#64748b}
+
+.zoomable{cursor:zoom-in;transition:transform .15s ease}
+.zoomable:hover{transform:scale(1.01)}
+#zoomModal{position:fixed;inset:0;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;padding:24px;z-index:9999}
+#zoomModal.hidden{display:none}
+.zoomInner{position:relative;max-width:95vw;max-height:92vh;text-align:center}
+#zoomImage{max-width:95vw;max-height:82vh;width:auto;height:auto;object-fit:contain;border-radius:10px;background:white}
+.zoomTitle{color:white;font-weight:bold;margin-top:10px}
+.closeZoom{position:absolute;right:-10px;top:-14px;width:44px;height:44px;border-radius:50%;border:2px solid white;background:#111;color:white;font-size:25px;cursor:pointer}
+
+@media(max-width:800px){
+  .quick-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  header h1{font-size:23px}
+  section.page{padding:17px}
+  .main-nav button{flex:1 1 42%}
+  .hero{padding:22px 14px}
+  .school-logo{width:95px;height:95px}
+  .teacher-photo{width:135px;height:135px}
+  .hero h2{font-size:23px}
+  .quick-grid{grid-template-columns:1fr 1fr}
+}
+.quizBox{text-align:center}.quizEditorRow{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;margin:10px 0}.quizEditorRow input{width:180px;padding:11px 12px;border:1px solid #bbb;border-radius:8px;font-size:16px;text-align:center}.qrWrap{display:flex;justify-content:center;align-items:center;margin:18px auto 10px;background:#fff;padding:12px;width:max-content;border-radius:10px;min-height:220px}.qrCaption{margin:8px 0 16px}.quizActions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.secondaryBtn{cursor:pointer}</style>
+</head>
+
+<body>
+<header>
+  <div class="header-content">
+    <div class="school-title">SMKN 1 KABUPATEN TANGERANG</div>
+    <h1>Media Pembelajaran Interaktif</h1>
+    <p>Sistem Pengisian pada Sepeda Motor • Kelas XI TSM</p>
+    <p>Guru: <b>Wasja, S.Pd</b></p>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="main-nav" aria-label="Menu utama">
+  <button class="active" data-page="beranda">🏠 Beranda</button>
+  <button data-page="tujuan">🎯 Tujuan Pembelajaran</button>
+  <button data-page="pretest">📝 Pre Test</button>
+  <button data-page="materi">📚 Materi</button>
+  <button data-page="quiz">🎮 Quiz</button>
+  <button data-page="posttest">✅ Post Test</button>
+</nav>
+
+<section id="beranda" class="page">
+  <div class="hero">
+    <span class="hero-badge">⚙️ TEKNIK SEPEDA MOTOR • KELAS XI</span>
+    <div class="profile-row">
+      <img src="gambar/logo-sekolah.jpg" alt="Logo SMKN 1 Kabupaten Tangerang" class="school-logo">
+      <div class="teacher-wrap">
+        <img src="gambar/foto-guru.jpeg" alt="Foto Guru Wasja, S.Pd" class="teacher-photo">
+      </div>
+    </div>
+    <h2>Sistem Pengisian Sepeda Motor</h2>
+    <p class="subtitle">Belajar • Eksplorasi • Berlatih • Evaluasi</p>
+    <p class="teacher-name"><b>Wasja, S.Pd</b> — SMKN 1 Kabupaten Tangerang</p>
+    <button class="start-btn pulse" id="startLearning">🚀 MULAI PEMBELAJARAN</button>
+
+    <div class="quick-grid">
+      <div class="quick-card" data-go="pretest"><div class="quick-icon">📝</div><h3>Pre Test</h3><p>Ukur pengetahuan awal</p></div>
+      <div class="quick-card" data-go="materi"><div class="quick-icon">📚</div><h3>Materi</h3><p>Pelajari sistem pengisian</p></div>
+      <div class="quick-card" data-go="quiz"><div class="quick-icon">🎮</div><h3>Quiz</h3><p>Uji pemahaman</p></div>
+      <div class="quick-card" data-go="posttest"><div class="quick-icon">✅</div><h3>Post Test</h3><p>Evaluasi hasil belajar</p></div>
+    </div>
+  </div>
 </section>
-<section class="card" id="quiz"><h2>🎯 Quiz</h2><p>Uji pemahaman setelah mempelajari materi.</p><form id="quizForm"></form><button onclick="score('quizForm','quizResult',key)">Periksa Nilai</button><div id="quizResult" class="result"></div></section>
-<section class="card" id="posttest"><h2>🏆 Evaluasi / Post Test</h2><p>Kerjakan setelah materi dan quiz selesai.</p><form id="postForm"></form><button onclick="score('postForm','postResult',key)">Periksa Nilai</button><div id="postResult" class="result"></div></section>
-<section class="card" id="lkpd"><h2>📋 LKPD Praktik — Sistem Pengisian</h2>
-<h3>A. Identitas</h3><table><tr><td>Nama Siswa</td><td>................................................</td></tr><tr><td>Kelas</td><td>XI TSM</td></tr><tr><td>Kelompok</td><td>....................</td></tr><tr><td>Tanggal</td><td>....................</td></tr></table>
-<h3>B. Tujuan</h3><ul><li>Mengidentifikasi komponen sistem pengisian.</li><li>Menjelaskan fungsi setiap komponen.</li><li>Melakukan pemeriksaan dasar sesuai K3.</li><li>Menganalisis hasil pemeriksaan.</li></ul>
-<h3>C. Langkah Kerja</h3><ol><li>Siapkan kendaraan, alat ukur, alat tangan, dan APD.</li><li>Identifikasi komponen sistem.</li><li>Periksa kondisi fisik dan koneksi.</li><li>Lakukan pengukuran/pengujian sesuai instruksi guru dan manual servis.</li><li>Catat hasil pengujian.</li><li>Bandingkan dengan spesifikasi.</li><li>Buat diagnosis dan kesimpulan.</li></ol>
-<h3>D. Tabel Hasil Pemeriksaan</h3><table><tr><th>No</th><th>Komponen/Pemeriksaan</th><th>Hasil</th><th>Spesifikasi</th><th>Kesimpulan</th></tr>
-<tr><td>1</td><td>Komponen 1</td><td></td><td></td><td></td></tr><tr><td>2</td><td>Komponen 2</td><td></td><td></td><td></td></tr><tr><td>3</td><td>Komponen 3</td><td></td><td></td><td></td></tr><tr><td>4</td><td>Komponen 4</td><td></td><td></td><td></td></tr><tr><td>5</td><td>Kabel/konektor</td><td></td><td></td><td></td></tr></table>
-<h3>E. Analisis</h3><p>1. Apa hasil pemeriksaan dan apakah sistem bekerja normal?</p><p>........................................................................................................</p><p>2. Apa kemungkinan penyebab jika hasil tidak sesuai?</p><p>........................................................................................................</p>
-<h3>F. Kesimpulan</h3><p>........................................................................................................</p><button onclick="window.print()">🖨️ Cetak LKPD</button>
-</section><section id="media-pembelajaran" class="card">
-  <h2>🎬 Media Pembelajaran</h2>
 
-  <div id="media-content" class="media-grid"></div>
+<section id="tujuan" class="page hidden">
+<h2>🎯 Tujuan Pembelajaran</h2>
+<ol>
+<li>Menjelaskan fungsi sistem pengisian sepeda motor.</li>
+<li>Mengidentifikasi komponen sistem pengisian dan fungsinya.</li>
+<li>Membaca dan menjelaskan gambar rangkaian sistem pengisian.</li>
+<li>Menjelaskan prinsip dan tahapan kerja sistem pengisian.</li>
+<li>Menjelaskan pemeriksaan dasar sistem pengisian sesuai prosedur kerja.</li>
+</ol>
 </section>
 
-<style>
-.media-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:18px;
-}
+<section id="pretest" class="page hidden">
+<h2>📝 Pre Test</h2>
+<p>Kerjakan Pre Test sebelum mempelajari materi.</p>
+<div class="notice">
+<b>Google Form — Pre Test</b><br><span class="small">Klik tombol berikut untuk membuka soal.</span><br><br>
+<a class="btn" href="https://forms.gle/DQj9z4jwS725cPEg7" target="_blank" rel="noopener">Buka Pre Test ↗</a>
+</div>
+</section>
 
-.media-card {
-  background:#fff;
-  border:1px solid #dfe5ec;
-  border-radius:14px;
-  padding:16px;
-  box-shadow:0 3px 12px rgba(0,0,0,.06);
-}
+<section id="materi" class="page hidden">
+<h2>📚 Materi Sistem Pengisian</h2>
+<div class="mini-nav">
+<button class="active" data-tab="fungsi">Fungsi</button>
+<button data-tab="rangkaian">Gambar Rangkaian</button>
+<button data-tab="komponen">Komponen</button>
+<button data-tab="video">Video Cara Kerja</button>
+</div>
 
-.media-card h3 {
-  margin-top:0;
-}
+<div id="fungsi" class="tab">
+<h3>Fungsi Sistem Pengisian</h3>
+<h3>Mengapa harus ada sistem pengisian pada kendaraan sepeda motor ? <br> perhatikan analogi berikut ini</h3>
+<video controls><source src="video/analogi.mp4" type="video/mp4">Browser tidak mendukung video.</video>
+<div class="grid">
+<div class="card"><h3>⚡ Menghasilkan energi listrik</h3><p>Alternator atau spul menghasilkan energi listrik dari putaran mesin.</p></div>
+<div class="card"><h3>🔋 Mengisi baterai</h3><p>Energi listrik digunakan untuk mengisi kembali baterai.</p></div>
+<div class="card"><h3>💡 Menyuplai beban</h3><p>Sistem pengisian membantu menyediakan energi listrik bagi beban kelistrikan ketika mesin bekerja.</p></div>
+</div>
+</div>
+<div id="rangkaian" class="tab hidden">
+<h3>Gambar Rangkaian Sistem Pengisian</h3>
+<img class="zoomable mainimg" src="gambar/rangkaian_pengisian.jpg" alt="Gambar rangkaian sistem pengisian">
+<div class="flow">
+<div>⚙️ Putaran Mesin</div><span class="arrow">→</span>
+<div>⚡ Spul / Alternator</div><span class="arrow">→</span>
+<div>🔄 Regulator / Rectifier</div><span class="arrow">→</span>
+<div>🔋 Baterai</div><span class="arrow">→</span>
+<div>💡 Beban</div>
+</div>
+<p><b>Alur kerja:</b> putaran mesin menggerakkan alternator, listrik diatur/diteruskan oleh regulator-rectifier, kemudian digunakan untuk pengisian baterai dan kebutuhan beban kelistrikan.</p>
+<div class="notice" style="margin-top:16px"><b>🔎 Eksplorasi Rangkaian</b><br>Klik tombol komponen untuk melihat fungsi.</div>
+<div class="flow-buttons">
+<button type="button" class="mapBtn" data-map="spul">⚡ Spul / Alternator</button>
+<button type="button" class="mapBtn" data-map="regulator">🔄 Regulator / Rectifier</button>
+<button type="button" class="mapBtn" data-map="baterai">🔋 Baterai</button>
+<button type="button" class="mapBtn" data-map="kunci">🔑 Kunci Kontak</button>
+<button type="button" class="mapBtn" data-map="beban">💡 Beban</button>
+</div>
+<div id="mapInfo" class="card" style="margin-top:12px"><b>Pilih komponen.</b> Penjelasan fungsi akan muncul di sini.</div>
+</div>
 
-.media-card img,
-.media-card video {
-  width:100%;
-  border-radius:10px;
-}
+<div id="komponen" class="tab hidden">
+<h3>Komponen Sistem Pengisian</h3>
+<div class="grid">
+<div class="card"><img class="zoomable" src="gambar/spul magnet _ alternator.jpg" alt="Spul Magnet / Alternator"><h3>Spul Magnet / Alternator</h3><p>Menghasilkan energi listrik dari putaran mesin.</p></div>
 
-.wg-box {
-  text-align:center;
-}
+<div class="card"><img class="zoomable" src="gambar/kiprox_regulator_rektifier.jpg" alt="Kiprok / Regulator Rectifier"><h3>Kiprok / Regulator Rectifier</h3><p>Menyearahkan arus dan mengatur tegangan sistem pengisian.</p></div>
+<div class="card"><img class="zoomable" src="gambar/baterai.jpg" alt="Baterai"><h3>Baterai</h3><p>Menyimpan energi listrik dan menyuplai kebutuhan kelistrikan.</p></div>
+</div>
+<div class="notice" style="margin-top:15px"><b>💡 Tips:</b> Klik gambar komponen untuk memperbesar.</div>
+</div>
 
-.wg-code {
-  font-size:30px;
-  font-weight:bold;
-  letter-spacing:3px;
-  margin:10px 0;
-}
+<div id="video" class="tab hidden">
+<h3>🎥 Video Cara Kerja Sistem Pengisian</h3>
+<video controls><source src="video/cara_kerja.mp4" type="video/mp4">Browser tidak mendukung video.</video>
+<p class="small">Video berada di folder <b>video</b>. Video cara kerja dibuat versi ringan 360p agar dapat digunakan di GitHub Pages.</p>
+</div>
+</section>
 
-.wg-qr {
-  width:230px;
-  max-width:100%;
-  display:block;
-  margin:15px auto;
-}
+<section id="quiz" class="page hidden">
+<h2>🎮 Quiz Wayground</h2>
+<p>Setelah mempelajari materi, lanjutkan ke Quiz.</p>
+<div class="notice quizBox">
+  <h3 style="margin-top:0">Quiz Sistem Pengisian</h3>
+  <label for="waygroundCode"><b>Kode Quiz Wayground:</b></label>
+  <div class="quizEditorRow">
+    <input id="waygroundCode" type="text" inputmode="numeric" maxlength="12" placeholder="Contoh: 018013">
+    <button class="btn" type="button" id="saveWayground">Simpan Kode</button>
+  </div>
+  <p class="small" id="waygroundStatus">Kode tersimpan di perangkat ini.</p>
+  <div id="waygroundQR" class="qrWrap"></div>
+  <div class="qrCaption"><b>Scan QR Code untuk membuka Quiz</b><br><span class="small" id="waygroundLinkText"></span></div>
+  <div class="quizActions">
+    <a class="btn" id="waygroundOpen" href="#" target="_blank" rel="noopener">Buka Quiz Wayground ↗</a>
+    <button class="btn secondaryBtn" type="button" id="waygroundCopy">Salin Link</button>
+  </div>
+</div>
+</section>
 
-.wg-btn {
-  display:inline-block;
-  padding:12px 18px;
-  border-radius:9px;
-  text-decoration:none;
-  font-weight:bold;
-  background:#1769aa;
-  color:white;
-}
+<section id="posttest" class="page hidden">
+<h2>✅ Post Test</h2>
+<p>Kerjakan Post Test setelah menyelesaikan materi dan Quiz.</p>
+<div class="notice">
+<b>Google Form — Post Test</b><br><span class="small">Klik tombol berikut untuk membuka evaluasi.</span><br><br>
+<a class="btn" href="https://forms.gle/dvyMMKyGefPTt8Wn8" target="_blank" rel="noopener">Buka Post Test ↗</a>
+</div>
+</section>
+</div>
 
-.wg-note {
-  font-size:13px;
-  color:#667;
-}
+<div id="zoomModal" class="hidden" role="dialog" aria-modal="true" aria-label="Perbesar gambar">
+  <div class="zoomInner">
+    <button type="button" class="closeZoom" id="closeZoom" aria-label="Tutup">×</button>
+    <img id="zoomImage" src="" alt="Gambar diperbesar">
+    <div class="zoomTitle" id="zoomTitle"></div>
+  </div>
+</div>
 
-@media(max-width:600px) {
-  .media-grid {
-    grid-template-columns:1fr;
-  }
-}
-</style>
+<footer>Media Pembelajaran Interaktif • Sistem Pengisian Sepeda Motor • Wasja, S.Pd • SMKN 1 Kabupaten Tangerang</footer>
 
-<!-- WAJIB DI ATAS SCRIPT YANG MENGGUNAKAN MEDIA_CONFIG -->
-<script src="media-config.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-(function(){
-
-  const cfg =
-    (window.MEDIA_CONFIG || {})["kelas-xi-pengisian.html"];
-
-  const box =
-    document.getElementById("media-content");
-
-  if (!box || !cfg) return;
-
-  let html = "";
-
-  /* GAMBAR */
-  if (Array.isArray(cfg.images)) {
-    cfg.images.forEach(src => {
-      html += `
-        <div class="media-card">
-          <h3>🖼️ Rangkaian Sistem Pengisian</h3>
-          <img src="${src}"
-               alt="Rangkaian Sistem Pengisian">
-        </div>
-      `;
-    });
-  }
-
-  /* VIDEO */
-  if (cfg.video) {
-    html += `
-      <div class="media-card">
-        <h3>▶️ Cara Kerja Sistem Pengisian</h3>
-
-        <video controls playsinline preload="metadata">
-          <source src="${cfg.video}" type="video/mp4">
-        </video>
-
-        <p class="wg-note">
-          Video cara kerja sistem pengisian.
-        </p>
-      </div>
-    `;
-  }
-
-  /* ANIMASI */
-  if (cfg.animation) {
-    html += `
-      <div class="media-card">
-        <h3>🎞️ Analogi Sistem Pengisian</h3>
-
-        <video controls playsinline preload="metadata">
-          <source src="${cfg.animation}" type="video/mp4">
-        </video>
-      </div>
-    `;
-  }
-
-  /* GOOGLE FORM */
-  if (cfg.googleForm) {
-    html += `
-      <div class="media-card">
-        <h3>📝 Google Form</h3>
-
-        <p>
-          Silakan kerjakan formulir pembelajaran.
-        </p>
-
-        <a class="wg-btn"
-           href="${cfg.googleForm}"
-           target="_blank">
-          📝 Buka Google Form
-        </a>
-      </div>
-    `;
-  }
-
-  /* WAYGROUND + QR CODE */
-  const code =
-    String(cfg.waygroundCode || "").trim();
-
-  if (code) {
-
-    const joinUrl =
-      "https://wayground.com/join?gc=" +
-      encodeURIComponent(code);
-
-    const qrUrl =
-      "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
-      encodeURIComponent(joinUrl);
-
-    html += `
-      <div class="media-card wg-box">
-
-        <h3>🎯 Evaluasi Wayground</h3>
-
-        <p>
-          Scan QR Code atau masukkan kode berikut:
-        </p>
-
-        <div class="wg-code">
-          ${code}
-        </div>
-
-        <img
-          class="wg-qr"
-          src="${qrUrl}"
-          alt="QR Code Wayground">
-
-        <a
-          class="wg-btn"
-          href="${joinUrl}"
-          target="_blank">
-          🚀 Gabung Wayground
-        </a>
-
-        <p class="wg-note">
-          Kode dapat diganti melalui
-          <b>media-config.js</b>
-        </p>
-
-      </div>
-    `;
-  }
-
-  box.innerHTML = html;
-
-})();
+const WAYGROUND_DEFAULT_CODE = "018013";
+const WAYGROUND_STORAGE_KEY = "wayground_quiz_code";
+const WAYGROUND_BASE_URL = "https://wayground.com/join?gc=";
+function updateWayground(){
+ const input=document.getElementById("waygroundCode"), qr=document.getElementById("waygroundQR"), openBtn=document.getElementById("waygroundOpen"), linkText=document.getElementById("waygroundLinkText");
+ if(!input||!qr||!openBtn||!linkText)return;
+ let code=(input.value||"").trim().replace(/\s+/g,"");
+ if(!code)code=WAYGROUND_DEFAULT_CODE;
+ const link=WAYGROUND_BASE_URL+encodeURIComponent(code);
+ qr.innerHTML=""; new QRCode(qr,{text:link,width:220,height:220,correctLevel:QRCode.CorrectLevel.M});
+ openBtn.href=link; linkText.textContent=link;
+}
+function loadWayground(){const saved=localStorage.getItem(WAYGROUND_STORAGE_KEY); document.getElementById("waygroundCode").value=saved||WAYGROUND_DEFAULT_CODE; updateWayground();}
+document.getElementById("saveWayground").addEventListener("click",function(){const input=document.getElementById("waygroundCode"),code=input.value.trim().replace(/\s+/g,"");if(!code){alert("Masukkan kode Quiz Wayground terlebih dahulu.");return;}localStorage.setItem(WAYGROUND_STORAGE_KEY,code);updateWayground();document.getElementById("waygroundStatus").textContent="Kode Quiz berhasil diperbarui pada perangkat ini.";});
+document.getElementById("waygroundCode").addEventListener("input",updateWayground);
+document.getElementById("waygroundCopy").addEventListener("click",async function(){const link=document.getElementById("waygroundOpen").href;try{await navigator.clipboard.writeText(link);this.textContent="Link Tersalin ✓";setTimeout(()=>this.textContent="Salin Link",1800);}catch(e){prompt("Salin link Quiz berikut:",link);}});
+loadWayground();
 </script>
+<script>
+const pages=document.querySelectorAll('.page');
 
+function openPage(id){
+  document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));
+  pages.forEach(p=>p.classList.toggle('hidden',p.id!==id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>openPage(b.dataset.page)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>openPage(b.dataset.go)));
+document.getElementById('startLearning').addEventListener('click',()=>openPage('pretest'));
+
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{
+  const section=b.closest('section');
+  section.querySelectorAll('[data-tab]').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  section.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab));
+}));
+
+const modal=document.getElementById('zoomModal');
+const zoomImage=document.getElementById('zoomImage');
+const zoomTitle=document.getElementById('zoomTitle');
+
+document.querySelectorAll('.zoomable').forEach(img=>{
+  img.addEventListener('click',()=>{
+    zoomImage.src=img.src;
+    zoomImage.alt=img.alt||'Gambar diperbesar';
+    zoomTitle.textContent=img.alt||'Gambar diperbesar';
+    modal.classList.remove('hidden');
+  });
+});
+function closeZoom(){
+  modal.classList.add('hidden');
+  zoomImage.src='';
+}
+document.getElementById('closeZoom').addEventListener('click',closeZoom);
+modal.addEventListener('click',e=>{if(e.target===modal)closeZoom()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeZoom()});
+
+const mapData={
+ spul:{title:'⚡ Spul / Alternator',info:'Menghasilkan energi listrik dari putaran mesin. Energi listrik diteruskan ke rangkaian pengisian untuk diproses lebih lanjut.'},
+ regulator:{title:'🔄 Regulator / Rectifier (Kiprok)',info:'Menyearahkan arus dan mengatur tegangan sistem pengisian agar sesuai dengan kebutuhan kelistrikan dan pengisian baterai.'},
+ baterai:{title:'🔋 Baterai',info:'Menyimpan energi listrik dan membantu menyediakan energi listrik bagi sistem ketika diperlukan.'},
+ kunci:{title:'🔑 Kunci Kontak',info:'Menghubungkan atau memutus rangkaian kelistrikan sesuai posisi kunci kontak.'},
+ beban:{title:'💡 Beban Kelistrikan',info:'Menggunakan energi listrik yang tersedia, misalnya lampu dan perangkat kelistrikan sepeda motor lainnya.'}
+};
+document.querySelectorAll('.mapBtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const d=mapData[btn.dataset.map];
+    document.querySelectorAll('.mapBtn').forEach(x=>x.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('mapInfo').innerHTML='<b>'+d.title+'</b><br>'+d.info;
+  });
+});
 </script>
-</body></html>
+</body>
+</html>
