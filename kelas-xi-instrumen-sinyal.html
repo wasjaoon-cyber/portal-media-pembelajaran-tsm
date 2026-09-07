@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kelas XI TSM - Sistem Instrumen dan Sinyal</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f7fb;color:#172033}
+header{background:linear-gradient(135deg,#123c69,#16818a);color:#fff;text-align:center;padding:28px 15px}
+header h1{margin:0 0 8px;font-size:27px}header p{margin:5px}
+nav{position:sticky;top:0;background:#fff;padding:10px;text-align:center;box-shadow:0 2px 10px #0002;z-index:5}
+nav a{display:inline-block;padding:9px 12px;margin:3px;border-radius:8px;text-decoration:none;color:#fff;font-size:13px;font-weight:bold}
+.pre{background:#e58a00}.mat{background:#1769aa}.quiz{background:#188754}.post{background:#7c3aed}.lkpd{background:#0f766e}.portal{background:#475569}
+.container{max-width:1000px;margin:24px auto;padding:0 15px}.card{background:#fff;border-radius:14px;padding:22px;margin:18px 0;box-shadow:0 4px 16px #0001}
+h2{color:#075985;border-left:5px solid #16818a;padding-left:10px}h3{color:#123c69}
+.question{background:#f8fafc;border:1px solid #dbe4ef;border-radius:10px;padding:14px;margin:12px 0}
+.question label{display:block;margin:8px 0}button{border:0;border-radius:8px;padding:10px 17px;color:#fff;background:#123c69;font-weight:bold;cursor:pointer}
+.result{font-weight:bold;margin-top:12px;padding:12px;border-radius:8px;background:#eef6ff}
+table{width:100%;border-collapse:collapse;margin:12px 0}th,td{border:1px solid #cbd5e1;padding:9px;text-align:left}th{background:#e8f1f8}
+.flow{display:flex;justify-content:center;margin:18px 0;padding:16px;background:#eef6ff;border-radius:10px;font-weight:bold;text-align:center}
+.note{background:#fff7ed;border-left:5px solid #f59e0b;padding:13px;border-radius:7px}footer{text-align:center;padding:25px;color:#64748b}
+@media(max-width:600px){header h1{font-size:22px}nav a{font-size:12px;padding:8px 9px}}
+@media print{nav,button{display:none}.card{box-shadow:none}}
+</style></head><body>
+<header><h1>🔧 SISTEM INSTRUMEN DAN SINYAL</h1><p>Kelas XI Teknik Sepeda Motor (TSM)</p><p>SMKN 1 Kabupaten Tangerang • Guru: Wasja, S.Pd</p></header>
+<nav><a class="pre" href="#pretest">📝 Pretest</a><a class="mat" href="#materi">📖 Materi</a><a class="quiz" href="#quiz">🎯 Quiz</a><a class="post" href="#posttest">🏆 Post Test</a><a class="lkpd" href="#lkpd">📋 LKPD</a><a class="portal" href="index.html">🏠 Portal</a></nav>
+<main class="container">
+<section class="card" id="pretest"><h2>📝 Pretest</h2><p>Mempelajari speedometer, tachometer, indikator bahan bakar, indikator netral, lampu peringatan, sensor, dan diagnosis dasar.</p><form id="preForm"></form><button onclick="score('preForm','preResult',key)">Periksa Nilai</button><div id="preResult" class="result"></div></section>
+<section class="card" id="materi"><h2>📖 Materi Sistem Instrumen dan Sinyal</h2>
+<h3>1. Pengertian dan fungsi</h3><p>Mempelajari speedometer, tachometer, indikator bahan bakar, indikator netral, lampu peringatan, sensor, dan diagnosis dasar.</p>
+<h3>2. Pokok materi</h3><ul><li>Sensor/sakelar memberikan informasi kepada panel instrumen atau unit kontrol.</li><li>Instrumen dapat menampilkan kecepatan, putaran, level bahan bakar, posisi netral, dan peringatan.</li><li>Diagnosis harus menggunakan gejala, pemeriksaan kelistrikan, dan spesifikasi sistem.</li></ul>
+<h3>3. Alur kerja sederhana</h3><div class="flow">📡 Sensor/Sakelar → 🧠 Kontrol → 📊 Panel Instrumen</div>
+<h3>4. Pemeriksaan dan diagnosis</h3><ol><li>Identifikasi gejala dan kondisi kendaraan.</li><li>Periksa kondisi fisik, kabel, konektor, sekring, sakelar, dan massa sesuai sistem.</li><li>Gunakan multimeter atau alat khusus sesuai prosedur.</li><li>Bandingkan hasil dengan spesifikasi/manual servis kendaraan.</li><li>Tentukan penyebab dan lakukan perbaikan sesuai prosedur.</li><li>Lakukan pengujian ulang setelah perbaikan.</li></ol>
+<div class="note"><b>K3:</b> Matikan mesin bila diperlukan, cegah korsleting, gunakan alat ukur sesuai fungsi, dan ikuti manual servis. Jangan mengubah spesifikasi komponen secara sembarangan.</div>
+</section>
+<section class="card" id="quiz"><h2>🎯 Quiz</h2><p>Uji pemahaman setelah mempelajari materi.</p><form id="quizForm"></form><button onclick="score('quizForm','quizResult',key)">Periksa Nilai</button><div id="quizResult" class="result"></div></section>
+<section class="card" id="posttest"><h2>🏆 Evaluasi / Post Test</h2><p>Kerjakan setelah materi dan quiz selesai.</p><form id="postForm"></form><button onclick="score('postForm','postResult',key)">Periksa Nilai</button><div id="postResult" class="result"></div></section>
+<section class="card" id="lkpd"><h2>📋 LKPD Praktik — Sistem Instrumen dan Sinyal</h2>
+<h3>A. Identitas</h3><table><tr><td>Nama Siswa</td><td>................................................</td></tr><tr><td>Kelas</td><td>XI TSM</td></tr><tr><td>Kelompok</td><td>....................</td></tr><tr><td>Tanggal</td><td>....................</td></tr></table>
+<h3>B. Tujuan</h3><ul><li>Mengidentifikasi komponen sistem instrumen dan sinyal.</li><li>Menjelaskan fungsi setiap komponen.</li><li>Melakukan pemeriksaan dasar sesuai K3.</li><li>Menganalisis hasil pemeriksaan.</li></ul>
+<h3>C. Langkah Kerja</h3><ol><li>Siapkan kendaraan, alat ukur, alat tangan, dan APD.</li><li>Identifikasi komponen sistem.</li><li>Periksa kondisi fisik dan koneksi.</li><li>Lakukan pengukuran/pengujian sesuai instruksi guru dan manual servis.</li><li>Catat hasil pengujian.</li><li>Bandingkan dengan spesifikasi.</li><li>Buat diagnosis dan kesimpulan.</li></ol>
+<h3>D. Tabel Hasil Pemeriksaan</h3><table><tr><th>No</th><th>Komponen/Pemeriksaan</th><th>Hasil</th><th>Spesifikasi</th><th>Kesimpulan</th></tr>
+<tr><td>1</td><td>Komponen 1</td><td></td><td></td><td></td></tr><tr><td>2</td><td>Komponen 2</td><td></td><td></td><td></td></tr><tr><td>3</td><td>Komponen 3</td><td></td><td></td><td></td></tr><tr><td>4</td><td>Komponen 4</td><td></td><td></td><td></td></tr><tr><td>5</td><td>Kabel/konektor</td><td></td><td></td><td></td></tr></table>
+<h3>E. Analisis</h3><p>1. Apa hasil pemeriksaan dan apakah sistem bekerja normal?</p><p>........................................................................................................</p><p>2. Apa kemungkinan penyebab jika hasil tidak sesuai?</p><p>........................................................................................................</p>
+<h3>F. Kesimpulan</h3><p>........................................................................................................</p><button onclick="window.print()">🖨️ Cetak LKPD</button>
+</section></main><footer>Media Pembelajaran Interaktif TSM • Kelas XI • Sistem Instrumen dan Sinyal</footer>
+<script>
+const qs=[('Fungsi instrumen kendaraan adalah...', ['Memberikan informasi kondisi/operasi kendaraan', 'Menggerakkan roda', 'Mengisi bahan bakar', 'Mendinginkan mesin'], 0), ('Speedometer menunjukkan...', ['Kecepatan kendaraan', 'Tegangan aki saja', 'Suhu ban', 'Tekanan oli saja'], 0), ('Indikator bahan bakar memberikan informasi...', ['Level bahan bakar', 'Putaran starter', 'Celah busi', 'Tekanan ban'], 0), ('Lampu indikator netral berkaitan dengan...', ['Posisi transmisi netral', 'Suhu radiator', 'Level bensin', 'Lampu rem'], 0), ('Sensor berfungsi...', ['Mengubah kondisi fisik menjadi sinyal yang dapat diproses', 'Menyimpan bensin', 'Menggerakkan roda', 'Mengisi oli'], 0), ('Jika indikator tidak menyala, pemeriksaan dapat dimulai dari...', ['Sumber, sekring, konektor, sensor/sakelar, dan massa', 'Ban', 'Rantai', 'Spion'], 0), ('Tachometer digunakan untuk menunjukkan...', ['Putaran mesin', 'Kecepatan angin', 'Level bensin', 'Tegangan lampu'], 0), ('Konektor instrumen yang longgar dapat menyebabkan...', ['Informasi tidak akurat/tidak tampil', 'Mesin pasti mati', 'Ban bocor', 'Oli bertambah'], 0), ('Diagnosis instrumen sebaiknya berdasarkan...', ['Gejala, pengukuran, dan spesifikasi', 'Tebakan', 'Warna panel', 'Suara klakson'], 0), ('K3 saat memeriksa instrumen adalah...', ['Gunakan alat ukur sesuai prosedur dan hindari korsleting', 'Sentuhkan kabel sembarang', 'Gunakan sekring lebih besar', 'Bekerja tanpa prosedur'], 0)];
+const key=qs.map(x=>x[2]);
+function render(id){document.getElementById(id).innerHTML=qs.map((q,i)=>'<div class="question"><b>'+(i+1)+'. '+q[0]+'</b>'+q[1].map((o,j)=>'<label><input type="radio" name="'+id+i+'" value="'+j+'"> '+String.fromCharCode(65+j)+'. '+o+'</label>').join('')+'</div>').join('')}
+function score(id,res,key){let n=0;key.forEach((a,i)=>{let x=document.querySelector('input[name="'+id+i+'"]:checked');if(x&&+x.value===a)n++});document.getElementById(res).innerHTML='Nilai: <b>'+(n*10)+'</b> / 100 — Benar '+n+' dari '+key.length+' soal.'}
+render('preForm');render('quizForm');render('postForm');
+</script></body></html>
