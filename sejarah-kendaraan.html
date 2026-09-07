@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Perkembangan Sejarah Kendaraan - Kelas X</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f8fc;color:#17324d}
+header{background:linear-gradient(135deg,#0757a0,#087f8c);color:#fff;text-align:center;padding:25px 15px}
+nav{background:#fff;position:sticky;top:0;z-index:10;display:flex;justify-content:center;flex-wrap:wrap;box-shadow:0 2px 10px #0002}
+nav a{padding:12px 14px;color:#0757a0;text-decoration:none;font-weight:bold}
+main{max-width:1050px;margin:auto;padding:22px 15px 50px}.hero,.section{background:#fff;border-radius:18px;padding:22px;margin-bottom:20px;box-shadow:0 7px 22px #0001}
+h1,h2{color:#0757a0}.hero{border-top:6px solid #0757a0}
+.timeline{display:grid;gap:14px}.era{padding:16px;border-left:5px solid #0757a0;background:#f6faff;border-radius:8px}
+.menu{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:18px}
+.menu button,.menu a{border:0;color:white;padding:12px 5px;border-radius:9px;font-weight:bold;text-align:center;text-decoration:none;cursor:pointer;font-size:13px}
+.pre{background:#d97706}.mat{background:#0757a0}.quiz{background:#198754}.post{background:#7c3aed}.lkpd{background:#0f766e}
+.content{display:none}.content.active{display:block}.question{padding:15px;margin:12px 0;background:#f7fafc;border:1px solid #dce6ef;border-radius:10px}
+.question label{display:block;padding:6px}.submit{background:#0757a0;color:white;border:0;padding:12px 20px;border-radius:9px;font-weight:bold;cursor:pointer}
+.result{font-size:18px;font-weight:bold;margin-top:15px}.print{background:#17324d;color:white;padding:10px 16px;border:0;border-radius:8px}
+table{width:100%;border-collapse:collapse}th,td{border:1px solid #9aaab8;padding:8px}th{background:#eaf3fb}
+@media(max-width:700px){.menu{grid-template-columns:repeat(2,1fr)}.menu a:last-child{grid-column:span 2}}
+@media(max-width:430px){.menu{grid-template-columns:1fr}.menu a:last-child{grid-column:auto}}
+</style></head><body>
+<header><div style="font-size:40px">🚗</div><h1>Perkembangan Sejarah Kendaraan</h1><p>Teknologi Otomotif • Kelas X TSM • Wasja, S.Pd</p></header>
+<nav><a href="index.html">🏠 Portal</a><a href="#pretest">📋 Pretest</a><a href="#materi">📖 Materi</a><a href="#quiz">🎯 Quiz</a><a href="#posttest">🏆 Post Test</a><a href="#lkpd">🔧 LKPD</a></nav>
+<main>
+<section class="hero"><h2>Modul Pembelajaran 1</h2><p>Pelajari perkembangan kendaraan dari alat transportasi sederhana sampai kendaraan modern.</p>
+<div class="menu">
+<a class="pre" href="#pretest">📋 PRETEST</a><a class="mat" href="#materi">📖 MATERI</a><a class="quiz" href="#quiz">🎯 QUIZ</a><a class="post" href="#posttest">🏆 POST TEST</a><a class="lkpd" href="#lkpd">🔧 LKPD</a>
+</div></section>
+
+<section id="pretest" class="section content active"><h2>📋 Pretest</h2><p>Kerjakan sebelum mempelajari materi. Nilai akan dihitung otomatis.</p><form id="preForm"></form><button class="submit" onclick="score('preForm','preResult',preAnswers);return false">KUMPULKAN PRETEST</button><div id="preResult" class="result"></div></section>
+
+<section id="materi" class="section"><h2>📖 Materi</h2>
+<p><b>Tujuan Pembelajaran:</b> Siswa mampu menjelaskan tahapan perkembangan kendaraan dan mengidentifikasi perubahan teknologi pada kendaraan.</p>
+<div class="timeline">
+<div class="era"><h3>1. Kendaraan Sederhana</h3><p>Transportasi awal memanfaatkan tenaga manusia dan hewan. Contohnya gerobak, kereta, dan alat angkut sederhana.</p></div>
+<div class="era"><h3>2. Penemuan Mesin Uap</h3><p>Mesin uap mendorong perkembangan transportasi mekanis dan menjadi salah satu dasar revolusi transportasi.</p></div>
+<div class="era"><h3>3. Lahirnya Kendaraan Bermotor</h3><p>Pengembangan mesin pembakaran dalam memungkinkan kendaraan bergerak menggunakan bahan bakar sebagai sumber energi.</p></div>
+<div class="era"><h3>4. Produksi Massal</h3><p>Produksi massal membuat kendaraan dapat diproduksi lebih banyak, lebih cepat dan dengan biaya lebih terjangkau.</p></div>
+<div class="era"><h3>5. Kendaraan Modern</h3><p>Kendaraan berkembang dengan sistem elektronik, injeksi bahan bakar, ECU, sensor, keselamatan aktif, konektivitas dan elektrifikasi.</p></div>
+</div>
+<h3>Ringkasan Perkembangan Teknologi</h3><table><tr><th>Tahap</th><th>Ciri Teknologi</th><th>Contoh</th></tr>
+<tr><td>Awal</td><td>Tenaga manusia/hewan</td><td>Gerobak, kereta</td></tr><tr><td>Mesin uap</td><td>Energi uap</td><td>Lokomotif</td></tr>
+<tr><td>Motor bakar</td><td>Pembakaran bahan bakar</td><td>Mobil/motor bensin</td></tr><tr><td>Elektronik</td><td>Sensor dan ECU</td><td>EFI/PGM-FI</td></tr><tr><td>Terkini</td><td>Elektrifikasi & digitalisasi</td><td>EV, hybrid, ADAS</td></tr></table>
+</section>
+
+<section id="quiz" class="section"><h2>🎯 Quiz</h2><p>Latihan pemahaman setelah membaca materi.</p><form id="quizForm"></form><button class="submit" onclick="score('quizForm','quizResult',quizAnswers);return false">CEK NILAI QUIZ</button><div id="quizResult" class="result"></div></section>
+
+<section id="posttest" class="section"><h2>🏆 Evaluasi / Post Test</h2><p>Evaluasi akhir pembelajaran. Nilai dihitung otomatis.</p><form id="postForm"></form><button class="submit" onclick="score('postForm','postResult',postAnswers);return false">KUMPULKAN POST TEST</button><div id="postResult" class="result"></div></section>
+
+<section id="lkpd" class="section"><h2>🔧 LKPD</h2>
+<p><b>Judul:</b> Mengidentifikasi Perkembangan Teknologi Kendaraan</p>
+<p><b>Petunjuk:</b> Kerjakan secara berkelompok. Amati gambar/kendaraan yang tersedia di lingkungan sekolah atau sumber belajar, kemudian isi tabel berikut.</p>
+<table><tr><th>No</th><th>Jenis Kendaraan</th><th>Sumber Energi</th><th>Teknologi Utama</th><th>Periode/Generasi</th></tr>
+<tr><td>1</td><td></td><td></td><td></td><td></td></tr><tr><td>2</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td></td><td></td><td></td><td></td></tr><tr><td>4</td><td></td><td></td><td></td><td></td></tr><tr><td>5</td><td></td><td></td><td></td><td></td></tr></table>
+<h3>Pertanyaan Analisis</h3><ol><li>Apa perubahan teknologi paling penting dalam perkembangan kendaraan?</li><li>Mengapa kendaraan modern menggunakan banyak sensor dan ECU?</li><li>Apa kelebihan dan kekurangan kendaraan berbahan bakar fosil dibanding kendaraan listrik?</li></ol>
+<p><b>Kesimpulan kelompok:</b></p><div style="height:100px;border:1px solid #9aaab8;border-radius:8px"></div><br>
+<button class="print" onclick="window.print()">🖨️ CETAK LKPD</button>
+</section>
+</main>
+<script>
+const preQs=[
+["Kendaraan pada masa awal banyak digerakkan oleh... ",["tenaga manusia dan hewan","motor listrik","ECU","baterai lithium"],0],
+["Contoh alat transportasi sederhana adalah...",["ECU","gerobak","injektor","alternator"],1],
+["Mesin uap berperan penting dalam perkembangan...",["transportasi mekanis","sensor ABS","injeksi elektronik","kendaraan otonom"],0],
+["Mesin pembakaran dalam menggunakan energi dari...",["bahan bakar yang dibakar","angin saja","air hujan","sinar lampu"],0],
+["Produksi massal kendaraan bertujuan antara lain...",["meningkatkan jumlah produksi","menghilangkan mesin","mengurangi keselamatan","menghapus teknologi"],0],
+["ECU pada kendaraan modern berfungsi utama untuk...",["mengolah data dan mengendalikan sistem","mengisi ban","mengganti oli","menyalakan lampu rumah"],0],
+["EFI/PGM-FI merupakan perkembangan pada sistem...",["bahan bakar","rem mekanis saja","kemudi manual","roda"],0],
+["Kendaraan listrik menggunakan motor listrik sebagai...",["penggerak","radiator","karburator","knalpot"],0],
+["ADAS berkaitan dengan...",["sistem bantuan keselamatan berkendara","bahan bakar karburator","pelumasan mesin","ukuran ban"],0],
+["Salah satu arah perkembangan otomotif saat ini adalah...",["elektrifikasi dan digitalisasi","kembali sepenuhnya ke tenaga hewan","menghilangkan sensor","menghilangkan keselamatan"],0]
+];
+const quizQs=[
+["Tahap yang mendahului kendaraan bermotor modern adalah...",["kendaraan tenaga manusia/hewan","PGM-FI","EV","ADAS"],0],
+["Keunggulan produksi massal adalah...",["produksi lebih banyak dan efisien","kendaraan selalu manual","tidak perlu standar","tanpa pemeriksaan"],0],
+["Sensor kendaraan modern memberikan...",["informasi kondisi sistem","bahan bakar langsung","tekanan ban tanpa sensor","oli ke mesin"],0],
+["ECU termasuk teknologi...",["elektronik dan kontrol","mekanis sederhana","transportasi hewan","bahan bakar tradisional"],0],
+["Hybrid menggabungkan...",["dua sumber/penggerak energi","dua roda saja","dua karburator","dua knalpot"],0],
+["EV adalah singkatan dari...",["Electric Vehicle","Engine Valve","Electronic Vent","Energy Wheel"],0],
+["Teknologi otomotif berkembang terutama untuk meningkatkan...",["efisiensi, keselamatan dan kenyamanan","berat kendaraan saja","konsumsi bahan bakar saja","ukuran mesin saja"],0],
+["Konektivitas kendaraan memungkinkan kendaraan...",["bertukar data dengan sistem/perangkat","tidak memiliki listrik","tanpa sistem kontrol","tanpa baterai"],0],
+["Teknologi keselamatan aktif membantu...",["mencegah atau mengurangi risiko kecelakaan","memperbesar suara mesin","menghemat cat","mengubah ukuran ban"],0],
+["Kesimpulan yang tepat adalah...",["kendaraan berkembang dari sederhana menuju mekanis, elektronik dan digital","teknologi kendaraan tidak berubah","kendaraan modern hanya memakai kayu","kendaraan modern tanpa sensor"],0]
+];
+const postQs=quizQs;
+function render(id,qs){let f=document.getElementById(id);f.innerHTML=qs.map((q,i)=>`<div class="question"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<label><input type="radio" name="${id}${i}" value="${j}"> ${String.fromCharCode(65+j)}. ${o}</label>`).join("")}</div>`).join("")}
+function score(id,res,ans){let total=ans.length,s=0;for(let i=0;i<total;i++){let x=document.querySelector(`input[name="${id}${i}"]:checked`);if(x&&+x.value===ans[i])s++}let n=Math.round(s/total*100);document.getElementById(res).innerHTML=`Nilai: <b>${n}</b> (${s}/${total} benar)`+(s===total?" 🎉 Sangat baik!":n>=75?" 👍 Tuntas.":" 💪 Pelajari kembali materi dan coba lagi.");}
+const preAnswers=preQs.map(q=>q[2]),quizAnswers=quizQs.map(q=>q[2]),postAnswers=postQs.map(q=>q[2]);
+render("preForm",preQs);render("quizForm",quizQs);render("postForm",postQs);
+</script></body></html>

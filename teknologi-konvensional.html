@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Modul 4 - Teknologi Konvensional</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f7fb;color:#17324d}
+header{background:linear-gradient(135deg,#0757a0,#087f8c);color:#fff;text-align:center;padding:25px 15px}
+header h1{margin:6px 0;font-size:27px}header p{margin:5px}
+nav{position:sticky;top:0;z-index:10;background:#fff;display:flex;justify-content:center;flex-wrap:wrap;box-shadow:0 2px 10px #0002}
+nav a{padding:12px 14px;color:#0757a0;text-decoration:none;font-weight:bold}
+main{max-width:1050px;margin:auto;padding:22px 15px 50px}.hero,.section{background:#fff;border-radius:18px;padding:22px;margin-bottom:20px;box-shadow:0 7px 22px #0001}
+h1,h2{color:#0757a0}.hero{border-top:6px solid #0757a0}
+.topic{padding:16px;border-left:6px solid #0757a0;background:#f6faff;border-radius:9px;margin:14px 0}.topic h3{color:#0757a0;margin:0 0 7px}.topic p,.topic li{line-height:1.55}
+.menu{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:18px}.menu a{color:#fff;padding:12px 5px;border-radius:9px;font-weight:bold;text-align:center;text-decoration:none;font-size:13px}
+.pre{background:#d97706}.mat{background:#0757a0}.quiz{background:#198754}.post{background:#7c3aed}.lkpd{background:#0f766e}
+.question{padding:15px;margin:12px 0;background:#f7fafc;border:1px solid #dce6ef;border-radius:10px}.question label{display:block;padding:6px}
+.submit{background:#0757a0;color:#fff;border:0;padding:12px 20px;border-radius:9px;font-weight:bold;cursor:pointer}.result{font-size:18px;font-weight:bold;margin-top:15px}
+table{width:100%;border-collapse:collapse}th,td{border:1px solid #9aaab8;padding:8px;vertical-align:top}th{background:#eaf3fb}
+.print{background:#17324d;color:#fff;padding:10px 16px;border:0;border-radius:8px}.note{background:#fff8dc;border-left:5px solid #e0aa16;padding:15px;border-radius:10px}
+footer{background:#17324d;color:#fff;text-align:center;padding:22px}
+@media(max-width:700px){.menu{grid-template-columns:repeat(2,1fr)}.menu a:last-child{grid-column:span 2}}@media(max-width:430px){.menu{grid-template-columns:1fr}.menu a:last-child{grid-column:auto}}
+</style></head>
+<body>
+<header><div style="font-size:42px">🔧</div><h1>Teknologi Konvensional</h1><p>Teknologi Otomotif • Kelas X TSM • Guru: Wasja, S.Pd</p></header>
+<nav><a href="index.html">🏠 Portal</a><a href="#pretest">📋 Pretest</a><a href="#materi">📖 Materi</a><a href="#quiz">🎯 Quiz</a><a href="#posttest">🏆 Post Test</a><a href="#lkpd">🔧 LKPD</a></nav>
+<main>
+<section class="hero"><h2>Modul 4 — Teknologi Konvensional</h2><p>Mengenal teknologi kendaraan yang bekerja dengan mekanisme mekanis, hidrolik, karburator, pengapian konvensional dan sistem kelistrikan dasar.</p>
+<div class="menu"><a class="pre" href="#pretest">📋 PRETEST</a><a class="mat" href="#materi">📖 MATERI</a><a class="quiz" href="#quiz">🎯 QUIZ</a><a class="post" href="#posttest">🏆 POST TEST</a><a class="lkpd" href="#lkpd">🔧 LKPD</a></div></section>
+
+<section id="pretest" class="section"><h2>📋 Pretest</h2><p>10 soal pengetahuan awal.</p><form id="preForm"></form><button class="submit" onclick="score('preForm','preResult');return false">KUMPULKAN PRETEST</button><div id="preResult" class="result"></div></section>
+
+<section id="materi" class="section"><h2>📖 Materi Pembelajaran</h2>
+<p><b>Tujuan Pembelajaran:</b> Siswa mampu menjelaskan karakteristik teknologi konvensional, mengenali komponen dasar, serta membandingkannya dengan teknologi elektronik modern.</p>
+<div class="topic"><h3>1. Pengertian</h3><p>Teknologi konvensional pada kendaraan adalah teknologi yang banyak mengandalkan mekanisme mekanis, hidrolik, pneumatik sederhana dan sistem pengendalian yang belum banyak menggunakan komputer atau sensor digital.</p></div>
+<div class="topic"><h3>2. Karburator</h3><p>Karburator mencampurkan udara dan bahan bakar sebelum masuk ke mesin. Pengaturan campuran dilakukan secara mekanis berdasarkan aliran udara dan kondisi kerja mesin.</p><ul><li>Venturi</li><li>Float chamber</li><li>Main jet dan pilot jet</li><li>Throttle valve</li></ul></div>
+<div class="topic"><h3>3. Pengapian Konvensional</h3><p>Pada sistem pengapian konvensional, koil menghasilkan tegangan tinggi dan pemutusan arus primer dilakukan oleh kontak pemutus (breaker point) sehingga terjadi percikan pada busi.</p><ul><li>Baterai</li><li>Ignition switch</li><li>Ignition coil</li><li>Breaker point</li><li>Condenser</li><li>Spark plug</li></ul></div>
+<div class="topic"><h3>4. Sistem Rem Konvensional</h3><p>Sistem rem konvensional dapat menggunakan mekanisme kabel atau hidrolik untuk meneruskan gaya dari pedal/tuas menuju mekanisme rem. Contohnya rem tromol dan rem cakram hidrolik.</p></div>
+<div class="topic"><h3>5. Kemudi dan Suspensi</h3><p>Teknologi konvensional menggunakan mekanisme mekanis untuk meneruskan gerakan kemudi dan komponen suspensi seperti pegas, shock absorber dan linkage untuk menjaga kenyamanan serta kestabilan.</p></div>
+<div class="topic"><h3>6. Kelistrikan Dasar</h3><p>Sistem kelistrikan konvensional meliputi baterai, sekring, sakelar, lampu, motor listrik sederhana dan kabel. Pemeriksaan dapat dilakukan menggunakan multimeter dan pemeriksaan kontinuitas.</p></div>
+<div class="topic"><h3>7. Kelebihan dan Kekurangan</h3><table><tr><th>Aspek</th><th>Kelebihan</th><th>Kekurangan</th></tr><tr><td>Perawatan</td><td>Mekanisme relatif mudah dipahami dan diperbaiki</td><td>Memerlukan penyetelan manual</td></tr><tr><td>Diagnosis</td><td>Dapat dilakukan dengan pemeriksaan mekanis dasar</td><td>Kurang informasi data dibanding sistem elektronik</td></tr><tr><td>Teknologi</td><td>Konstruksi sederhana pada beberapa sistem</td><td>Efisiensi dan kontrol umumnya kalah dibanding sistem modern</td></tr></table></div>
+<div class="topic"><h3>8. K3</h3><ul><li>Gunakan APD dan SOP bengkel.</li><li>Matikan sumber listrik sebelum pemeriksaan rangkaian tertentu.</li><li>Hindari sumber api saat menangani bahan bakar.</li><li>Gunakan alat ukur sesuai fungsi.</li><li>Pastikan kendaraan aman dan stabil sebelum pekerjaan.</li></ul></div>
+</section>
+
+<section id="quiz" class="section"><h2>🎯 Quiz</h2><form id="quizForm"></form><button class="submit" onclick="score('quizForm','quizResult');return false">CEK NILAI QUIZ</button><div id="quizResult" class="result"></div></section>
+<section id="posttest" class="section"><h2>🏆 Evaluasi / Post Test</h2><form id="postForm"></form><button class="submit" onclick="score('postForm','postResult');return false">KUMPULKAN POST TEST</button><div id="postResult" class="result"></div></section>
+
+<section id="lkpd" class="section"><h2>🔧 LKPD</h2><p><b>Judul:</b> Identifikasi Teknologi Konvensional pada Kendaraan</p><p><b>Tujuan:</b> Mengidentifikasi komponen, fungsi dan cara kerja dasar teknologi konvensional.</p>
+<table><tr><th>No</th><th>Sistem/Komponen</th><th>Fungsi</th><th>Prinsip Kerja</th><th>Hasil Pengamatan</th></tr>
+<tr><td>1</td><td>Karburator</td><td></td><td></td><td></td></tr><tr><td>2</td><td>Ignition coil</td><td></td><td></td><td></td></tr><tr><td>3</td><td>Breaker point</td><td></td><td></td><td></td></tr><tr><td>4</td><td>Busi</td><td></td><td></td><td></td></tr><tr><td>5</td><td>Rem konvensional</td><td></td><td></td><td></td></tr><tr><td>6</td><td>Baterai</td><td></td><td></td><td></td></tr></table>
+<h3>Pertanyaan Analisis</h3><ol><li>Apa fungsi karburator?</li><li>Bagaimana sistem pengapian konvensional menghasilkan percikan busi?</li><li>Apa kelebihan teknologi konvensional dalam pembelajaran dan perawatan?</li><li>Apa perbedaannya dengan sistem yang dikendalikan ECU?</li></ol>
+<p><b>Kesimpulan:</b></p><div style="height:110px;border:1px solid #9aaab8;border-radius:8px"></div><br><button class="print" onclick="window.print()">🖨️ CETAK LKPD</button></section>
+</main>
+<footer><strong>SMKN 1 Kabupaten Tangerang</strong><br>Teknik Sepeda Motor • Wasja, S.Pd<br>© 2026</footer>
+<script>
+const qs=[
+["Teknologi konvensional banyak mengandalkan...",["mekanisme mekanis","AI","cloud","IoT"],0],
+["Fungsi utama karburator adalah...",["mencampur udara dan bahan bakar","mengisi aki","mendinginkan mesin","mengatur rem"],0],
+["Komponen yang menghasilkan tegangan tinggi pada pengapian adalah...",["ignition coil","radiator","karburator","sekring"],0],
+["Breaker point pada pengapian konvensional berfungsi...",["memutus dan menyambung arus primer","memompa bahan bakar","mendinginkan busi","mengisi baterai"],0],
+["Busi berfungsi untuk...",["menghasilkan percikan api","mengatur tekanan ban","menyaring oli","mendinginkan radiator"],0],
+["Salah satu contoh sistem rem konvensional adalah...",["rem tromol","ECU","sensor oksigen","ADAS"],0],
+["Pemeriksaan kontinuitas kabel dapat dilakukan dengan...",["multimeter","dongkrak saja","kunci roda saja","termometer"],0],
+["Kelemahan umum teknologi konvensional dibanding elektronik modern adalah...",["kontrol dan diagnosis lebih terbatas","tidak dapat diperbaiki","selalu memakai internet","tidak memiliki mekanisme"],0],
+["Saat bekerja dengan bahan bakar, hal yang harus dihindari adalah...",["api terbuka","APD","ventilasi","SOP"],0],
+["Teknisi otomotif perlu memahami teknologi konvensional karena...",["banyak prinsip dasar mekanik dan kelistrikan berasal dari sistem tersebut","semua kendaraan modern masih memakai karburator","ECU tidak penting","kendaraan tidak berkembang"],0]
+];
+const answers=qs.map(q=>q[2]);
+function render(id){document.getElementById(id).innerHTML=qs.map((q,i)=>`<div class="question"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<label><input type="radio" name="${id}${i}" value="${j}"> ${String.fromCharCode(65+j)}. ${o}</label>`).join("")}</div>`).join("")}
+function score(id,res){let s=0;for(let i=0;i<answers.length;i++){let x=document.querySelector(`input[name="${id}${i}"]:checked`);if(x&&+x.value===answers[i])s++}let n=Math.round(s/answers.length*100);document.getElementById(res).innerHTML=`Nilai: <b>${n}</b> (${s}/${answers.length} benar) ${n>=75?"👍 Tuntas":"💪 Pelajari kembali materi dan coba lagi."}`}
+render("preForm");render("quizForm");render("postForm");
+</script></body></html>
