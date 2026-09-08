@@ -32,7 +32,8 @@ nav.main-nav{
   border:0;border-radius:12px;padding:12px 15px;background:#fff;cursor:pointer;
   font-weight:bold;box-shadow:0 3px 12px rgba(0,0,0,.08);color:#17405a
 }
-.main-nav button:hover{transform:translateY(-1px)}
+.main-nav button:hover,.main-nav a:hover{transform:translateY(-1px)}
+.main-nav a.portal-btn{display:inline-block;text-decoration:none;border:0;border-radius:12px;padding:12px 15px;background:#fff;cursor:pointer;font-weight:bold;box-shadow:0 3px 12px rgba(0,0,0,.08);color:#17405a}
 .main-nav button.active,.btn.primary{background:#075985;color:#fff}
 section.page{
   background:#fff;border-radius:20px;padding:25px;margin-bottom:18px;
@@ -145,6 +146,7 @@ footer{text-align:center;padding:24px;color:#64748b}
 
 <div class="wrap">
 <nav class="main-nav" aria-label="Menu utama">
+  <a class="portal-btn" href="https://wasjaoon-cyber.github.io/portal-media-pembelajaran-tsm/" aria-label="Kembali ke Portal Utama">🏠 Portal Utama</a>
   <button class="active" data-page="beranda">🏠 Beranda</button>
   <button data-page="tujuan">🎯 Tujuan Pembelajaran</button>
   <button data-page="pretest">📝 Pre Test</button>
