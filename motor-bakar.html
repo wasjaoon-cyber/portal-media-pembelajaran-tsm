@@ -2,6 +2,387 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Pembelajaran Motor Bakar - X TSM</title>
+<style>
+:root{--primary:#0b5ed7;--dark:#102a43;--light:#f4f7fb;--accent:#f59e0b}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--light);color:#17202a}
+header{background:linear-gradient(135deg,#102a43,#0b5ed7);color:white;padding:28px 18px;text-align:center}
+header h1{margin:0 0 8px;font-size:clamp(24px,5vw,38px)}header p{margin:0}
+nav{position:sticky;top:0;z-index:10;background:#fff;box-shadow:0 2px 10px #0002;display:flex;flex-wrap:wrap;justify-content:center}
+nav button{border:0;background:white;padding:13px 16px;cursor:pointer;font-weight:700;color:var(--dark)}
+nav button:hover,nav button.active{background:#e8f1ff;color:var(--primary)}
+main{max-width:1100px;margin:auto;padding:20px}.page{display:none}.page.active{display:block}
+.card{background:white;border-radius:16px;padding:22px;margin:16px 0;box-shadow:0 5px 18px #00000012}
+h2{color:var(--dark)}h3{color:var(--primary)}
+.btn{display:inline-block;border:0;border-radius:10px;padding:12px 18px;background:var(--primary);color:white;font-weight:700;cursor:pointer;text-decoration:none;margin:5px}
+.btn.secondary{background:var(--dark)}.btn.warn{background:var(--accent);color:#111}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.hero{padding:25px;border-radius:18px;background:linear-gradient(135deg,#e8f1ff,#fff)}
+img.media{width:100%;max-height:360px;object-fit:contain;border-radius:12px;background:#eef2f7}
+video{width:100%;max-height:420px;border-radius:12px;background:#111}
+.submenu{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}
+.submenu button{padding:10px 13px;border:1px solid #ccd6e0;border-radius:9px;background:white;cursor:pointer}
+.topic{display:none}.topic.active{display:block}
+.notice{padding:14px;border-left:5px solid var(--accent);background:#fff8e6;border-radius:8px}
+table{width:100%;border-collapse:collapse}td,th{border:1px solid #ddd;padding:10px;text-align:left}
+footer{text-align:center;padding:25px;color:#667}
+@media(max-width:600px){nav button{flex:1 1 45%;font-size:13px}main{padding:12px}.card{padding:16px}}
+</style>
+</head>
+<body>
+<header>
+<h1>MEDIA PEMBELAJARAN MOTOR BAKAR</h1>
+<p>Teknik Sepeda Motor (TSM) – Kelas X</p>
+<p><b>SMK</b> | Pembelajaran Interaktif</p>
+</header>
+
+<nav>
+<button onclick="showPage('beranda')" id="n-beranda">Beranda</button>
+<button onclick="showPage('pretest')" id="n-pretest">Pretest</button>
+<button onclick="showPage('materi')" id="n-materi">Materi Pelajaran</button>
+<button onclick="showPage('quiz')" id="n-quiz">Quiz</button>
+<button onclick="showPage('posttest')" id="n-posttest">Post Test</button>
+<button onclick="showPage('lkpd')" id="n-lkpd">LKPD / Jobsheet</button>
+<button onclick="showPage('portal')" id="n-portal">Portal Utama</button>
+</nav>
+
+<main>
+<section id="beranda" class="page">
+<div class="hero card">
+<h2>Selamat Datang</h2>
+<p>Selamat belajar materi <b>Motor Bakar</b>. Gunakan menu di atas secara berurutan mulai dari Pretest, Materi, Quiz, hingga Post Test.</p>
+</div>
+<div class="card"><h2>Tujuan Pembelajaran</h2>
+<ol>
+<li>Menjelaskan pengertian motor bakar.</li>
+<li>Mengidentifikasi jenis-jenis motor bakar.</li>
+<li>Menjelaskan perbedaan motor pembakaran luar dan pembakaran dalam.</li>
+<li>Mengidentifikasi contoh motor pembakaran luar dan pembakaran dalam.</li>
+<li>Menjelaskan prinsip kerja dasar mesin uap, mesin bensin, diesel, dan rotary/Wankel.</li>
+<li>Mengidentifikasi karakteristik dan prinsip kerja mesin 2 tak dan 4 tak.</li>
+<li>Menjelaskan istilah TMA/TDC, TMB/BDC, stroke, CC, volume langkah, dan volume kompresi.</li>
+<li>Menghitung kapasitas/volume langkah mesin berdasarkan diameter silinder dan panjang langkah.</li>
+<li>Menghubungkan konsep motor bakar dengan penerapannya pada bidang otomotif.</li>
+</ol></div>
+<div class="card"><h2>Cara Menggunakan Modul</h2>
+<ol>
+<li>Kerjakan <b>Pretest</b> melalui tombol yang tersedia.</li>
+<li>Pelajari materi dan gambar pada menu <b>Materi Pelajaran</b>.</li>
+<li>Tonton video pembelajaran yang tersedia.</li>
+<li>Kerjakan <b>Quiz</b> melalui Wayground.</li>
+<li>Kerjakan <b>LKPD/Jobsheet</b> sesuai arahan guru.</li>
+<li>Kerjakan <b>Post Test</b> setelah seluruh pembelajaran selesai.</li>
+</ol></div>
+</section>
+
+<section id="pretest" class="page">
+<div class="card"><h2>Pretest</h2><p>Klik tombol berikut untuk mengerjakan Pretest melalui Google Form.</p>
+<a class="btn" id="pretestLink" target="_blank">Buka Pretest</a>
+<div class="notice">Setelah selesai mengerjakan, kembali ke aplikasi untuk melanjutkan ke Materi Pelajaran.</div>
+</div></section>
+
+<section id="materi" class="page">
+<div class="card"><h2>Materi Pelajaran: Identifikasi Motor Bakar</h2>
+<div class="submenu">
+<button onclick="showTopic('pengertian')">Materi 1: Pengertian</button>
+<button onclick="showTopic('jenis')">Jenis-Jenis</button>
+<button onclick="showTopic('luar')">Pembakaran Luar</button>
+<button onclick="showTopic('dalam')">Pembakaran Dalam</button>
+<button onclick="showTopic('materi2')">Materi 2: 2 Tak & 4 Tak</button>
+<button onclick="showTopic('materi3')">Materi 3: Dimensi Mesin</button>
+</div>
+
+<div id="pengertian" class="topic active">
+<h3>Pengertian Motor Bakar</h3>
+<p>Motor bakar adalah mesin yang mengubah energi kimia dari bahan bakar menjadi energi panas melalui proses pembakaran, kemudian mengubahnya menjadi energi mekanik yang dapat digunakan untuk melakukan kerja.</p>
+</div>
+
+<div id="jenis" class="topic">
+<h3>Jenis-Jenis Motor Bakar</h3>
+<p>Berdasarkan tempat berlangsungnya proses pembakaran, motor bakar secara umum dibedakan menjadi:</p>
+<div class="grid">
+<div class="card"><h3>Motor Bakar Pembakaran Luar</h3><p>Pembakaran berlangsung di luar ruang kerja utama mesin. Panas hasil pembakaran digunakan untuk menghasilkan fluida kerja yang kemudian melakukan kerja mekanik.</p></div>
+<div class="card"><h3>Motor Bakar Pembakaran Dalam</h3><p>Pembakaran berlangsung di dalam ruang bakar mesin sehingga gas hasil pembakaran langsung menghasilkan kerja pada mekanisme mesin.</p></div>
+</div>
+</div>
+
+<div id="luar" class="topic">
+<h3>Motor Bakar Pembakaran Luar</h3>
+<p><b>Pengertian:</b> motor bakar pembakaran luar adalah mesin kalor yang proses pembakarannya terjadi di luar mesin atau ruang kerja utama. Energi panas dipindahkan kepada fluida kerja.</p>
+<h3>Contoh</h3>
+<ul><li>Mesin uap</li><li>Ketel uap</li><li>Turbin uap</li></ul>
+<div class="grid">
+<div><h3>Gambar Mesin Uap</h3><img class="media" src="gambar/mesin-uap.jpg" alt="Gambar mesin uap"></div>
+<div><h3>Video Cara Kerja Mesin Uap</h3><video controls poster="gambar/mesin-uap.jpg"><source src="video/Vidio Mesin Uap.mp4" type="video/mp4">Browser tidak mendukung video.</video></div>
+</div>
+<p class="notice">File gambar dan video dapat diganti dengan file baru menggunakan nama file yang sama.</p>
+</div>
+
+<div id="dalam" class="topic">
+<h3>Motor Bakar Pembakaran Dalam</h3>
+<p><b>Pengertian:</b> motor bakar pembakaran dalam adalah mesin yang proses pembakarannya terjadi di dalam ruang bakar, sehingga energi hasil pembakaran digunakan langsung untuk menghasilkan kerja mekanik.</p>
+<h3>Contoh</h3>
+<ul><li>Mesin bensin</li><li>Mesin diesel</li><li>Mesin Wankel/rotary</li></ul>
+<div class="grid">
+<div><h3>Mesin Bensin</h3><img class="media" src="gambar/mesin-bensin.JPG" alt="Mesin bensin"></div>
+<div><h3>Mesin Diesel</h3><img class="media" src="gambar/mesin-diesel.JPG" alt="Mesin diesel"></div>
+<div><h3>Mesin Rotary/Wankel</h3><img class="media" src="gambar/mesin-rotary.jpg" alt="Mesin rotary"></div>
+</div>
+<h3>Video Cara Kerja</h3>
+<div class="grid">
+<video controls poster="gambar/mesin-bensin.JPG"><source src="video/cara kerja mesin bensin.mp4" type="video/mp4">Browser tidak mendukung video.</video>
+<video controls poster="gambar/mesin-diesel.JPG"><source src="video/cara kerja mesin diesel.mp4" type="video/mp4">Browser tidak mendukung video.</video>
+<video controls poster="gambar/mesin-rotary.jpg"><source src="video/Cara Kerja Mesin Rotary.mp4" type="video/mp4">Browser tidak mendukung video.</video>
+</div>
+</div>
+
+<!-- ================= MATERI PELAJARAN 2 ================= -->
+<div id="materi2" class="topic">
+<h3>Materi Pelajaran 2: Identifikasi Mesin 2 Tak dan 4 Tak</h3>
+
+<div class="card">
+<h3>1. Pengertian Mesin 2 Tak</h3>
+<p>Mesin 2 tak adalah mesin pembakaran dalam yang menyelesaikan satu siklus kerja dalam dua langkah piston atau satu putaran poros engkol. Proses kerja berlangsung secara terpadu dalam dua langkah.</p>
+</div>
+
+<div class="card">
+<h3>2. Pengertian Mesin 4 Tak</h3>
+<p>Mesin 4 tak adalah mesin pembakaran dalam yang menyelesaikan satu siklus kerja dalam empat langkah piston atau dua putaran poros engkol.</p>
+</div>
+
+<div class="card">
+<h3>3. Langkah Kerja Mesin 4 Tak</h3>
+<ol>
+<li><b>Hisap:</b> piston bergerak dari TMA ke TMB dan campuran udara-bahan bakar atau udara masuk ke silinder.</li>
+<li><b>Kompresi:</b> piston bergerak dari TMB ke TMA dengan katup tertutup.</li>
+<li><b>Usaha:</b> pembakaran menghasilkan tekanan yang mendorong piston dari TMA ke TMB.</li>
+<li><b>Buang:</b> piston bergerak dari TMB ke TMA untuk mengeluarkan gas hasil pembakaran.</li>
+</ol>
+</div>
+
+<div class="card">
+<h3>4. Prinsip Kerja Mesin 2 Tak</h3>
+<ol>
+<li>Piston bergerak sehingga proses kompresi terjadi di ruang bakar, sementara campuran baru masuk ke ruang engkol.</li>
+<li>Pembakaran mendorong piston melakukan usaha. Selanjutnya gas bekas dikeluarkan dan campuran baru masuk ke silinder.</li>
+</ol>
+</div>
+
+<div class="card">
+<h3>5. Perbedaan Mesin 2 Tak dan 4 Tak</h3>
+<table>
+<tr><th>Aspek</th><th>Mesin 2 Tak</th><th>Mesin 4 Tak</th></tr>
+<tr><td>Jumlah langkah</td><td>2 langkah piston</td><td>4 langkah piston</td></tr>
+<tr><td>Putaran poros engkol per siklus</td><td>1 putaran</td><td>2 putaran</td></tr>
+<tr><td>Proses kerja</td><td>Terpadu dalam dua langkah</td><td>Hisap, kompresi, usaha, buang</td></tr>
+<tr><td>Konstruksi</td><td>Relatif sederhana</td><td>Lebih kompleks pada mekanisme katup</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>6. Komponen yang Diidentifikasi</h3>
+<div class="grid">
+<div><h3>Piston</h3><p>Bergerak naik turun di dalam silinder untuk menerima dan menghasilkan gaya.</p></div>
+<div><h3>Silinder</h3><p>Tempat piston bergerak dan berlangsungnya proses kerja.</p></div>
+<div><h3>Connecting Rod</h3><p>Menghubungkan piston dengan poros engkol.</p></div>
+<div><h3>Crankshaft</h3><p>Mengubah gerak bolak-balik piston menjadi gerak putar.</p></div>
+<div><h3>Katup</h3><p>Pada mesin 4 tak, katup mengatur pemasukan dan pembuangan gas.</p></div>
+<div><h3>Port</h3><p>Pada mesin 2 tak, saluran/port membantu proses masuk dan keluarnya gas.</p></div>
+</div>
+</div>
+
+<div class="card">
+<h3>7. Gambar Mesin 2 Tak dan 4 Tak</h3>
+<div class="grid">
+<div>
+<h3>Gambar Mesin 2 Tak</h3>
+<img class="media" src="gambar/mesin-2-tak.jpg" alt="Diagram mesin 2 tak">
+<p><b>Keterangan:</b> gambar menunjukkan konstruksi dan aliran gas pada mesin 2 tak.</p>
+</div>
+<div>
+<h3>Gambar Mesin 4 Tak</h3>
+<img class="media" src="gambar/mesin-4-tak.jpg" alt="Diagram mesin 4 tak">
+<p><b>Keterangan:</b> gambar menunjukkan komponen utama mesin 4 tak.</p>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3>8. Video Cara Kerja Mesin 2 Tak dan 4 Tak</h3>
+<div class="grid">
+<div>
+<h3>Video Cara Kerja Mesin 2 Tak</h3>
+<video controls poster="gambar/mesin-2-tak.jpg">
+<source src="video/cara-kerja-mesin-2-tak.mp4" type="video/mp4">
+Browser tidak mendukung video WebM.
+</video>
+</div>
+<div>
+<h3>Video Cara Kerja Mesin 4 Tak</h3>
+<video controls poster="gambar/mesin-4-tak.jpg">
+<source src="video/cara-kerja-mesin-4-tak.mp4" type="video/mp4">
+Browser tidak mendukung video WebM.
+</video>
+</div>
+</div>
+<div class="notice">Gambar dan video Materi 2 sudah terhubung ke folder <b>gambar</b> dan <b>video</b>. Untuk mengganti media, cukup ganti file dengan nama yang sama.</div>
+</div>
+</div>
+
+<!-- ================= MATERI PELAJARAN 3 ================= -->
+<div id="materi3" class="topic">
+<h3>Materi Pelajaran 3: Dimensi Mesin</h3>
+<div class="notice">Materi 3 sudah memuat istilah dimensi mesin, rumus kapasitas/CC, volume langkah, volume kompresi, rasio kompresi, contoh, dan 3 latihan. Gambar/animasi dimensi mesin dapat ditambahkan kemudian tanpa mengubah Materi 1 dan 2.</div>
+<div class="card">
+<h3>Gambar Dimensi Mesin</h3>
+<p>Diagram berikut menunjukkan beberapa parameter dimensi mesin, antara lain <b>TDC/TMA</b>, <b>BDC/TMB</b>, <b>B (Bore)</b>, <b>S (Stroke)</b>, serta <b>Vc</b> dan <b>Vd</b>.</p>
+<img class="media" src="gambar/dimensi-mesin.png" alt="Diagram dimensi mesin TDC BDC Bore Stroke Vc Vd">
+<p><b>Keterangan:</b> B = diameter silinder (bore), S = panjang langkah piston (stroke), Vc = volume ruang bakar/volume kompresi, dan Vd = volume langkah/displacement.</p>
+</div>
+
+
+<div class="card">
+<h3>1. Istilah-Istilah Dimensi Mesin</h3>
+<ul>
+<li><b>TMA / TDC (Top Dead Center):</b> posisi piston paling atas di dalam silinder.</li>
+<li><b>TMB / BDC (Bottom Dead Center):</b> posisi piston paling bawah di dalam silinder.</li>
+<li><b>Stroke / Langkah:</b> jarak yang ditempuh piston dari TMA ke TMB atau sebaliknya.</li>
+<li><b>CC (Cubic Centimeter):</b> satuan cm³ yang umum digunakan untuk menyatakan kapasitas mesin.</li>
+<li><b>Volume langkah (Vs):</b> volume yang disapu piston ketika bergerak dari TMA ke TMB.</li>
+<li><b>Volume kompresi / ruang bakar (Vc):</b> volume ruang yang tersisa di atas piston ketika piston berada di TMA.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>2. Rumus Menghitung Kapasitas Mesin</h3>
+<p>Volume langkah satu silinder:</p>
+<p style="font-size:22px;text-align:center"><b>Vs = π/4 × D² × L</b></p>
+<ul>
+<li>Vs = volume langkah (cm³)</li>
+<li>D = diameter silinder/bore (cm)</li>
+<li>L = panjang langkah/stroke (cm)</li>
+<li>π = 3,14 atau 22/7</li>
+</ul>
+<p>Untuk mesin dengan beberapa silinder:</p>
+<p style="font-size:22px;text-align:center"><b>Kapasitas total = Vs × jumlah silinder</b></p>
+</div>
+
+<div class="card">
+<h3>3. Volume Total dan Rasio Kompresi</h3>
+<p>Volume total:</p>
+<p style="font-size:22px;text-align:center"><b>Vt = Vs + Vc</b></p>
+<p>Rasio kompresi:</p>
+<p style="font-size:22px;text-align:center"><b>CR = (Vs + Vc) / Vc</b></p>
+</div>
+
+<div class="card">
+<h3>4. Contoh Soal</h3>
+<p><b>Soal:</b> Sebuah mesin satu silinder mempunyai diameter silinder 50 mm dan stroke 50 mm. Hitung volume langkahnya. Gunakan π = 3,14.</p>
+<p><b>Penyelesaian:</b></p>
+<p>D = 50 mm = 5 cm; L = 50 mm = 5 cm</p>
+<p>Vs = 3,14/4 × 5² × 5</p>
+<p>Vs = 0,785 × 25 × 5</p>
+<p><b>Vs = 98,125 cm³ ≈ 98,1 cc</b></p>
+</div>
+
+<div class="card">
+<h3>5. Contoh Soal 2</h3>
+<p><b>Soal:</b> Sebuah mesin 4 silinder mempunyai diameter silinder 6 cm dan stroke 5 cm. Hitung kapasitas total mesin. Gunakan π = 3,14.</p>
+<p><b>Penyelesaian:</b></p>
+<p>Vs satu silinder = 3,14/4 × 6² × 5 = 141,3 cm³</p>
+<p>Kapasitas total = 141,3 × 4</p>
+<p><b>Kapasitas total = 565,2 cm³ = 565,2 cc</b></p>
+</div>
+
+<div class="card">
+<h3>6. Soal Latihan</h3>
+<ol>
+<li>Sebuah mesin satu silinder mempunyai diameter silinder 60 mm dan stroke 50 mm. Hitung volume langkah dalam cm³ dan cc. Gunakan π = 3,14.</li>
+<li>Sebuah mesin 2 silinder mempunyai diameter silinder 70 mm dan stroke 60 mm. Hitung kapasitas total mesin dalam cc. Gunakan π = 3,14.</li>
+<li>Sebuah mesin mempunyai volume langkah 400 cm³ dan volume kompresi 50 cm³. Hitung volume total dan rasio kompresinya.</li>
+</ol>
+<p><b>Jawaban:</b></p>
+<p>1. ....................................................................................................</p>
+<p>2. ....................................................................................................</p>
+<p>3. ....................................................................................................</p>
+</div>
+
+<div class="card">
+<h3>7. Rangkuman</h3>
+<p>Dimensi mesin digunakan untuk memahami ukuran dan kapasitas mesin. TMA, TMB, stroke, diameter silinder, volume langkah, dan volume kompresi merupakan istilah penting dalam identifikasi dimensi mesin.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="quiz" class="page">
+<div class="card"><h2>Quiz Motor Bakar</h2>
+<p>Quiz dilaksanakan menggunakan Wayground.</p>
+<p><b>Kode Quiz saat ini:</b> <span id="quizCode">42538725</span></p>
+<a class="btn warn" id="quizLink" target="_blank">Buka Quiz Wayground</a>
+<div class="notice">Kode/link quiz dapat diganti melalui menu Pengaturan Editor pada file ini.</div>
+</div></section>
+
+<section id="posttest" class="page">
+<div class="card"><h2>Post Test</h2><p>Setelah mempelajari materi dan menyelesaikan quiz, klik tombol berikut.</p>
+<a class="btn" id="posttestLink" target="_blank">Buka Post Test</a></div>
+</section>
+
+<section id="lkpd" class="page">
+<div class="card"><h2>LKPD / Jobsheet</h2>
+<p>Tempatkan file LKPD/Jobsheet pada folder <b>dokumen</b>. Nama file yang digunakan oleh aplikasi:</p>
+<p><code>LKPD-Motor-Bakar.pdf</code></p>
+<a class="btn secondary" href="dokumen/LKPD-Motor-Bakar.pdf" target="_blank">Buka LKPD / Jobsheet</a>
+<div class="notice">Jika file belum tersedia, tombol dapat digunakan setelah Anda memasukkan PDF LKPD ke folder dokumen.</div>
+</div></section>
+
+<section id="portal" class="page">
+<div class="card"><h2>Portal Utama</h2>
+<p>Klik tombol berikut untuk kembali ke portal utama pembelajaran.</p>
+<a class="btn secondary" id="portalLink" href="#" target="_self">Kembali ke Portal Utama</a>
+<p>Link portal dapat diubah pada bagian konfigurasi.</p>
+</div></section>
+</main>
+<footer>Media Pembelajaran Motor Bakar – Kelas X TSM</footer>
+
+<script>
+/* ================= KONFIGURASI MUDAH DIEDIT ================= */
+/* File ini berada di root repository bersama index.html portal utama. */
+const CONFIG = {
+  pretest: "https://forms.gle/jmUZyyMMZV2beUGW8",
+  quiz: "https://wayground.com/join?gc=42538725",
+  quizCode: "42538725",
+  posttest: "https://forms.gle/jmUZyyMMZV2beUGW8",
+  portal: "index.html"
+};
+/* ============================================================ */
+
+function showPage(id){
+ document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ const n=document.getElementById('n-'+id); if(n)n.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function showTopic(id){
+ document.querySelectorAll('.topic').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
+document.getElementById('pretestLink').href=CONFIG.pretest;
+document.getElementById('quizLink').href=CONFIG.quiz;
+document.getElementById('quizCode').textContent=CONFIG.quizCode;
+document.getElementById('posttestLink').href=CONFIG.posttest;
+document.getElementById('portalLink').href=CONFIG.portal;
+showPage('beranda');
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" contenFt="width=device-width, initial-scale=1.0">
 <title>Media Pembelajaran Motor Bakar - X TSM</title>
 <style>
