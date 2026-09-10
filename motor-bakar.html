@@ -28,6 +28,18 @@ video{width:100%;max-height:420px;border-radius:12px;background:#111}
 table{width:100%;border-collapse:collapse}td,th{border:1px solid #ddd;padding:10px;text-align:left}
 footer{text-align:center;padding:25px;color:#667}
 @media(max-width:600px){nav button{flex:1 1 45%;font-size:13px}main{padding:12px}.card{padding:16px}}
+
+/* QUIZ WAYGROUND EDITABLE */
+.quiz-panel{max-width:760px;margin:20px auto;padding:28px;background:#eef6ff;border-left:5px solid #0b5ed7;border-radius:14px;text-align:center}
+.quiz-panel h2{margin-top:0}
+.quiz-code-row{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+#quizCodeInput{width:225px;padding:14px 16px;border:1px solid #c8d2dc;border-radius:10px;font-size:20px;text-align:center;background:white}
+.saved-msg{color:#667;margin:10px 0 18px}
+.qr-box{width:310px;min-height:310px;margin:0 auto 12px;padding:12px;background:white;border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px #00000012}
+.quiz-qr{width:280px;height:280px;object-fit:contain}
+.qr-help{color:#555}
+@media(max-width:600px){.quiz-panel{padding:18px}.qr-box{width:260px;min-height:260px}.quiz-qr{width:230px;height:230px}#quizCodeInput{width:100%;max-width:280px}}
+
 </style>
 </head>
 <body>
@@ -318,12 +330,30 @@ Browser tidak mendukung video MP4.
 </section>
 
 <section id="quiz" class="page">
-<div class="card"><h2>Quiz Motor Bakar</h2>
-<p>Quiz dilaksanakan menggunakan Wayground.</p>
-<p><b>Kode Quiz saat ini:</b> <span id="quizCode">26484453</span></p>
-<a class="btn warn" id="quizLink" target="_blank">Buka Quiz Wayground</a>
-<div class="notice">Kode/link quiz dapat diganti melalui menu Pengaturan Editor pada file ini.</div>
-</div></section>
+<div class="card">
+<h2>🎮 Quiz Wayground</h2>
+<p>Setelah mempelajari materi, lanjutkan ke Quiz.</p>
+<div class="quiz-panel">
+<h2>Quiz Motor Bakar</h2>
+<h3>Kode Quiz Wayground:</h3>
+<div class="quiz-code-row">
+<input id="quizCodeInput" type="text" inputmode="numeric" maxlength="12"
+       placeholder="Masukkan kode quiz" aria-label="Kode Quiz Wayground">
+<button class="btn" type="button" onclick="saveQuizCode()">Simpan Kode</button>
+</div>
+<p id="quizSavedMsg" class="saved-msg">Kode tersimpan di perangkat ini.</p>
+<div class="qr-box">
+<img id="quizQR" class="quiz-qr" alt="QR Code Quiz Wayground">
+</div>
+<p class="qr-help">Scan QR Code untuk membuka Quiz Wayground.</p>
+<a class="btn warn" id="quizOpenLink" target="_blank" rel="noopener">🎮 Buka Quiz Wayground</a>
+<div class="notice">
+<b>Cara mengganti kode:</b> masukkan kode Wayground yang baru lalu klik
+<b>Simpan Kode</b>. Kode, link, dan QR Code akan langsung diperbarui.
+</div>
+</div>
+</div>
+</section>
 
 <section id="posttest" class="page">
 <div class="card"><h2>Post Test</h2><p>Setelah mempelajari materi dan menyelesaikan quiz, klik tombol berikut.</p>
@@ -359,6 +389,29 @@ const CONFIG = {
 };
 /* ============================================================ */
 
+
+function getQuizCode(){
+  return localStorage.getItem('motorBakarWaygroundCode') || CONFIG.quizCode;
+}
+function buildQuizUrl(code){
+  return 'https://wayground.com/join?gc=' + encodeURIComponent(code);
+}
+function updateQuizDisplay(code){
+  code=String(code||'').trim();
+  document.getElementById('quizCodeInput').value=code;
+  const url=buildQuizUrl(code);
+  document.getElementById('quizOpenLink').href=url;
+  document.getElementById('quizQR').src='https://quickchart.io/qr?size=300&text='+encodeURIComponent(url);
+  document.getElementById('quizSavedMsg').textContent='Kode tersimpan di perangkat ini: '+code;
+}
+function saveQuizCode(){
+  const code=document.getElementById('quizCodeInput').value.trim();
+  if(!code){alert('Masukkan kode Quiz Wayground terlebih dahulu.');return;}
+  localStorage.setItem('motorBakarWaygroundCode',code);
+  updateQuizDisplay(code);
+}
+function loadQuizCode(){ updateQuizDisplay(getQuizCode()); }
+
 function showPage(id){
  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
@@ -370,9 +423,10 @@ function showTopic(id){
  document.querySelectorAll('.topic').forEach(x=>x.classList.remove('active'));
  document.getElementById(id).classList.add('active');
 }
+loadQuizCode();
 document.getElementById('pretestLink').href=CONFIG.pretest;
-document.getElementById('quizLink').href=CONFIG.quiz;
-document.getElementById('quizCode').textContent=CONFIG.quizCode;
+
+
 document.getElementById('posttestLink').href=CONFIG.posttest;
 document.getElementById('portalLink').href=CONFIG.portal;
 showPage('beranda');
