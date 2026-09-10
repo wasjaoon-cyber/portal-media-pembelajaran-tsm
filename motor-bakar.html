@@ -2,94 +2,196 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Modul 3 - Motor Bakar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Pembelajaran Motor Bakar - X TSM</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f7fb;color:#17324d}
-header{background:linear-gradient(135deg,#0757a0,#087f8c);color:#fff;text-align:center;padding:25px 15px}
-header h1{margin:6px 0;font-size:27px}header p{margin:5px}
-nav{position:sticky;top:0;z-index:10;background:#fff;display:flex;justify-content:center;flex-wrap:wrap;box-shadow:0 2px 10px #0002}
-nav a{padding:12px 14px;color:#0757a0;text-decoration:none;font-weight:bold}
-main{max-width:1050px;margin:auto;padding:22px 15px 50px}.hero,.section{background:#fff;border-radius:18px;padding:22px;margin-bottom:20px;box-shadow:0 7px 22px #0001}
-h1,h2{color:#0757a0}.hero{border-top:6px solid #0757a0}
-.topic{padding:16px;border-left:6px solid #0757a0;background:#f6faff;border-radius:9px;margin:14px 0}
-.topic h3{color:#0757a0;margin:0 0 7px}.topic p,.topic li{line-height:1.55}
-.menu{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:18px}
-.menu a{color:#fff;padding:12px 5px;border-radius:9px;font-weight:bold;text-align:center;text-decoration:none;font-size:13px}
-.pre{background:#d97706}.mat{background:#0757a0}.quiz{background:#198754}.post{background:#7c3aed}.lkpd{background:#0f766e}
-.question{padding:15px;margin:12px 0;background:#f7fafc;border:1px solid #dce6ef;border-radius:10px}
-.question label{display:block;padding:6px}.submit{background:#0757a0;color:#fff;border:0;padding:12px 20px;border-radius:9px;font-weight:bold;cursor:pointer}
-.result{font-size:18px;font-weight:bold;margin-top:15px}
-table{width:100%;border-collapse:collapse}th,td{border:1px solid #9aaab8;padding:8px;vertical-align:top}th{background:#eaf3fb}
-.print{background:#17324d;color:#fff;padding:10px 16px;border:0;border-radius:8px}.note{background:#fff8dc;border-left:5px solid #e0aa16;padding:15px;border-radius:10px}
-footer{background:#17324d;color:#fff;text-align:center;padding:22px}
-@media(max-width:700px){.menu{grid-template-columns:repeat(2,1fr)}.menu a:last-child{grid-column:span 2}}
-@media(max-width:430px){.menu{grid-template-columns:1fr}.menu a:last-child{grid-column:auto}}
+:root{--primary:#0b5ed7;--dark:#102a43;--light:#f4f7fb;--accent:#f59e0b}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--light);color:#17202a}
+header{background:linear-gradient(135deg,#102a43,#0b5ed7);color:white;padding:28px 18px;text-align:center}
+header h1{margin:0 0 8px;font-size:clamp(24px,5vw,38px)}header p{margin:0}
+nav{position:sticky;top:0;z-index:10;background:#fff;box-shadow:0 2px 10px #0002;display:flex;flex-wrap:wrap;justify-content:center}
+nav button{border:0;background:white;padding:13px 16px;cursor:pointer;font-weight:700;color:var(--dark)}
+nav button:hover,nav button.active{background:#e8f1ff;color:var(--primary)}
+main{max-width:1100px;margin:auto;padding:20px}.page{display:none}.page.active{display:block}
+.card{background:white;border-radius:16px;padding:22px;margin:16px 0;box-shadow:0 5px 18px #00000012}
+h2{color:var(--dark)}h3{color:var(--primary)}
+.btn{display:inline-block;border:0;border-radius:10px;padding:12px 18px;background:var(--primary);color:white;font-weight:700;cursor:pointer;text-decoration:none;margin:5px}
+.btn.secondary{background:var(--dark)}.btn.warn{background:var(--accent);color:#111}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.hero{padding:25px;border-radius:18px;background:linear-gradient(135deg,#e8f1ff,#fff)}
+img.media{width:100%;max-height:360px;object-fit:contain;border-radius:12px;background:#eef2f7}
+video{width:100%;max-height:420px;border-radius:12px;background:#111}
+.submenu{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}
+.submenu button{padding:10px 13px;border:1px solid #ccd6e0;border-radius:9px;background:white;cursor:pointer}
+.topic{display:none}.topic.active{display:block}
+.notice{padding:14px;border-left:5px solid var(--accent);background:#fff8e6;border-radius:8px}
+table{width:100%;border-collapse:collapse}td,th{border:1px solid #ddd;padding:10px;text-align:left}
+footer{text-align:center;padding:25px;color:#667}
+@media(max-width:600px){nav button{flex:1 1 45%;font-size:13px}main{padding:12px}.card{padding:16px}}
 </style>
 </head>
 <body>
-<header><div style="font-size:42px">⚙️</div><h1>Motor Bakar</h1>
-<p>Teknologi Otomotif • Kelas X TSM • Guru: Wasja, S.Pd</p></header>
-<nav><a href="index.html">🏠 Portal</a><a href="#pretest">📋 Pretest</a><a href="#materi">📖 Materi</a><a href="#quiz">🎯 Quiz</a><a href="#posttest">🏆 Post Test</a><a href="#lkpd">🔧 LKPD</a></nav>
+<header>
+<h1>MEDIA PEMBELAJARAN MOTOR BAKAR</h1>
+<p>Teknik Sepeda Motor (TSM) – Kelas X</p>
+<p><b>SMK</b> | Pembelajaran Interaktif</p>
+</header>
+
+<nav>
+<button onclick="showPage('beranda')" id="n-beranda">Beranda</button>
+<button onclick="showPage('pretest')" id="n-pretest">Pretest</button>
+<button onclick="showPage('materi')" id="n-materi">Materi Pelajaran</button>
+<button onclick="showPage('quiz')" id="n-quiz">Quiz</button>
+<button onclick="showPage('posttest')" id="n-posttest">Post Test</button>
+<button onclick="showPage('lkpd')" id="n-lkpd">LKPD / Jobsheet</button>
+<button onclick="showPage('portal')" id="n-portal">Portal Utama</button>
+</nav>
+
 <main>
-<section class="hero"><h2>Modul 3 — Motor Bakar</h2>
-<p>Memahami pengertian, klasifikasi, komponen, prinsip kerja motor 4 langkah dan 2 langkah serta perbedaannya.</p>
-<div class="menu"><a class="pre" href="#pretest">📋 PRETEST</a><a class="mat" href="#materi">📖 MATERI</a><a class="quiz" href="#quiz">🎯 QUIZ</a><a class="post" href="#posttest">🏆 POST TEST</a><a class="lkpd" href="#lkpd">🔧 LKPD</a></div></section>
-
-<section id="pretest" class="section"><h2>📋 Pretest</h2><p>10 soal pengetahuan awal. Nilai dihitung otomatis.</p><form id="preForm"></form><button class="submit" onclick="score('preForm','preResult');return false">KUMPULKAN PRETEST</button><div id="preResult" class="result"></div></section>
-
-<section id="materi" class="section"><h2>📖 Materi Pembelajaran</h2>
-<p><b>Tujuan Pembelajaran:</b> Siswa mampu menjelaskan prinsip kerja motor bakar, mengidentifikasi komponen utama, membedakan motor 4 langkah dan 2 langkah, serta menjelaskan urutan proses kerja.</p>
-<div class="topic"><h3>1. Pengertian Motor Bakar</h3><p>Motor bakar adalah mesin yang mengubah energi kimia bahan bakar menjadi energi mekanik melalui proses pembakaran. Pada kendaraan, energi tersebut digunakan untuk menghasilkan putaran poros engkol sebagai sumber tenaga penggerak.</p></div>
-<div class="topic"><h3>2. Klasifikasi Motor Bakar</h3><ul><li><b>Motor bensin:</b> campuran udara dan bahan bakar dinyalakan oleh busi.</li><li><b>Motor diesel:</b> udara dikompresi hingga temperatur tinggi, kemudian bahan bakar diinjeksikan dan terbakar karena panas kompresi.</li><li><b>4 langkah:</b> satu siklus kerja berlangsung dalam empat langkah piston.</li><li><b>2 langkah:</b> satu siklus kerja diselesaikan dalam dua langkah piston.</li></ul></div>
-<div class="topic"><h3>3. Komponen Utama</h3><ul><li>Piston: bergerak naik-turun menerima tekanan pembakaran.</li><li>Batang piston/connecting rod: meneruskan gerak piston ke poros engkol.</li><li>Poros engkol/crankshaft: mengubah gerak bolak-balik menjadi gerak putar.</li><li>Silinder: tempat piston bergerak dan proses kerja berlangsung.</li><li>Kepala silinder: tempat ruang bakar serta komponen katup pada motor 4 langkah.</li><li>Katup masuk dan buang: mengatur aliran campuran/udara dan gas buang.</li><li>Busi pada motor bensin: menghasilkan percikan api.</li></ul></div>
-<div class="topic"><h3>4. Siklus Motor 4 Langkah</h3><ol><li><b>Hisap:</b> piston bergerak turun, katup masuk terbuka dan campuran udara-bahan bakar masuk pada motor bensin.</li><li><b>Kompresi:</b> piston bergerak naik dengan katup tertutup sehingga campuran dikompresi.</li><li><b>Usaha:</b> pembakaran menghasilkan tekanan yang mendorong piston turun.</li><li><b>Buang:</b> piston bergerak naik dan gas hasil pembakaran keluar melalui katup buang.</li></ol></div>
-<div class="topic"><h3>5. Motor 2 Langkah</h3><p>Pada motor 2 langkah, satu siklus kerja diselesaikan dalam dua langkah piston. Proses pemasukan, kompresi, pembakaran dan pembuangan berlangsung lebih ringkas dengan memanfaatkan gerak piston dan saluran pada silinder.</p></div>
-<div class="topic"><h3>6. Perbandingan 4 Langkah dan 2 Langkah</h3><table><tr><th>Aspek</th><th>4 Langkah</th><th>2 Langkah</th></tr>
-<tr><td>Penyelesaian siklus</td><td>4 langkah piston / 2 putaran poros engkol</td><td>2 langkah piston / 1 putaran poros engkol</td></tr>
-<tr><td>Karakter umum</td><td>Lebih efisien dan emisi relatif lebih rendah</td><td>Konstruksi sederhana dan tenaga spesifik tinggi, tetapi konsumsi/emisi dapat lebih tinggi</td></tr>
-<tr><td>Mekanisme</td><td>Menggunakan mekanisme katup pada tipe umum</td><td>Menggunakan port/saluran pada tipe umum</td></tr></table></div>
-<div class="topic"><h3>7. K3 Saat Mempelajari Motor Bakar</h3><ul><li>Gunakan APD sesuai pekerjaan.</li><li>Pastikan mesin aman sebelum pemeriksaan.</li><li>Jauhkan tangan, pakaian dan rambut dari bagian berputar.</li><li>Hindari bahan bakar dan sumber api terbuka.</li><li>Ikuti SOP bengkel dan gunakan alat sesuai fungsi.</li></ul></div>
+<section id="beranda" class="page">
+<div class="hero card">
+<h2>Selamat Datang</h2>
+<p>Selamat belajar materi <b>Motor Bakar</b>. Gunakan menu di atas secara berurutan mulai dari Pretest, Materi, Quiz, hingga Post Test.</p>
+</div>
+<div class="card"><h2>Tujuan Pembelajaran</h2>
+<ol>
+<li>Menjelaskan pengertian motor bakar.</li>
+<li>Mengidentifikasi jenis-jenis motor bakar.</li>
+<li>Menjelaskan perbedaan motor pembakaran luar dan pembakaran dalam.</li>
+<li>Mengidentifikasi contoh motor pembakaran luar dan pembakaran dalam.</li>
+<li>Menjelaskan prinsip kerja dasar mesin uap, mesin bensin, diesel, dan rotary/Wankel.</li>
+<li>Menghubungkan konsep motor bakar dengan penerapannya pada bidang otomotif.</li>
+</ol></div>
+<div class="card"><h2>Cara Menggunakan Modul</h2>
+<ol>
+<li>Kerjakan <b>Pretest</b> melalui tombol yang tersedia.</li>
+<li>Pelajari materi dan gambar pada menu <b>Materi Pelajaran</b>.</li>
+<li>Tonton video pembelajaran yang tersedia.</li>
+<li>Kerjakan <b>Quiz</b> melalui Wayground.</li>
+<li>Kerjakan <b>LKPD/Jobsheet</b> sesuai arahan guru.</li>
+<li>Kerjakan <b>Post Test</b> setelah seluruh pembelajaran selesai.</li>
+</ol></div>
 </section>
 
-<section id="quiz" class="section"><h2>🎯 Quiz</h2><p>Latihan pemahaman setelah mempelajari materi.</p><form id="quizForm"></form><button class="submit" onclick="score('quizForm','quizResult');return false">CEK NILAI QUIZ</button><div id="quizResult" class="result"></div></section>
+<section id="pretest" class="page">
+<div class="card"><h2>Pretest</h2><p>Klik tombol berikut untuk mengerjakan Pretest melalui Google Form.</p>
+<a class="btn" id="pretestLink" target="_blank">Buka Pretest</a>
+<div class="notice">Setelah selesai mengerjakan, kembali ke aplikasi untuk melanjutkan ke Materi Pelajaran.</div>
+</div></section>
 
-<section id="posttest" class="section"><h2>🏆 Evaluasi / Post Test</h2><p>Evaluasi akhir Modul 3.</p><form id="postForm"></form><button class="submit" onclick="score('postForm','postResult');return false">KUMPULKAN POST TEST</button><div id="postResult" class="result"></div></section>
+<section id="materi" class="page">
+<div class="card"><h2>Materi Pelajaran: Identifikasi Motor Bakar</h2>
+<div class="submenu">
+<button onclick="showTopic('pengertian')">Pengertian</button>
+<button onclick="showTopic('jenis')">Jenis-Jenis</button>
+<button onclick="showTopic('luar')">Pembakaran Luar</button>
+<button onclick="showTopic('dalam')">Pembakaran Dalam</button>
+</div>
 
-<section id="lkpd" class="section"><h2>🔧 LKPD</h2>
-<p><b>Judul:</b> Identifikasi Komponen dan Analisis Siklus Motor Bakar 4 Langkah</p>
-<p><b>Tujuan:</b> Siswa mampu mengidentifikasi komponen utama motor bakar dan menjelaskan fungsi serta urutan kerja 4 langkah.</p>
-<p><b>Petunjuk:</b> Amati mesin/peraga/gambar yang tersedia. Lengkapi tabel secara berkelompok.</p>
-<table><tr><th>No</th><th>Komponen</th><th>Fungsi</th><th>Hasil Pengamatan/Kondisi</th></tr>
-<tr><td>1</td><td>Piston</td><td></td><td></td></tr><tr><td>2</td><td>Connecting rod</td><td></td><td></td></tr>
-<tr><td>3</td><td>Crankshaft</td><td></td><td></td></tr><tr><td>4</td><td>Katup masuk</td><td></td><td></td></tr>
-<tr><td>5</td><td>Katup buang</td><td></td><td></td></tr><tr><td>6</td><td>Busi</td><td></td><td></td></tr></table>
-<h3>Analisis Siklus</h3><table><tr><th>Langkah</th><th>Gerak Piston</th><th>Katup Masuk</th><th>Katup Buang</th><th>Peristiwa</th></tr>
-<tr><td>Hisap</td><td></td><td></td><td></td><td></td></tr><tr><td>Kompresi</td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Usaha</td><td></td><td></td><td></td><td></td></tr><tr><td>Buang</td><td></td><td></td><td></td><td></td></tr></table>
-<h3>Pertanyaan</h3><ol><li>Apa fungsi piston?</li><li>Mengapa campuran/udara harus dikompresi sebelum pembakaran?</li><li>Apa perbedaan utama siklus 4 langkah dan 2 langkah?</li><li>Apa saja potensi bahaya saat bekerja di sekitar mesin?</li></ol>
-<p><b>Kesimpulan:</b></p><div style="height:110px;border:1px solid #9aaab8;border-radius:8px"></div><br>
-<button class="print" onclick="window.print()">🖨️ CETAK LKPD</button>
+<div id="pengertian" class="topic active">
+<h3>Pengertian Motor Bakar</h3>
+<p>Motor bakar adalah mesin yang mengubah energi kimia dari bahan bakar menjadi energi panas melalui proses pembakaran, kemudian mengubahnya menjadi energi mekanik yang dapat digunakan untuk melakukan kerja.</p>
+</div>
+
+<div id="jenis" class="topic">
+<h3>Jenis-Jenis Motor Bakar</h3>
+<p>Berdasarkan tempat berlangsungnya proses pembakaran, motor bakar secara umum dibedakan menjadi:</p>
+<div class="grid">
+<div class="card"><h3>Motor Bakar Pembakaran Luar</h3><p>Pembakaran berlangsung di luar ruang kerja utama mesin. Panas hasil pembakaran digunakan untuk menghasilkan fluida kerja yang kemudian melakukan kerja mekanik.</p></div>
+<div class="card"><h3>Motor Bakar Pembakaran Dalam</h3><p>Pembakaran berlangsung di dalam ruang bakar mesin sehingga gas hasil pembakaran langsung menghasilkan kerja pada mekanisme mesin.</p></div>
+</div>
+</div>
+
+<div id="luar" class="topic">
+<h3>Motor Bakar Pembakaran Luar</h3>
+<p><b>Pengertian:</b> motor bakar pembakaran luar adalah mesin kalor yang proses pembakarannya terjadi di luar mesin atau ruang kerja utama. Energi panas dipindahkan kepada fluida kerja.</p>
+<h3>Contoh</h3>
+<ul><li>Mesin uap</li><li>Ketel uap</li><li>Turbin uap</li></ul>
+<div class="grid">
+<div><h3>Gambar Mesin Uap</h3><img class="media" src="gambar/mesin-uap.svg" alt="Gambar mesin uap"></div>
+<div><h3>Video Cara Kerja Mesin Uap</h3><video controls poster="gambar/mesin-uap.svg"><source src="video/mesin-uap.mp4" type="video/mp4">Browser tidak mendukung video.</video></div>
+</div>
+<p class="notice">File gambar dan video dapat diganti dengan file baru menggunakan nama file yang sama.</p>
+</div>
+
+<div id="dalam" class="topic">
+<h3>Motor Bakar Pembakaran Dalam</h3>
+<p><b>Pengertian:</b> motor bakar pembakaran dalam adalah mesin yang proses pembakarannya terjadi di dalam ruang bakar, sehingga energi hasil pembakaran digunakan langsung untuk menghasilkan kerja mekanik.</p>
+<h3>Contoh</h3>
+<ul><li>Mesin bensin</li><li>Mesin diesel</li><li>Mesin Wankel/rotary</li></ul>
+<div class="grid">
+<div><h3>Mesin Bensin</h3><img class="media" src="gambar/mesin-bensin.svg" alt="Mesin bensin"></div>
+<div><h3>Mesin Diesel</h3><img class="media" src="gambar/mesin-diesel.svg" alt="Mesin diesel"></div>
+<div><h3>Mesin Rotary/Wankel</h3><img class="media" src="gambar/mesin-rotary.svg" alt="Mesin rotary"></div>
+</div>
+<h3>Video Cara Kerja</h3>
+<div class="grid">
+<video controls poster="gambar/mesin-bensin.svg"><source src="video/mesin-bensin.mp4" type="video/mp4">Browser tidak mendukung video.</video>
+<video controls poster="gambar/mesin-diesel.svg"><source src="video/mesin-diesel.mp4" type="video/mp4">Browser tidak mendukung video.</video>
+<video controls poster="gambar/mesin-rotary.svg"><source src="video/mesin-rotary.mp4" type="video/mp4">Browser tidak mendukung video.</video>
+</div>
+</div>
+</div>
 </section>
-<div class="note"><b>Catatan:</b> Materi ini dapat dikembangkan dengan gambar mesin, animasi gerakan piston dan video praktik pada tahap berikutnya.</div>
+
+<section id="quiz" class="page">
+<div class="card"><h2>Quiz Motor Bakar</h2>
+<p>Quiz dilaksanakan menggunakan Wayground.</p>
+<p><b>Kode Quiz saat ini:</b> <span id="quizCode">42538725</span></p>
+<a class="btn warn" id="quizLink" target="_blank">Buka Quiz Wayground</a>
+<div class="notice">Kode/link quiz dapat diganti melalui menu Pengaturan Editor pada file ini.</div>
+</div></section>
+
+<section id="posttest" class="page">
+<div class="card"><h2>Post Test</h2><p>Setelah mempelajari materi dan menyelesaikan quiz, klik tombol berikut.</p>
+<a class="btn" id="posttestLink" target="_blank">Buka Post Test</a></div>
+</section>
+
+<section id="lkpd" class="page">
+<div class="card"><h2>LKPD / Jobsheet</h2>
+<p>Tempatkan file LKPD/Jobsheet pada folder <b>dokumen</b>. Nama file yang digunakan oleh aplikasi:</p>
+<p><code>LKPD-Motor-Bakar.pdf</code></p>
+<a class="btn secondary" href="dokumen/LKPD-Motor-Bakar.pdf" target="_blank">Buka LKPD / Jobsheet</a>
+<div class="notice">Jika file belum tersedia, tombol dapat digunakan setelah Anda memasukkan PDF LKPD ke folder dokumen.</div>
+</div></section>
+
+<section id="portal" class="page">
+<div class="card"><h2>Portal Utama</h2>
+<p>Klik tombol berikut untuk kembali ke portal utama pembelajaran.</p>
+<a class="btn secondary" id="portalLink" href="#" target="_self">Kembali ke Portal Utama</a>
+<p>Link portal dapat diubah pada bagian konfigurasi.</p>
+</div></section>
 </main>
-<footer><strong>SMKN 1 Kabupaten Tangerang</strong><br>Teknik Sepeda Motor • Wasja, S.Pd<br>© 2026</footer>
+<footer>Media Pembelajaran Motor Bakar – Kelas X TSM</footer>
 
 <script>
-const qs=[
-["Motor bakar mengubah energi kimia bahan bakar menjadi energi...",["mekanik","cahaya","listrik rumah tangga","magnet"],0],
-["Pada motor bensin, pembakaran campuran dipicu oleh...",["busi","radiator","alternator","ban"],0],
-["Komponen yang bergerak naik turun di dalam silinder adalah...",["piston","busi","radiator","roda"],0],
-["Fungsi connecting rod adalah...",["meneruskan gerak piston ke poros engkol","mendinginkan radiator","menyaring udara luar","mengisi baterai"],0],
-["Crankshaft mengubah gerak piston menjadi...",["gerak putar","gerak cahaya","tekanan ban","arus listrik rumah"],0],
-["Urutan motor 4 langkah yang benar adalah...",["hisap-kompresi-usaha-buang","kompresi-hisap-buang-usaha","usaha-hisap-kompresi-buang","buang-usaha-hisap-kompresi"],0],
-["Pada langkah kompresi, kondisi katup pada motor 4 langkah umumnya...",["tertutup","keduanya terbuka","hanya masuk terbuka","hanya buang terbuka"],0],
-["Pada langkah usaha, energi hasil pembakaran digunakan untuk...",["mendorong piston","mengisi ban","mendinginkan knalpot","mengisi aki secara langsung"],0],
-["Satu siklus motor 4 langkah memerlukan...",["4 langkah piston","1 langkah piston","2 langkah piston","8 langkah piston"],0],
-["Salah satu ciri umum motor 2 langkah adalah...",["siklus selesai dalam 2 langkah piston","selalu memakai empat katup","tidak membutuhkan pembakaran","tidak memiliki piston"],0]
-];
-const answers=qs.map(q=>q[2]);
-function render(id){document.getElementById(id).innerHTML=qs.map((q,i)=>`<div class="question"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<label><input type="radio" name="${id}${i}" value="${j}"> ${String.fromCharCode(65+j)}. ${o}</label>`).join("")}</div>`).join("")}
-function score(id,res){let s=0;for(let i=0;i<answers.length;i++){let x=document.querySelector(`input[name="${id}${i}"]:checked`);if(x&&+x.value===answers[i])s++}let n=Math.round(s/answers.length*100);document.getElementById(res).innerHTML=`Nilai: <b>${n}</b> (${s}/${answers.length} benar) ${n>=75?"👍 Tuntas":"💪 Pelajari kembali materi dan coba lagi."}`}
-render("preForm");render("quizForm");render("postForm");
-</script></body></html>
+/* ================= KONFIGURASI MUDAH DIEDIT ================= */
+const CONFIG = {
+  pretest: "https://forms.gle/jmUZyyMMZV2beUGW8",
+  quiz: "https://wayground.com/join?gc=42538725",
+  quizCode: "42538725",
+  posttest: "https://forms.gle/jmUZyyMMZV2beUGW8",
+  portal: "../index.html"
+};
+/* ============================================================ */
+
+function showPage(id){
+ document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ const n=document.getElementById('n-'+id); if(n)n.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function showTopic(id){
+ document.querySelectorAll('.topic').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
+document.getElementById('pretestLink').href=CONFIG.pretest;
+document.getElementById('quizLink').href=CONFIG.quiz;
+document.getElementById('quizCode').textContent=CONFIG.quizCode;
+document.getElementById('posttestLink').href=CONFIG.posttest;
+document.getElementById('portalLink').href=CONFIG.portal;
+showPage('beranda');
+</script>
+</body>
+</html>
