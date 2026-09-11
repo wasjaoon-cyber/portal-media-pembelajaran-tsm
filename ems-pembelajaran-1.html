@@ -10,6 +10,23 @@ function goBackEMS(){
   window.location.href = "../index.html";
 }
 
+
+function zoomImage(src,alt){
+  const modal=document.getElementById("imageModal");
+  const img=document.getElementById("zoomedImage");
+  img.src=src; img.alt=alt||"";
+  modal.classList.add("show");
+  document.body.style.overflow="hidden";
+}
+function closeImageModal(e){
+  if(e) e.stopPropagation();
+  document.getElementById("imageModal").classList.remove("show");
+  document.body.style.overflow="";
+}
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape") closeImageModal();
+});
+
 </script>
 <style>
 :root{--primary:#0b5ed7;--dark:#10233f;--light:#f4f7fb;--accent:#ffc107;--green:#198754}
@@ -51,6 +68,16 @@ footer{background:#10233f;color:#fff;text-align:center;padding:25px;margin-top:2
 ul li{margin:7px 0}
 </style>
 <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+<style>
+.zoomable-img{cursor:zoom-in;transition:transform .2s,box-shadow .2s}
+.zoomable-img:hover{box-shadow:0 4px 18px #0003}
+.image-modal{display:none;position:fixed;z-index:9999;inset:0;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:25px;cursor:zoom-out}
+.image-modal.show{display:flex}
+.image-modal img{max-width:95vw;max-height:90vh;width:auto;height:auto;object-fit:contain;border-radius:10px;box-shadow:0 8px 35px #0008;cursor:default}
+.image-modal .close{position:absolute;right:22px;top:12px;color:#fff;font-size:40px;font-weight:bold;cursor:pointer;line-height:1}
+.zoom-hint{font-size:12px;color:#617083;margin-top:5px}
+</style>
 </head>
 <body>
 <header>
@@ -178,18 +205,18 @@ Browser tidak mendukung pemutaran video.
 <div class="card"><h3>4. Bagian Engine Management System (EFI)</h3>
 <div class="grid">
 <div class="card"><h3>⛽ Sistem Aliran Bahan Bakar</h3>
-<img class="media" src="gambar/aliran bahan bakar EFI.jpg" alt="Sistem aliran bahan bakar EFI">
+<img class="media zoomable-img" onclick="zoomImage(this)" src="gambar/aliran bahan bakar EFI.jpg" alt="Sistem aliran bahan bakar EFI">
 <p>Komponen utama meliputi tangki, pompa bahan bakar, filter, saluran/fuel rail dan injector.</p>
 <p>Meliputi tangki, pompa bahan bakar, filter, fuel rail/selang, regulator sesuai tipe sistem, dan injector.</p>
 <div class="diagram"><div class="box fuel">Tangki</div><div class="arrow">→</div><div class="box fuel">Pompa</div><div class="arrow">→</div><div class="box fuel">Filter</div><div class="arrow">→</div><div class="box fuel">Injektor</div></div>
 </div>
 <div class="card"><h3>🧠 Sistem Kontrol Elektronik</h3>
-<img class="media" src="gambar/sistem kontrol elektronik.jpg" alt="Sistem kontrol elektronik EMS">
+<img class="media zoomable-img" onclick="zoomImage(this)" src="gambar/sistem kontrol elektronik.jpg" alt="Sistem kontrol elektronik EMS">
 <p>Meliputi sensor, ECU/ECM, kabel/wiring, dan aktuator. ECU/ECM memproses input sensor untuk menentukan pengendalian mesin.</p>
 <div class="diagram"><div class="box ecu">Sensor</div><div class="arrow">→</div><div class="box ecu">ECU/ECM</div><div class="arrow">→</div><div class="box ecu">Aktuator</div></div>
 </div>
 <div class="card"><h3>🌬️ Sistem Induksi Udara</h3>
-<img class="media" src="gambar/sistem induksi udara.jpg" alt="Sistem induksi udara EFI">
+<img class="media zoomable-img" onclick="zoomImage(this)" src="gambar/sistem induksi udara.jpg" alt="Sistem induksi udara EFI">
 <p>Menyalurkan udara menuju mesin. Komponen dapat meliputi air cleaner, throttle body, intake manifold, serta sensor/aktuator terkait.</p>
 <div class="diagram"><div class="box air">Air Cleaner</div><div class="arrow">→</div><div class="box air">Throttle Body</div><div class="arrow">→</div><div class="box air">Intake</div></div>
 </div>
@@ -200,10 +227,10 @@ Browser tidak mendukung pemutaran video.
 <h3>🔍 Komponen Pendukung Sistem Kontrol Elektronik</h3>
 <p>Contoh komponen yang dapat dipelajari siswa:</p>
 <div class="grid">
-<div><img class="media" src="gambar/ECU.jpg" alt="ECU"><b>ECU/ECM</b></div>
-<div><img class="media" src="gambar/gambar sensor fi.jpg" alt="Sensor EFI"><b>Sensor EFI</b></div>
-<div><img class="media" src="gambar/aktuator.jpg" alt="Aktuator"><b>Aktuator</b></div>
-<div><img class="media" src="gambar/RANGKAIAN EMS.jpg" alt="Rangkaian EMS"><b>Rangkaian EMS</b></div>
+<div><img class="media zoomable-img" onclick="zoomImage(this)" src="gambar/ECU.jpg" alt="ECU"><b>ECU/ECM</b></div>
+<div><img class="media zoomable-img" onclick="zoomImage(this)" src="gambar/gambar sensor fi.jpg" alt="Sensor EFI"><b>Sensor EFI</b></div>
+<div><img class="media zoomable-img" onclick="zoomImage(this)" src="gambar/aktuator.jpg" alt="Aktuator"><b>Aktuator</b></div>
+<div><img class="media zoomable-img" onclick="zoomImage(this)" src="gambar/RANGKAIAN EMS.jpg" alt="Rangkaian EMS"><b>Rangkaian EMS</b></div>
 </div>
 </div>
 
@@ -329,6 +356,31 @@ function openWay(){
  if(link) window.open(link,"_blank");
 }
 makeQR();
+</script>
+
+
+<div id="imageModal" class="image-modal" onclick="closeImageModal(event)">
+  <span class="close" onclick="closeImageModal()">×</span>
+  <img id="zoomedImage" src="" alt="Gambar diperbesar" onclick="event.stopPropagation()">
+</div>
+
+<script>
+function zoomImage(img){
+  const modal=document.getElementById("imageModal");
+  const zoomed=document.getElementById("zoomedImage");
+  zoomed.src=img.src;
+  zoomed.alt=img.alt || "Gambar diperbesar";
+  modal.classList.add("show");
+  document.body.style.overflow="hidden";
+}
+function closeImageModal(event){
+  if(event && event.target && event.target.id==="zoomedImage") return;
+  document.getElementById("imageModal").classList.remove("show");
+  document.body.style.overflow="";
+}
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape") closeImageModal();
+});
 </script>
 </body>
 </html>
