@@ -192,17 +192,18 @@ Browser tidak mendukung pemutaran video.
 <p>Engine Management System bekerja sebagai satu kesatuan. <b>Sensor → ECU/ECM → Aktuator</b> merupakan dasar pengendalian elektronik, sedangkan sistem bahan bakar dan induksi udara menyediakan kebutuhan utama proses pembakaran.</p>
 </div>
 </section>
-
 <section id="quiz" class="section">
 <h2>Quis – Wayground</h2>
 <p>Masukkan kode Wayground pada kolom berikut. QR Code akan berubah otomatis dan dapat dipindai siswa.</p>
 <div class="qrwrap">
 <div style="flex:1;min-width:260px">
 <label><b>Link Wayground</b></label>
-<input id="wayLink" placeholder="https://wayground.com/join?gc=56930277" oninput="makeQR()">
+<input id="wayLink" placeholder="https://wayground.com/join?gc=123456" oninput="makeQR()">
 <label><b>Kode Game</b></label>
-<input id="gameCode" placeholder="56930277" oninput="updateWayLink()">
+<input id="gameCode" placeholder="123456" oninput="updateWayLink()">
+<button class="btn green" onclick="saveWayground()">💾 Simpan Kode</button>
 <button class="btn" onclick="openWay()">Buka Wayground ↗</button>
+<span id="saveStatus" class="small" style="display:block;margin-top:8px"></span>
 </div>
 <div id="qrcode"></div>
 </div>
