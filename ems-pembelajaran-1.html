@@ -44,6 +44,7 @@ footer{background:#10233f;color:#fff;text-align:center;padding:25px;margin-top:2
 .small{font-size:13px;color:#617083}
 ul li{margin:7px 0}
 </style>
+<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 </head>
 <body>
 <header>
@@ -92,10 +93,28 @@ ul li{margin:7px 0}
 <div class="card"><h3>1. Pengertian dan Tujuan Engine Management System Pada Kendaraan</h3>
 <p><b>Engine Management System (EMS)</b> adalah sistem pengendalian mesin yang mengintegrasikan sensor, ECU/ECM, aktuator, sistem bahan bakar, sistem udara, dan sistem pengapian agar mesin bekerja secara optimal.</p>
 <p>Tujuan utamanya antara lain meningkatkan efisiensi bahan bakar, menjaga performa mesin, mengurangi emisi gas buang, memudahkan diagnosis gangguan, dan menjaga kestabilan kerja mesin pada berbagai kondisi.</p>
-<div class="anim">
-<div class="pipe"></div><div class="dot"></div><div class="piston"></div>
+<div class="card" style="border-left:0;background:#f4f8fc">
+<h3>🎬 Animasi Interaktif Engine Management System – PGM-FI</h3>
+<p>Animasi PGM-FI dari aplikasi Flash lama ditampilkan langsung di dalam materi menggunakan <b>Ruffle</b>, sehingga tidak memerlukan Adobe Flash Player.</p>
+
+<div id="pgmfiPlayer" style="width:100%;min-height:500px;background:#111;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff">
+<div>Memuat animasi PGM-FI...</div>
 </div>
-<p class="small">Animasi sederhana di atas menggambarkan hubungan aliran energi/fluida dan gerak komponen mesin. Dapat diganti dengan animasi HTML5/video milik guru.</p>
+
+<div style="margin-top:10px">
+<button class="btn" onclick="loadPGMFI('pgmfi.swf')">▶ PGM-FI Utama</button>
+<button class="btn" onclick="loadPGMFI('pgmfi_pendukung.swf')">▶ Animasi Pendukung</button>
+<button class="btn yellow" onclick="openPGMFIFull()">⛶ Buka Layar Penuh</button>
+</div>
+
+<p class="small">Jika animasi Flash tertentu tidak kompatibel dengan Ruffle, siswa tetap dapat melihat video PGM-FI di bawah ini.</p>
+
+<h3>▶ Video Prinsip Kerja PGM-FI</h3>
+<video controls playsinline preload="metadata" class="media" style="max-height:500px">
+  <source src="video/animasi-efi-pgmfi.mp4" type="video/mp4">
+  Browser tidak mendukung pemutaran video.
+</video>
+</div>
 </div>
 
 <div class="card"><h3>2. Dasar Hukum / Regulasi Pemerintah Indonesia</h3>
@@ -224,6 +243,45 @@ function showTab(id,btn){
  btn.classList.add("active");
  window.scrollTo({top:0,behavior:"smooth"});
 }
+
+
+let pgmfiPlayer = null;
+window.addEventListener("load", function(){
+  try{
+    if(window.RufflePlayer && window.RufflePlayer.newest){
+      const ruffle = window.RufflePlayer.newest();
+      pgmfiPlayer = ruffle.createPlayer();
+      pgmfiPlayer.style.width = "100%";
+      pgmfiPlayer.style.height = "500px";
+      const holder = document.getElementById("pgmfiPlayer");
+      if(holder){
+        holder.innerHTML = "";
+        holder.appendChild(pgmfiPlayer);
+        pgmfiPlayer.load("animasi-pgmfi/pgmfi.swf");
+      }
+    }else{
+      document.getElementById("pgmfiPlayer").innerHTML =
+        "<div style='padding:30px;text-align:center'>Pemutar animasi belum termuat. Periksa koneksi internet.</div>";
+    }
+  }catch(e){
+    document.getElementById("pgmfiPlayer").innerHTML =
+      "<div style='padding:30px;text-align:center'>Animasi belum dapat dimuat. Silakan gunakan video PGM-FI di bawah.</div>";
+  }
+});
+
+function loadPGMFI(file){
+  if(pgmfiPlayer){
+    pgmfiPlayer.load("animasi-pgmfi/" + file);
+  }
+}
+function openPGMFIFull(){
+  if(pgmfiPlayer && pgmfiPlayer.requestFullscreen){
+    pgmfiPlayer.requestFullscreen();
+  }else{
+    window.open("animasi-pgmfi/index.html","_blank");
+  }
+}
+
 function makeQR(){
  const box=document.getElementById("qrcode");
  box.innerHTML="";
