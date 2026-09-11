@@ -26,6 +26,8 @@ table{border-collapse:collapse;width:100%;font-size:14px}th,td{border:1px solid 
 .gallery img{height:220px;object-fit:contain}.modal{display:none;position:fixed;inset:0;background:#000b;z-index:30;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}.modal img{max-width:95vw;max-height:90vh;background:white;border-radius:10px}.close{position:absolute;top:12px;right:15px;color:white;background:#0008;border:0;border-radius:50%;width:44px;height:44px;font-size:24px}
 footer{text-align:center;color:var(--muted);padding:25px 14px;font-size:13px}
 @media(max-width:600px){.title{font-size:23px}.card{padding:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.comp img{height:105px}}
+
+.flow-diagram-card{padding:18px}.flow-diagram-card .figure{max-height:620px}.legend-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}.legend{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:10px;background:#f8fbff}.legend>b{min-width:32px;height:32px;border-radius:8px;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px}.legend strong{display:block;color:#123047}.legend small{display:block;color:var(--muted);line-height:1.35;margin-top:2px}@media(max-width:700px){.legend-grid{grid-template-columns:1fr}}
 </style>
 
 <style>
@@ -51,7 +53,23 @@ footer{text-align:center;color:var(--muted);padding:25px 14px;font-size:13px}
 <section id="alur" class="tab"><div class="card"><h2>Simulasi Alur Sistem</h2><p>Tekan tombol untuk menjalankan aliran tahap demi tahap.</p><button class="btn" id="start">▶ START</button>
 <div class="flow" id="flow"><div class="node">Tangki</div><span class="arrow">→</span><div class="node">Filter</div><span class="arrow">→</span><div class="node">Pompa</div><span class="arrow">→</span><div class="node">Regulator</div><span class="arrow">→</span><div class="node">Selang</div><span class="arrow">→</span><div class="node">Injector</div><span class="arrow">→</span><div class="node">Throttle Body</div></div>
 <div class="info" id="flowInfo">Bahan bakar dari tangki diisap oleh pompa melalui filter, kemudian tekanan dikendalikan sebelum menuju injektor.</div></div>
-<div class="card"><img class="figure" src="assets/bagan aliran bahan bakar EFI.JPG" alt="Bagan aliran bahan bakar EFI" data-zoom><div class="caption">Bagan aliran bahan bakar EFI dari file gambar Bapak.</div></div>
+<div class="card flow-diagram-card">
+<h2>📘 Rangkaian Aliran Bahan Bakar EFI</h2>
+<p><strong>Klik gambar untuk memperbesar.</strong> Gambar menunjukkan rangkaian komponen EFI Honda Supra X 125 dan arah aliran bahan bakar.</p>
+<img class="figure" src="assets/rangkaian_komponen_EFI_Honda_Supra_X125.png" alt="Rangkaian aliran bahan bakar EFI Honda Supra X 125 dengan nomor komponen 1 sampai 7" data-zoom>
+<div class="caption">Gambar 1.5 Komponen EFI Pada Honda Supra X 125 — Sumber: Modul EMS TSM PPPPTK BOE Malang</div>
+<div class="legend-grid">
+<div class="legend"><b>1</b><span><strong>Tangki bahan bakar</strong><small>Fuel Tank — tempat penyimpanan bahan bakar.</small></span></div>
+<div class="legend"><b>2</b><span><strong>Saringan hisap bahan bakar</strong><small>Fuel Suction Filter — menyaring kotoran sebelum bahan bakar masuk pompa.</small></span></div>
+<div class="legend"><b>3</b><span><strong>Pompa bensin listrik</strong><small>Electric Fuel Pump — menghisap dan mengalirkan bahan bakar.</small></span></div>
+<div class="legend"><b>4</b><span><strong>Pengatur tekanan bahan bakar</strong><small>Fuel Pressure Regulator — menjaga tekanan bahan bakar tetap stabil.</small></span></div>
+<div class="legend"><b>5</b><span><strong>Selang suplai bahan bakar</strong><small>Fuel Feed Hose — menyalurkan bahan bakar bertekanan menuju injektor.</small></span></div>
+<div class="legend"><b>6</b><span><strong>Nozel / Injector</strong><small>Injector — menyemprotkan bahan bakar ke saluran masuk.</small></span></div>
+<div class="legend"><b>7</b><span><strong>Rumah katup gas</strong><small>Throttle Body — mengatur udara yang masuk ke mesin.</small></span></div>
+</div>
+<div class="info"><strong>Prinsip aliran:</strong> bahan bakar dari tangki dihisap melalui filter oleh pompa, tekanannya dikendalikan regulator, kemudian dialirkan melalui selang menuju injector untuk disemprotkan ke saluran masuk melalui throttle body.</div>
+</div>
+<div class="card"><img class="figure" src="assets/bagan aliran bahan bakar EFI.JPG" alt="Bagan aliran bahan bakar EFI" data-zoom><div class="caption">Bagan aliran bahan bakar EFI.</div></div>
 </section>
 
 <section id="komponen" class="tab"><div class="card"><h2>Komponen Sistem</h2><div class="grid" id="comps"></div><div class="info" id="ci">Klik salah satu komponen.</div></div></section>
