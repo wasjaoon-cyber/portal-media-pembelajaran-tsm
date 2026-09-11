@@ -15,7 +15,7 @@ h2{margin:0 0 8px;font-size:22px;color:#123047}h3{margin:0 0 7px;color:#123047}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
 .comp{border:1px solid var(--line);border-radius:14px;background:white;overflow:hidden;cursor:pointer}.comp img{width:100%;height:130px;object-fit:contain;background:#f8fafc}.comp div{padding:12px}.comp strong{color:var(--p);display:block}.comp small{color:var(--muted)}
 .info{padding:13px 15px;border-left:4px solid var(--p);background:#f7faff;border-radius:8px;margin-top:12px}
-.btn{border:0;border-radius:10px;padding:11px 15px;background:var(--p);color:#fff;font-weight:700;cursor:pointer}.btn.alt{background:#e9eef5;color:#123047}
+.btn{border:0;border-radius:10px;padding:11px 15px;background:var(--p);color:#fff;font-weight:700;cursor:pointer}.btn.alt{background:#e9eef5;color:#123047}.back-ems{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:10px 14px;border-radius:10px;background:#ffffff22;border:1px solid #ffffff66;color:#fff;text-decoration:none;font-weight:800}.back-ems:hover{background:#fff;color:#123047}.back-ems:focus{outline:3px solid #fff8;outline-offset:2px}
 .flow{display:flex;align-items:center;gap:8px;overflow:auto;padding:18px 4px}.node{min-width:112px;text-align:center;padding:14px 8px;border:2px solid var(--line);border-radius:13px;background:white;font-weight:700}.node.on{border-color:var(--p);background:var(--p2);box-shadow:0 0 0 4px #0b5ed71a}.arrow{font-size:23px;color:var(--muted)}
 .figure{width:100%;max-height:500px;object-fit:contain;border:1px solid var(--line);border-radius:12px;background:white;cursor:zoom-in}.caption{text-align:center;color:var(--muted);font-size:13px;margin:6px 0 14px}
 .meter{height:12px;background:#e7edf4;border-radius:99px;overflow:hidden;margin:12px 0}.meter i{display:block;width:0;height:100%;background:var(--p);transition:.5s}
@@ -39,7 +39,7 @@ footer{text-align:center;color:var(--muted);padding:25px 14px;font-size:13px}
 
 </head>
 <body>
-<header><div class="wrap"><div class="eyebrow">MEDIA PEMBELAJARAN INTERAKTIF • ENGINE MANAGEMENT SYSTEM</div><div class="title">Materi 2 — Sistem Pengaliran Bahan Bakar</div><div class="sub">Kelas XII TSM • Berbasis gambar Materi 2 yang diberikan guru</div></div></header>
+<header><div class="wrap"><div class="eyebrow">MEDIA PEMBELAJARAN INTERAKTIF • ENGINE MANAGEMENT SYSTEM</div><div class="title">Materi 2 — Sistem Pengaliran Bahan Bakar</div><div class="sub">Kelas XII TSM • Berbasis gambar Materi 2 yang diberikan guru</div><a class="back-ems" href="index.html" id="backEms">← Kembali ke EMS</a></div></header>
 <nav><div class="nav">
 <button class="active" data-tab="home">Beranda</button><button data-tab="alur">Alur Bahan Bakar</button><button data-tab="komponen">Komponen</button><button data-tab="pompa">Fuel Pump</button><button data-tab="reg">Pressure Regulator</button><button data-tab="inj">Injector</button><button data-tab="throttle">Throttle Body</button><button data-tab="gambar">Galeri Gambar</button><button data-tab="rawat">Perawatan</button><button data-tab="quiz">Quiz</button>
 </div></nav>
@@ -56,7 +56,7 @@ footer{text-align:center;color:var(--muted);padding:25px 14px;font-size:13px}
 <div class="card flow-diagram-card">
 <h2>📘 Rangkaian Aliran Bahan Bakar EFI</h2><div class="info" style="margin-bottom:12px"><strong>Gambar rangkaian:</strong> Honda Supra X 125 — klik gambar untuk memperbesar.</div>
 <p><strong>Klik gambar untuk memperbesar.</strong> Gambar menunjukkan rangkaian komponen EFI Honda Supra X 125 dan arah aliran bahan bakar.</p>
-<img class="figure" src="assets/sistem_aliran_bahan_bakar_EFI.jpg" alt="Rangkaian aliran bahan bakar EFI Honda Supra X 125 dengan nomor komponen 1 sampai 7" data-zoom>
+<img class="figure" src="assets/rangkaian-aliran-bahan-bakar-efi.jpg" alt="Rangkaian aliran bahan bakar EFI Honda Supra X 125 dengan nomor komponen 1 sampai 7" data-zoom>
 <div class="caption">Gambar 1.5 Komponen EFI Pada Honda Supra X 125 — Sumber: Modul EMS TSM PPPPTK BOE Malang</div>
 <div class="legend-grid">
 <div class="legend"><b>1</b><span><strong>Tangki bahan bakar</strong><small>Fuel Tank — tempat penyimpanan bahan bakar.</small></span></div>
@@ -69,17 +69,17 @@ footer{text-align:center;color:var(--muted);padding:25px 14px;font-size:13px}
 </div>
 <div class="info"><strong>Prinsip aliran:</strong> bahan bakar dari tangki dihisap melalui filter oleh pompa, tekanannya dikendalikan regulator, kemudian dialirkan melalui selang menuju injector untuk disemprotkan ke saluran masuk melalui throttle body.</div>
 </div>
-<div class="card"><img class="figure" src="assets/bagan aliran bahan bakar EFI.JPG" alt="Bagan aliran bahan bakar EFI" data-zoom><div class="caption">Bagan aliran bahan bakar EFI.</div></div>
+<div class="card"><img class="figure" src="assets/bagan-aliran-bahan-bakar-efi.jpg" alt="Bagan aliran bahan bakar EFI" data-zoom><div class="caption">Bagan aliran bahan bakar EFI.</div></div>
 </section>
 
 <section id="komponen" class="tab"><div class="card"><h2>Komponen Sistem</h2><div class="grid" id="comps"></div><div class="info" id="ci">Klik salah satu komponen.</div></div></section>
 
 <section id="pompa" class="tab"><div class="card"><h2>Simulasi Electric Fuel Pump</h2><p>Pompa bensin berfungsi memompa dan mengalirkan bahan bakar dari tangki ke injektor.</p><button class="btn" id="pump">AKTIFKAN POMPA</button><div class="meter"><i id="pm"></i></div><div class="info" id="pi">Pompa belum aktif.</div></div>
-<div class="card"><img class="figure" src="assets/bagian pompa bahan bakar.JPG" alt="Bagian pompa bahan bakar" data-zoom><div class="caption">Bagian-bagian pompa bahan bakar.</div></div>
-<div class="card"><img class="figure" src="assets/pompa bahan bakar.JPG" alt="Pompa bahan bakar" data-zoom><div class="caption">Konstruksi/modul pompa bahan bakar.</div></div></section>
+<div class="card"><img class="figure" src="assets/bagian-pompa-bahan-bakar.jpg" alt="Bagian pompa bahan bakar" data-zoom><div class="caption">Bagian-bagian pompa bahan bakar.</div></div>
+<div class="card"><img class="figure" src="assets/pompa-bahan-bakar.jpg" alt="Pompa bahan bakar" data-zoom><div class="caption">Konstruksi/modul pompa bahan bakar.</div></div></section>
 
 <section id="reg" class="tab"><div class="card"><h2>Fuel Pressure Regulator</h2><p>Fuel pressure regulator berfungsi mengatur tekanan bahan bakar di dalam sistem agar tetap/konstan.</p><button class="btn" id="regbtn">SIMULASIKAN TEKANAN</button><div class="meter"><i id="rm"></i></div><div class="info" id="ri">Tekanan sistem stabil.</div></div>
-<div class="card"><img class="figure" src="assets/pressure Regulator.JPG" alt="Pressure regulator" data-zoom><div class="caption">Pressure regulator dari file gambar Bapak.</div></div></section>
+<div class="card"><img class="figure" src="assets/pressure-regulator.jpg" alt="Pressure regulator" data-zoom><div class="caption">Pressure regulator dari file gambar Bapak.</div></div></section>
 
 <section id="inj" class="tab"><div class="card"><h2>Simulasi Injector</h2><p>ECU/ECM memberi tegangan ke solenoid coil. Solenoid menjadi magnet, menarik plunger dan mengangkat needle valve sehingga bahan bakar bertekanan keluar.</p><button class="btn" id="injbtn">⚡ AKTIFKAN INJECTOR</button><div class="spray" id="spray"><div class="cone"></div></div><div class="info" id="ii">Injector tertutup.</div></div>
 <div class="card">
@@ -102,9 +102,9 @@ footer{text-align:center;color:var(--muted);padding:25px 14px;font-size:13px}
 </div>
 <p style="margin-top:10px"><a href="https://www.youtube.com/watch?v=MR63sgxJCg8" target="_blank" rel="noopener" class="btn" style="display:inline-block;text-decoration:none">▶ Buka Video di YouTube</a></p>
 </div>
-<div class="card"><img class="figure" src="assets/bagian injektor.JPG" alt="Bagian injektor" data-zoom><div class="caption">Bagian injektor.</div></div>
-<div class="card"><img class="figure" src="assets/penempatan injektor.JPG" alt="Penempatan injektor" data-zoom><div class="caption">Penempatan injektor.</div></div>
-<div class="card"><img class="figure" src="assets/injektor.JPG" alt="Injector" data-zoom><div class="caption">Gambar injector.</div></div></section>
+<div class="card"><img class="figure" src="assets/bagian-injektor.jpg" alt="Bagian injektor" data-zoom><div class="caption">Bagian injektor.</div></div>
+<div class="card"><img class="figure" src="assets/penempatan-injektor.jpg" alt="Penempatan injektor" data-zoom><div class="caption">Penempatan injektor.</div></div>
+<div class="card"><img class="figure" src="assets/injektor.jpg" alt="Injector" data-zoom><div class="caption">Gambar injector.</div></div></section>
 
 <section id="throttle" class="tab"><div class="card"><h2>Simulasi Throttle Body</h2><p>Geser slider untuk mensimulasikan pembukaan throttle valve.</p><input id="tr" class="range" type="range" min="0" max="100" value="0"><div class="throttle"><div class="butterfly" id="bf"></div></div><div class="info" id="ti">0% — throttle tertutup.</div></div></section>
 
@@ -125,15 +125,16 @@ footer{text-align:center;color:var(--muted);padding:25px 14px;font-size:13px}
 <script>
 const nav=[...document.querySelectorAll('nav button')],tabs=[...document.querySelectorAll('.tab')];
 nav.forEach(b=>b.onclick=()=>{nav.forEach(x=>x.classList.remove('active'));b.classList.add('active');tabs.forEach(t=>t.classList.toggle('active',t.id===b.dataset.tab));scrollTo({top:0,behavior:'smooth'})});
+const backEms=document.getElementById('backEms');if(backEms){backEms.addEventListener('click',function(e){if(window.history.length>1){e.preventDefault();window.history.back();}})}
 
 const data=[
-["Tangki Bahan Bakar","tanki bahan bakar.JPG","Menampung bahan bakar; pada tutup tangki terdapat katup ventilasi dan katup vakum."],
-["Fuel Suction Filter","filter bahan bakar.JPG","Menyaring kotoran agar tidak terisap masuk ke pompa."],
-["Electric Fuel Pump","pompa bahan bakar.JPG","Memompa dan mengalirkan bahan bakar dari tangki ke injektor."],
-["Fuel Pressure Regulator","pressure Regulator.JPG","Mengatur tekanan bahan bakar di dalam sistem agar tetap/konstan."],
-["Fuel Feed Hose","saluran bahan bakar.JPG","Mengalirkan bahan bakar bertekanan dari pompa menuju injektor."],
-["Injector","injektor.JPG","Menyemprotkan bahan bakar ke saluran masuk di dekat katup masuk; lama pembukaan diatur ECM/ECU."],
-["Throttle Body","sistem aliran bahan bakar EFI.JPG","Bersama sistem udara masuk, menyalurkan sejumlah udara yang diperlukan untuk pembakaran."]
+["Tangki Bahan Bakar","tanki-bahan-bakar.jpg","Menampung bahan bakar; pada tutup tangki terdapat katup ventilasi dan katup vakum."],
+["Fuel Suction Filter","filter-bahan-bakar.jpg","Menyaring kotoran agar tidak terisap masuk ke pompa."],
+["Electric Fuel Pump","pompa-bahan-bakar.jpg","Memompa dan mengalirkan bahan bakar dari tangki ke injektor."],
+["Fuel Pressure Regulator","pressure-regulator.jpg","Mengatur tekanan bahan bakar di dalam sistem agar tetap/konstan."],
+["Fuel Feed Hose","saluran-bahan-bakar.jpg","Mengalirkan bahan bakar bertekanan dari pompa menuju injektor."],
+["Injector","injektor.jpg","Menyemprotkan bahan bakar ke saluran masuk di dekat katup masuk; lama pembukaan diatur ECM/ECU."],
+["Throttle Body","sistem-aliran-bahan-bakar-efi.jpg","Bersama sistem udara masuk, menyalurkan sejumlah udara yang diperlukan untuk pembakaran."]
 ];
 const cg=document.getElementById('comps');
 data.forEach((d,i)=>{let e=document.createElement('div');e.className='comp';e.innerHTML='<img src="assets/'+d[1]+'" alt="'+d[0]+'"><div><strong>'+(i+1)+'. '+d[0]+'</strong><small>Klik untuk melihat fungsi</small></div>';e.onclick=()=>document.getElementById('ci').textContent=d[2];cg.appendChild(e)});
@@ -145,7 +146,7 @@ let reg=false;document.getElementById('regbtn').onclick=()=>{reg=!reg;document.g
 let inj=false;document.getElementById('injbtn').onclick=()=>{inj=!inj;document.getElementById('spray').classList.toggle('on',inj);document.getElementById('ii').textContent=inj?'Injector aktif: solenoid menarik plunger, needle valve membuka dan bahan bakar disemprotkan.':'Injector tertutup.'};
 document.getElementById('tr').oninput=e=>{let v=+e.target.value;document.getElementById('bf').style.transform='rotate('+((v-50)*.8)+'deg)';document.getElementById('ti').textContent=v+'% — '+(v===0?'throttle tertutup.':v<50?'throttle terbuka sebagian.':'throttle terbuka besar; aliran udara meningkat.')};
 
-const imgs=["bagan aliran bahan bakar EFI.JPG","bagian injektor.JPG","bagian pompa bahan bakar.JPG","filter bahan bakar.JPG","injektor.JPG","keterangan bagan aliaran bahan bakar.JPG","keterangan gambar aliran bahan bakar EFI.JPG","penempatan injektor.JPG","pompa bahan bakar.JPG","pressure Regulator.JPG","saluran bahan bakar.JPG","sistem aliran bahan bakar EFI.JPG","tanki bahan bakar.JPG"];
+const imgs=["bagan-aliran-bahan-bakar-efi.jpg","bagian-injektor.jpg","bagian-pompa-bahan-bakar.jpg","filter-bahan-bakar.jpg","injektor.jpg","keterangan-bagan-aliran-bahan-bakar.jpg","keterangan-gambar-aliran-bahan-bakar-efi.jpg","penempatan-injektor.jpg","pompa-bahan-bakar.jpg","pressure-regulator.jpg","saluran-bahan-bakar.jpg","sistem-aliran-bahan-bakar-efi.jpg","tanki-bahan-bakar.jpg"];
 const g=document.getElementById('gallery');imgs.forEach((x,i)=>{let d=document.createElement('div');d.className='card';d.style.margin=0;d.innerHTML='<h3>Gambar '+(i+1)+'</h3><img class="figure" src="assets/'+x+'" alt="'+x+'" data-zoom><div class="caption">'+x+'</div>';g.appendChild(d)});
 
 const modal=document.getElementById('modal'),mi=document.getElementById('modalImg');document.addEventListener('click',e=>{let im=e.target.closest('[data-zoom]');if(im){mi.src=im.src;mi.alt=im.alt;modal.classList.add('show')}});document.getElementById('close').onclick=()=>modal.classList.remove('show');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('show')};
