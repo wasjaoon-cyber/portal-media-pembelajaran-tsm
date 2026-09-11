@@ -23,6 +23,12 @@ footer{max-width:1200px;margin:28px auto;padding:0 14px 28px;color:var(--muted);
 window.RufflePlayer = window.RufflePlayer || {};
 </script>
 <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+<style>
+#animWrap:fullscreen{background:#000;padding:16px;display:flex;flex-direction:column;gap:10px;box-sizing:border-box}
+#animWrap:fullscreen .ruffle-host{flex:1;min-height:0;height:auto;background:#000}
+#animWrap:fullscreen .ruffle-host > ruffle-player{height:calc(100vh - 180px);min-height:320px}
+</style>
 </head>
 <body>
 <header><div class="head"><div class="eyebrow">MEDIA PEMBELAJARAN INTERAKTIF • ENGINE MANAGEMENT SYSTEM</div><h1>Materi 3 — Sistem Kontrol Elektronik</h1><div class="sub">Kelas XII TSM • Sensor • ECU/ECM • Aktuator • Diagnosis</div></div></header>
@@ -51,15 +57,7 @@ window.RufflePlayer = window.RufflePlayer || {};
 <div class="card"><h2>Rangkaian Sistem Kontrol Elektronik Supra X 125</h2><div class="imgwrap"><img src="assets/rangkaian-ecu-supra-x125.jpg" alt="Rangkaian sistem kontrol elektronik Supra X 125" data-zoom></div></div>
 </section>
 
-<section id="video">
-<div class="card"><h2>🎬 Video / Animasi Cara Kerja Sistem Kontrol EFI</h2><p>Animasi PGM-FI menjelaskan hubungan <b>Sensor → ECU/ECM → Aktuator</b>.</p>
-<div class="grid">
-<div class="mini"><span class="tag">ANIMASI 1</span><h3>PGM-FI</h3><div class="animbox"><div class="status" id="status1">Menyiapkan Ruffle...</div><div class="ruffle-host" id="player1"></div></div><button class="btn" type="button" id="play1">▶ Jalankan Animasi</button> <a id="open1" class="btn secondary" href="pgmfi.swf" target="_blank" rel="noopener">Buka PGM-FI</a></div>
-<div class="mini"><span class="tag">ANIMASI 2</span><h3>PGM-FI Pendukung</h3><div class="animbox"><div class="status" id="status2">Menyiapkan Ruffle...</div><div class="ruffle-host" id="player2"></div></div><button class="btn" type="button" id="play2">▶ Jalankan Animasi</button> <a id="open2" class="btn secondary" href="pgmfi_pendukung.swf" target="_blank" rel="noopener">Buka PGM-FI Pendukung</a></div>
-</div>
-<div id="ruffleInfo" class="warn">Animasi SWF membutuhkan internet karena pemutar Ruffle dimuat dari CDN. File SWF tetap berada di dalam folder <b>animasi-efi</b>.</div>
-</div>
-</section>
+<section id="video"><div class="card"><h2>🎬 Animasi Cara Kerja Sistem Kontrol EFI</h2><p>Animasi PGM-FI digunakan untuk melihat hubungan <b>Sensor → ECU/ECM → Aktuator</b> secara visual.</p><div class="mini"><span class="tag">PGM-FI</span><h3>Animasi Sistem EFI</h3><div class="animbox" id="animWrap"><div class="status" id="status1">Tekan “Jalankan Animasi” untuk memuat animasi.</div><div class="ruffle-host" id="player1"></div></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="btn" type="button" id="play1">▶ Jalankan Animasi</button><button class="btn secondary" type="button" id="fs1">⛶ Full Screen</button><a id="open1" class="btn secondary" href="pgmfi.swf" target="_blank" rel="noopener">Buka PGM-FI</a></div><div class="warn">Untuk GitHub Pages, file <b>pgmfi.swf</b> harus berada satu folder dengan <b>ems-pembelajaran-3.html</b>. Tombol Full Screen dijalankan setelah animasi tampil.</div></div></div></section>
 
 <section id="sensor"><div class="card"><h2>Sensor EMS</h2><p>Sensor yang dibahas: CKP, MAP, TPS, IAT, ECT, EOT, BAS, dan O2.</p><div class="grid">
 <div class="sensor-card"><span class="tag">CKP</span><h3>Crankshaft Position Sensor</h3><p>Mendeteksi jumlah putaran poros engkol dan menentukan posisi TMA/saat pengapian.</p><img src="assets/sensor-ckp.jpg" alt="Sensor CKP" data-zoom></div>
@@ -113,45 +111,42 @@ function blink(n){const lamp=document.getElementById('milLamp'),text=document.ge
 const quiz=[['Tiga bagian penting dalam sistem kontrol elektronik adalah ...',['Sensor, ECU/pengontrol, aktuator','Tangki, pompa, injector','Baterai, ban, rem','Filter, tangki, throttle'],0],['CKP sensor berfungsi untuk ...',['Mendeteksi jumlah putaran poros engkol dan menentukan posisi TMA/saat pengapian','Mendeteksi suhu oli','Mendeteksi sudut kemiringan','Mendeteksi CO'],0],['MAP sensor digunakan untuk mengetahui ...',['Tekanan udara pada intake manifold','Tekanan ban','Tegangan baterai','Suhu knalpot'],0],['Pada TPS saat katup gas tertutup, tegangan yang disebut dalam materi sekitar ...',['0,5 V','2,5 V','4,5 V','12 V'],0],['ECT berfungsi mendeteksi ...',['Suhu air pendingin mesin','Suhu ban','Tekanan manifold','Kadar CO'],0],['BAS digunakan sebagai pengaman saat kemiringan ...',['55° atau lebih','10°','25°','90°'],0],['ECU/ECM memberi perintah kepada ...',['Aktuator seperti injektor dan ignition coil','Ban','Kampas rem','Lampu saja'],0],['Pada kerusakan rangkaian injektor MIL dapat berkedip ...',['12 kali','1 kali','7 kali','54 kali'],0]];
 const qf=document.getElementById('quizForm');qf.innerHTML=quiz.map((q,i)=>'<div class="quizq"><p>'+(i+1)+'. '+q[0]+'</p>'+q[1].map((a,j)=>'<label><input type="radio" name="q'+i+'" value="'+j+'"> '+String.fromCharCode(65+j)+'. '+a+'</label>').join('')+'</div>').join('')+'<button class="btn" type="submit">Periksa Nilai</button>';qf.addEventListener('submit',e=>{e.preventDefault();let score=0;quiz.forEach((q,i)=>{const a=document.querySelector('input[name=q'+i+']:checked');if(a&&Number(a.value)===q[2])score++});const r=document.getElementById('quizResult');r.style.display='block';r.innerHTML='<div class="score">Nilai: '+Math.round(score/quiz.length*100)+'</div><p>Benar '+score+' dari '+quiz.length+' soal.</p>'});
 async function createRuffle(containerId, swf, statusId, linkId){
-const host=document.getElementById(containerId);
-const status=document.getElementById(statusId);
-const link=document.getElementById(linkId);
-try{
-  status.textContent='Memuat Ruffle dan animasi…';
-  if(!window.RufflePlayer || !window.RufflePlayer.newest){
-    throw new Error('Ruffle belum termuat. Tunggu sebentar lalu tekan tombol lagi.');
+  const host=document.getElementById(containerId);
+  const status=document.getElementById(statusId);
+  const errorBox=host.parentElement.querySelector('.error');
+  if(errorBox) errorBox.remove();
+  status.textContent='Memuat animasi…';
+  try{
+    if(!window.RufflePlayer || !window.RufflePlayer.newest){
+      throw new Error('Ruffle belum termuat. Periksa koneksi internet lalu coba lagi.');
+    }
+    host.innerHTML='';
+    const source=window.RufflePlayer.newest();
+    const player=source.createPlayer();
+    player.style.width='100%';
+    player.style.height='100%';
+    player.setAttribute('aria-label','Animasi PGM-FI');
+    host.appendChild(player);
+    const swfUrl=new URL(swf,window.location.href).href;
+    await player.ruffle().load({url:swfUrl,autoplay:'on',unmuteOverlay:'hidden'});
+    status.textContent='Animasi berhasil dimuat.';
+  }catch(err){
+    status.textContent='Animasi gagal dimuat.';
+    const box=document.createElement('div'); box.className='error';
+    box.innerHTML='Ruffle gagal memuat <b>pgmfi.swf</b>. Pastikan file berada satu folder dengan ems-pembelajaran-3.html. <a href="'+new URL(swf,window.location.href).href+'" target="_blank" rel="noopener">Buka file SWF langsung</a>.';
+    host.parentElement.appendChild(box);
+    console.error('Ruffle:',err);
   }
-  const source=window.RufflePlayer.newest();
-  const player=source.createPlayer();
-  player.style.width='100%';
-  player.style.height='420px';
-  player.config = {
-    autoplay: 'on',
-    letterbox: 'on',
-    preferredRenderer: 'canvas',
-    warnOnUnsupportedContent: true,
-    showSwfDownload: true,
-    splashScreen: false,
-    preloader: true
-  };
-  host.innerHTML='';
-  host.appendChild(player);
-  const swfUrl = new URL(swf, window.location.href).href;
-  if(link){ link.href=swfUrl; link.target='_blank'; link.rel='noopener'; }
-  await player.ruffle().load(swfUrl);
-  status.textContent='Animasi berhasil dimuat. Bila belum terlihat, tunggu beberapa detik.';
-  setTimeout(()=>{ try { player.play(); } catch(e){} }, 200);
-}catch(err){
-  status.textContent='Animasi gagal dimuat.';
-  const e=document.createElement('div');
-  e.className='error';
-  e.innerHTML='Gagal menjalankan animasi. Pastikan file <b>pgmfi.swf</b> atau <b>pgmfi_pendukung.swf</b> berada satu folder dengan ems-pembelajaran-3.html. <a href="'+new URL(swf,window.location.href).href+'" target="_blank" rel="noopener">Buka file SWF langsung</a>.';
-  host.innerHTML='';
-  host.appendChild(e);
-  console.error('Ruffle:', err);
-}}
+}
+
 document.getElementById('play1').addEventListener('click',()=>createRuffle('player1','pgmfi.swf','status1','open1'));
-document.getElementById('play2').addEventListener('click',()=>createRuffle('player2','pgmfi_pendukung.swf','status2','open2'));
+document.getElementById('fs1').addEventListener('click',async()=>{
+  const wrap=document.getElementById('animWrap');
+  try{
+    if(document.fullscreenElement){ await document.exitFullscreen(); }
+    else if(wrap.requestFullscreen){ await wrap.requestFullscreen(); }
+  }catch(e){ console.error('Fullscreen:',e); }
+});
 window.addEventListener('load',()=>{
   setTimeout(()=>{
     const s=document.getElementById('ruffleInfo');
