@@ -4,7 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TSM - Engine Management System | Materi 1</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+
+function goBackEMS(){
+  window.location.href = "../index.html";
+}
+
+</script>
 <style>
 :root{--primary:#0b5ed7;--dark:#10233f;--light:#f4f7fb;--accent:#ffc107;--green:#198754}
 *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:#182433}
@@ -56,6 +62,7 @@ ul li{margin:7px 0}
 
 <nav>
 <button class="active" onclick="showTab('beranda',this)">🏠 Beranda</button>
+<button onclick="goBackEMS()">🔙 Kembali ke EMS</button>
 <button onclick="showTab('pretest',this)">📝 Pretest</button>
 <button onclick="showTab('materi',this)">📚 Materi</button>
 <button onclick="showTab('quiz',this)">🎯 Quis</button>
@@ -147,11 +154,23 @@ Browser tidak mendukung pemutaran video.
 </div>
 
 <div class="grid">
-<div><h3>Animasi Karburator</h3>
-<div class="anim"><div class="pipe"></div><div class="dot" style="animation-delay:.3s"></div></div>
-<p>Udara bergerak melalui venturi dan membantu menarik bahan bakar dari sistem karburator.</p></div>
-<div><h3>Animasi EFI</h3>
-<div class="anim"><div class="pipe"></div><div class="dot" style="animation-delay:.8s"></div><div class="piston" style="border-color:#65d6ff"></div></div>
+<div>
+<h3>🎬 Animasi Karburator</h3>
+<video controls playsinline preload="metadata" class="media" style="height:260px;max-height:none;background:#111">
+  <source src="video/animasi-karburator.mp4" type="video/mp4">
+  Browser tidak mendukung pemutaran video.
+</video>
+<p>Video menjelaskan prinsip kerja karburator, aliran udara melalui venturi, dan proses masuknya bahan bakar.</p>
+</div>
+<div>
+<h3>🎬 Animasi EFI / PGM-FI</h3>
+<video controls playsinline preload="metadata" class="media" style="height:260px;max-height:none;background:#111">
+  <source src="video/animasi-efi-pgmfi.mp4" type="video/mp4">
+  Browser tidak mendukung pemutaran video.
+</video>
+<p>Video menjelaskan prinsip kerja sistem injeksi/PGM-FI dan pengendalian bahan bakar secara elektronik.</p>
+</div>
+</div>
 <p>ECU mengolah informasi sensor dan mengatur injektor serta aktuator sesuai kondisi mesin.</p></div>
 </div>
 </div>
@@ -188,9 +207,19 @@ Browser tidak mendukung pemutaran video.
 </div>
 </div>
 
-<div class="card"><h3>🎬 Animasi Interaktif PGM-FI</h3>
-<p>Animasi PGM-FI dari aplikasi Flash lama dapat dicoba melalui Ruffle pada browser modern.</p>
-<a class="btn" href="animasi-pgmfi/index.html">Buka Animasi PGM-FI ↗</a></div>
+<div class="card">
+<h3>🎬 Animasi Interaktif PGM-FI</h3>
+<p>Animasi interaktif PGM-FI dari aplikasi Flash lama ditampilkan langsung di dalam materi menggunakan <b>Ruffle</b>.</p>
+<div id="pgmfiPlayer" style="width:100%;height:500px;background:#111;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff">
+  <div>Memuat animasi PGM-FI...</div>
+</div>
+<div style="margin-top:10px">
+<button class="btn" onclick="loadPGMFI('pgmfi.swf')">▶ PGM-FI Utama</button>
+<button class="btn" onclick="loadPGMFI('pgmfi_pendukung.swf')">▶ Animasi Pendukung</button>
+<button class="btn yellow" onclick="openPGMFIFull()">⛶ Layar Penuh</button>
+</div>
+<p class="small">Jika SWF tertentu tidak kompatibel dengan Ruffle, gunakan video EFI/PGM-FI di atas sebagai alternatif.</p>
+</div>
 <div class="card"><h3>Ringkasan</h3>
 <p>Engine Management System bekerja sebagai satu kesatuan. <b>Sensor → ECU/ECM → Aktuator</b> merupakan dasar pengendalian elektronik, sedangkan sistem bahan bakar dan induksi udara menyediakan kebutuhan utama proses pembakaran.</p>
 </div>
