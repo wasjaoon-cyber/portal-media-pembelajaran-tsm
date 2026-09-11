@@ -1,78 +1,247 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pembelajaran 1 - Identifikasi Engine Management System pada Sepeda Motor</title><style>
-:root{--blue:#123c69;--blue2:#1d75b9;--light:#eaf3fb;--bg:#f3f7fb;--text:#172033;--muted:#667085;--ok:#16803c;--warn:#9a6700}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
-header{background:linear-gradient(135deg,#123c69,#1d75b9);color:#fff;text-align:center;padding:30px 15px}
-header h1{margin:0 0 7px;font-size:28px}header p{margin:4px}
-main{max-width:1120px;margin:22px auto;padding:0 15px}.topbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}
-.btn{display:inline-block;padding:10px 14px;background:#fff;border:1px solid #d5e1ee;border-radius:9px;text-decoration:none;color:var(--blue);font-weight:bold}
-.btn.primary{background:var(--blue2);color:#fff;border-color:var(--blue2)}
-.intro,.panel{background:#fff;border-radius:13px;padding:20px;box-shadow:0 4px 15px #0001;margin-bottom:18px}
-.section-title{background:var(--blue);color:#fff;padding:15px 18px;border-radius:12px 12px 0 0;font-size:20px;font-weight:bold}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px}
-.card{display:block;background:#fff;border:1px solid #dbe4ef;border-left:5px solid var(--blue2);border-radius:12px;padding:18px;text-decoration:none;color:var(--text);box-shadow:0 3px 10px #0001;transition:.2s}
-.card:hover{transform:translateY(-2px);box-shadow:0 7px 18px #0002}.num{display:inline-flex;width:42px;height:42px;border-radius:50%;align-items:center;justify-content:center;background:var(--blue2);color:#fff;font-weight:bold;margin-right:8px}
-.card h3{display:inline;color:var(--blue);font-size:18px}.card p{margin:10px 0 0;color:var(--muted);font-size:13px}
-.pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.pill{background:var(--light);color:var(--blue);padding:5px 9px;border-radius:18px;font-size:12px;font-weight:bold}
-.tabs{position:sticky;top:0;z-index:5;background:rgba(243,247,251,.96);padding:10px 0;display:flex;gap:7px;flex-wrap:wrap}
-.tabs a{padding:9px 12px;border-radius:8px;background:#fff;border:1px solid #dbe4ef;color:var(--blue);text-decoration:none;font-size:13px;font-weight:bold}
-h2{color:var(--blue);margin-top:0}h3{color:var(--blue)}ul,ol{padding-left:22px}.note{padding:13px 15px;border-left:4px solid var(--blue2);background:#f7fbff;border-radius:7px;margin:12px 0}
-.video{width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#eef3f7}.video-note{padding:18px;text-align:center;color:var(--muted);border:2px dashed #c9d7e6;border-radius:10px}
-table{width:100%;border-collapse:collapse;margin:12px 0}th,td{border:1px solid #dbe4ef;padding:9px;text-align:left}th{background:var(--light);color:var(--blue)}
-.quiz-question{padding:14px;border:1px solid #dbe4ef;border-radius:10px;margin:12px 0;background:#fff}.quiz-question label{display:block;margin:6px 0}
-input[type=text],input[type=url],textarea,select{width:100%;padding:10px;border:1px solid #ccd8e5;border-radius:7px;margin:5px 0 12px;font:inherit}
-.action{padding:11px 15px;border:0;border-radius:8px;background:var(--blue2);color:#fff;font-weight:bold;cursor:pointer}
-.result{font-weight:bold;margin-top:10px}.answer{display:none;background:#f1faf4;border-left:4px solid var(--ok);padding:12px;margin-top:10px}
-.embed-box{background:#fbfcfe;border:1px solid #dbe4ef;border-radius:10px;padding:15px;margin:12px 0}
-footer{text-align:center;padding:28px;color:var(--muted)}
-@media(max-width:600px){header h1{font-size:22px}.grid{grid-template-columns:1fr}.tabs a{flex:1;text-align:center}}
-</style></head><body>
-<header><h1>PEMBELAJARAN 1: IDENTIFIKASI ENGINE MANAJEMEN SISTEM SEPEDA MOTOR</h1><p></p><p>Kelas XII — Teknik Sepeda Motor • SMKN 1 Kabupaten Tangerang</p><p>Guru: Wasja, S.Pd</p></header>
-<main>
-<div class="topbar"><a class="btn" href="engine-management-system.html">← Kembali ke EMS</a><a class="btn" href="index.html">🏠 Portal Utama</a></div>
-<div class="tabs"><a href="#beranda">Beranda</a><a href="#pretest">Pre Test</a><a href="#materi">Materi</a><a href="#quiz">Quiz</a><a href="#posttest">Post Test</a></div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSM - Engine Management System | Materi 1</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--primary:#0b5ed7;--dark:#10233f;--light:#f4f7fb;--accent:#ffc107;--green:#198754}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:#182433}
+header{background:linear-gradient(135deg,#082c5c,#0b5ed7);color:#fff;padding:24px 18px}
+.container{max-width:1100px;margin:auto;padding:18px}
+header h1{margin:0 0 8px;font-size:clamp(24px,4vw,38px)}
+header p{margin:0;opacity:.9}
+nav{position:sticky;top:0;z-index:10;background:#fff;box-shadow:0 2px 10px #0001;display:flex;flex-wrap:wrap;gap:7px;padding:10px;justify-content:center}
+nav button{border:0;background:#e9f0fb;color:#123;padding:11px 14px;border-radius:10px;cursor:pointer;font-weight:bold}
+nav button.active,nav button:hover{background:var(--primary);color:#fff}
+.section{display:none;background:#fff;border-radius:16px;padding:24px;margin:18px 0;box-shadow:0 5px 20px #0000000c}
+.section.active{display:block}
+.card{background:#f8fbff;border-left:5px solid var(--primary);padding:16px;border-radius:10px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.btn{display:inline-block;border:0;border-radius:10px;padding:12px 18px;background:var(--primary);color:#fff;text-decoration:none;font-weight:bold;cursor:pointer}
+.btn.green{background:var(--green)} .btn.yellow{background:#d89b00}
+h2{color:var(--dark)} h3{color:#174f92}
+.note{background:#fff4ce;padding:14px;border-radius:10px;border-left:5px solid var(--accent)}
+.media{border-radius:14px;width:100%;max-height:360px;object-fit:contain;background:#edf3fa;padding:8px}
+.diagram{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px 0}
+.box{padding:18px;border-radius:14px;color:#fff;text-align:center;min-width:150px;font-weight:bold}
+.fuel{background:#c0392b}. ecu{background:#1769aa}. air{background:#198754}
+.arrow{font-size:28px;font-weight:bold;color:#555}
+.compare{width:100%;border-collapse:collapse;margin:15px 0}
+.compare th,.compare td{border:1px solid #ccd5e0;padding:11px;vertical-align:top}
+.compare th{background:#e8f1ff}
+.anim{position:relative;height:180px;background:#101923;border-radius:14px;overflow:hidden;margin:15px 0}
+.pipe{position:absolute;left:10%;right:10%;top:82px;height:18px;background:#45515d;border-radius:20px}
+.dot{position:absolute;width:15px;height:15px;border-radius:50%;background:#ffd43b;top:83px;animation:flow 3s linear infinite}
+@keyframes flow{from{left:10%}to{left:88%}}
+.piston{position:absolute;width:90px;height:60px;border:7px solid #ddd;left:44%;top:40px;animation:piston .8s ease-in-out infinite alternate}
+@keyframes piston{to{top:82px}}
+.qrwrap{display:flex;flex-wrap:wrap;gap:25px;align-items:center}
+#qrcode{background:#fff;padding:10px;min-width:180px;min-height:180px}
+input{width:100%;padding:12px;border:1px solid #b8c5d6;border-radius:9px;font-size:16px;margin:7px 0 12px}
+footer{background:#10233f;color:#fff;text-align:center;padding:25px;margin-top:25px}
+.small{font-size:13px;color:#617083}
+ul li{margin:7px 0}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<h1>MEDIA PEMBELAJARAN INTERAKTIF TSM</h1>
+<p><b>Engine Management System – Materi Pelajaran 1</b><br>Identifikasi Engine Management System Pada Kendaraan</p>
+</div>
+</header>
 
-<section id="beranda" class="panel"><h2>🎯 Beranda — Tujuan Pembelajaran</h2><p>Siswa mampu menjelaskan pengertian dan fungsi Engine Management System (EMS), mengidentifikasi komponen utama, serta menjelaskan hubungan sensor, ECU/ECM, dan aktuator.</p>
-<div class="note"><b>Alur:</b> Pelajari tujuan → kerjakan Pre Test → pelajari materi → kerjakan Quiz → kerjakan Post Test.</div></section>
+<nav>
+<button class="active" onclick="showTab('beranda',this)">🏠 Beranda</button>
+<button onclick="showTab('pretest',this)">📝 Pretest</button>
+<button onclick="showTab('materi',this)">📚 Materi</button>
+<button onclick="showTab('quiz',this)">🎯 Quis</button>
+<button onclick="showTab('postest',this)">✅ Evaluasi / Postes</button>
+</nav>
 
-<section id="pretest" class="panel"><h2>📝 Pre Test</h2>
-<p>Tempatkan Google Form Pre Test Bapak pada bagian ini. Link dapat diganti langsung pada kode HTML.</p>
-<div class="embed-box"><label><b>URL Google Form Pre Test</b></label><input type="url" placeholder="Tempel URL Google Form Pre Test di sini"><div class="video-note">KLIK / EMBED FORM PRE TEST — bagian ini siap diganti dengan link Google Form.</div></div></section>
-
-<section id="materi" class="panel"><h2>📖 Materi Pembelajaran</h2>
-<h3>Pengertian EMS</h3><p>Engine Management System adalah sistem pengendalian kerja mesin secara elektronik. Sistem menerima informasi dari berbagai sensor, mengolahnya pada ECU/ECM, kemudian mengendalikan aktuator agar kerja mesin sesuai kondisi operasi.</p><h3>Fungsi utama</h3><p>Mengatur kebutuhan bahan bakar dan udara serta pengendalian kerja mesin berdasarkan kondisi seperti putaran mesin, posisi throttle, temperatur, tekanan/volume udara, dan kondisi lainnya sesuai desain kendaraan.</p><h3>Alur kerja</h3><p>Sensor → sinyal input → ECU/ECM → perhitungan strategi kontrol → aktuator → perubahan kerja mesin → sensor kembali membaca kondisi.</p>
-<div class="note"><b>Catatan:</b> Jenis dan susunan komponen dapat berbeda menurut model sepeda motor. Untuk pekerjaan servis, gunakan manual servis kendaraan yang digunakan sebagai unit praktik.</div>
-<h3>📊 Diagram Konsep</h3><svg viewBox="0 0 800 250" role="img" aria-label="Diagram alur EMS" style="width:100%;height:auto;background:#f8fbfe;border-radius:10px">
-        <rect x="35" y="90" width="150" height="70" rx="12" fill="white" stroke="#1d75b9" stroke-width="3"/><text x="110" y="120" text-anchor="middle" font-size="20" fill="#123c69">SENSOR</text><text x="110" y="145" text-anchor="middle" font-size="14">Input</text>
-        <path d="M190 125 H300" stroke="#123c69" stroke-width="4"/><path d="M290 115 l15 10 -15 10" fill="#123c69"/>
-        <rect x="315" y="70" width="170" height="110" rx="12" fill="white" stroke="#1d75b9" stroke-width="3"/><text x="400" y="110" text-anchor="middle" font-size="20" fill="#123c69">ECU / ECM</text><text x="400" y="138" text-anchor="middle" font-size="14">Proses &amp; kontrol</text>
-        <path d="M490 125 H600" stroke="#123c69" stroke-width="4"/><path d="M590 115 l15 10 -15 10" fill="#123c69"/>
-        <rect x="615" y="90" width="150" height="70" rx="12" fill="white" stroke="#1d75b9" stroke-width="3"/><text x="690" y="120" text-anchor="middle" font-size="20" fill="#123c69">AKTUATOR</text><text x="690" y="145" text-anchor="middle" font-size="14">Output</text></svg>
-<h3>🎬 Video Pembelajaran</h3>
-<div class="video-note">Tempat video pembelajaran. Ganti <b>VIDEO_ID</b> pada kode HTML dengan ID video YouTube yang akan digunakan.</div>
-<iframe class="video" src="https://www.youtube.com/embed/VIDEO_ID" title="Video pembelajaran EMS" allowfullscreen></iframe>
-<h3>📋 Ringkasan Komponen</h3><table><tr><th>Bagian</th><th>Fungsi</th></tr><tr><td><b>Sensor</b></td><td>Memberikan informasi kondisi mesin/kendaraan kepada ECU/ECM.</td></tr><tr><td><b>ECU/ECM</b></td><td>Mengolah input sensor dan menentukan perintah pengendalian.</td></tr><tr><td><b>Aktuator</b></td><td>Melaksanakan perintah ECU/ECM, misalnya penginjeksian bahan bakar dan pengendalian udara.</td></tr><tr><td><b>Wiring &amp; power supply</b></td><td>Menyalurkan daya dan sinyal antar komponen.</td></tr></table>
+<main class="container">
+<section id="beranda" class="section active">
+<h2>Beranda</h2>
+<div class="card"><h3>Tujuan Pembelajaran</h3>
+<p>Setelah mempelajari modul ini, peserta didik diharapkan mampu:</p>
+<ol>
+<li>Menjelaskan pengertian dan tujuan Engine Management System.</li>
+<li>Menjelaskan dasar regulasi pemerintah Indonesia terkait emisi dan teknologi kendaraan.</li>
+<li>Membedakan sistem karburasi dengan sistem injeksi/PGM-FI.</li>
+<li>Mengidentifikasi sistem aliran bahan bakar, sistem kontrol elektronik, dan sistem induksi udara pada EFI.</li>
+<li>Menjelaskan hubungan kerja sensor, ECU/ECM, aktuator, bahan bakar, dan udara.</li>
+</ol></div>
+<div class="card"><h3>Cara Penggunaan Modul</h3>
+<ol><li>Baca <b>Beranda</b> dan pahami tujuan pembelajaran.</li><li>Kerjakan <b>Pretest</b> melalui Google Form.</li><li>Pelajari seluruh bagian <b>Materi</b>, termasuk gambar dan animasi.</li><li>Kerjakan <b>Quis</b> melalui Wayground.</li><li>Kerjakan <b>Evaluasi/Postes</b> melalui Google Form.</li></ol>
+</div>
+<div class="note"><b>Catatan guru:</b> Link Pretest, Wayground, dan Postes dapat diganti langsung pada bagian pengaturan di bawah.</div>
 </section>
 
-<section id="quiz" class="panel"><h2>🎮 Quiz Interaktif</h2><p>Quiz dapat dikerjakan langsung pada halaman ini. Nilai dihitung otomatis di perangkat siswa.</p>
-<form id="quizForm1">
-<div class="quiz-question"><b>1. Komponen yang mengolah sinyal sensor adalah ...</b><label><input type="radio" name="q1" value="0"> A. ECU/ECM</label><label><input type="radio" name="q1" value="1"> B. Baterai saja</label><label><input type="radio" name="q1" value="2"> C. Ban</label><label><input type="radio" name="q1" value="3"> D. Kampas rem</label></div><div class="quiz-question"><b>2. Urutan dasar kerja EMS yang benar adalah ...</b><label><input type="radio" name="q2" value="0"> A. Sensor–ECU/ECM–aktuator</label><label><input type="radio" name="q2" value="1"> B. Aktuator–ban–sensor</label><label><input type="radio" name="q2" value="2"> C. Busi–ban–ECU</label><label><input type="radio" name="q2" value="3"> D. ECU–rantai–sensor</label></div><div class="quiz-question"><b>3. Fungsi sensor pada EMS adalah ...</b><label><input type="radio" name="q3" value="0"> A. Memberikan informasi kondisi operasi</label><label><input type="radio" name="q3" value="1"> B. Mengisi oli</label><label><input type="radio" name="q3" value="2"> C. Menggerakkan roda</label><label><input type="radio" name="q3" value="3"> D. Mendinginkan rem</label></div><div class="quiz-question"><b>4. Aktuator bekerja terutama berdasarkan ...</b><label><input type="radio" name="q4" value="0"> A. Perintah pengendalian ECU/ECM</label><label><input type="radio" name="q4" value="1"> B. Warna bodi</label><label><input type="radio" name="q4" value="2"> C. Ukuran ban</label><label><input type="radio" name="q4" value="3"> D. Tekanan ban</label></div><div class="quiz-question"><b>5. Tujuan pengendalian elektronik mesin adalah ...</b><label><input type="radio" name="q5" value="0"> A. Mengatur kerja mesin sesuai kondisi operasi</label><label><input type="radio" name="q5" value="1"> B. Mengubah ukuran piston</label><label><input type="radio" name="q5" value="2"> C. Mengganti rangka</label><label><input type="radio" name="q5" value="3"> D. Mengurangi ukuran roda</label></div>
-<button class="action" type="button" onclick="checkQuiz(1)">Periksa Jawaban</button>
-<div id="result1" class="result"></div>
-</form>
+<section id="pretest" class="section">
+<h2>Pretest</h2>
+<p>Kerjakan pretest sebelum mempelajari materi.</p>
+<a id="pretestBtn" class="btn" target="_blank">Buka Google Form Pretest ↗</a>
+<p class="small">Ganti URL pada bagian <b>PENGATURAN LINK</b> di akhir file ini.</p>
+</section>
+
+<section id="materi" class="section">
+<h2>Materi Pelajaran 1: Identifikasi Engine Management System</h2>
+
+<div class="card"><h3>1. Pengertian dan Tujuan Engine Management System Pada Kendaraan</h3>
+<p><b>Engine Management System (EMS)</b> adalah sistem pengendalian mesin yang mengintegrasikan sensor, ECU/ECM, aktuator, sistem bahan bakar, sistem udara, dan sistem pengapian agar mesin bekerja secara optimal.</p>
+<p>Tujuan utamanya antara lain meningkatkan efisiensi bahan bakar, menjaga performa mesin, mengurangi emisi gas buang, memudahkan diagnosis gangguan, dan menjaga kestabilan kerja mesin pada berbagai kondisi.</p>
+<div class="anim">
+<div class="pipe"></div><div class="dot"></div><div class="piston"></div>
+</div>
+<p class="small">Animasi sederhana di atas menggambarkan hubungan aliran energi/fluida dan gerak komponen mesin. Dapat diganti dengan animasi HTML5/video milik guru.</p>
+</div>
+
+<div class="card"><h3>2. Dasar Hukum / Regulasi Pemerintah Indonesia</h3>
+<p>Pengembangan dan penerapan teknologi pengendalian emisi kendaraan di Indonesia berkaitan dengan ketentuan pemerintah mengenai emisi gas buang dan standar emisi kendaraan bermotor. Dalam pembelajaran, peserta didik perlu memahami bahwa teknologi EFI/PGM-FI mendukung pengendalian campuran udara-bahan bakar secara lebih presisi sehingga membantu memenuhi standar emisi.</p>
+<div class="note"><b>Penting:</b> Regulasi dapat diperbarui. Guru sebaiknya menyesuaikan nomor/peraturan yang digunakan dengan regulasi terbaru yang berlaku pada saat materi diajarkan.</div>
+</div>
+
+<div class="card"><h3>3. Perbandingan Sistem Karburasi dan Sistem Injeksi (PGM-FI/EFI)</h3>
+<table class="compare">
+<tr><th>Aspek</th><th>Karburator</th><th>Injeksi PGM-FI / EFI</th></tr>
+<tr><td>Pembentukan campuran</td><td>Menggunakan prinsip venturi dan kevakuman.</td><td>Jumlah bahan bakar dikontrol melalui injektor berdasarkan perintah ECU/ECM.</td></tr>
+<tr><td>Pengontrol utama</td><td>Mekanisme mekanis dan kevakuman.</td><td>ECU/ECM menerima informasi sensor dan mengendalikan aktuator.</td></tr>
+<tr><td>Ketepatan campuran</td><td>Lebih dipengaruhi kondisi mekanis dan penyetelan.</td><td>Lebih presisi karena dikontrol elektronik.</td></tr>
+<tr><td>Efisiensi & emisi</td><td>Umumnya lebih sulit dioptimalkan pada semua kondisi.</td><td>Mendukung efisiensi dan pengendalian emisi yang lebih baik.</td></tr>
+</table>
+
+<div class="grid">
+<div><h3>Video Animasi Karburator</h3>
+<video class="media" controls playsinline preload="metadata">
+<source src="video/animasi-karburator.mp4" type="video/mp4">
+Browser tidak mendukung pemutaran video.
+</video>
+<p class="small">Video: Basic knowledge Carburetor.</p></div>
+<div><h3>Video Sistem EFI / PGM-FI</h3>
+<video class="media" controls playsinline preload="metadata">
+<source src="video/animasi-efi-pgmfi.mp4" type="video/mp4">
+Browser tidak mendukung pemutaran video.
+</video>
+<p class="small">Video: Prinsip Kerja System PGM-FI Honda.</p></div>
+</div>
+
+<div class="grid">
+<div><h3>Animasi Karburator</h3>
+<div class="anim"><div class="pipe"></div><div class="dot" style="animation-delay:.3s"></div></div>
+<p>Udara bergerak melalui venturi dan membantu menarik bahan bakar dari sistem karburator.</p></div>
+<div><h3>Animasi EFI</h3>
+<div class="anim"><div class="pipe"></div><div class="dot" style="animation-delay:.8s"></div><div class="piston" style="border-color:#65d6ff"></div></div>
+<p>ECU mengolah informasi sensor dan mengatur injektor serta aktuator sesuai kondisi mesin.</p></div>
+</div>
+</div>
+
+<div class="card"><h3>4. Bagian Engine Management System (EFI)</h3>
+<div class="grid">
+<div class="card"><h3>⛽ Sistem Aliran Bahan Bakar</h3>
+<img class="media" src="gambar/aliran bahan bakar EFI.jpg" alt="Sistem aliran bahan bakar EFI">
+<p>Komponen utama meliputi tangki, pompa bahan bakar, filter, saluran/fuel rail dan injector.</p>
+<p>Meliputi tangki, pompa bahan bakar, filter, fuel rail/selang, regulator sesuai tipe sistem, dan injector.</p>
+<div class="diagram"><div class="box fuel">Tangki</div><div class="arrow">→</div><div class="box fuel">Pompa</div><div class="arrow">→</div><div class="box fuel">Filter</div><div class="arrow">→</div><div class="box fuel">Injektor</div></div>
+</div>
+<div class="card"><h3>🧠 Sistem Kontrol Elektronik</h3>
+<img class="media" src="gambar/sistem kontrol elektronik.jpg" alt="Sistem kontrol elektronik EMS">
+<p>Meliputi sensor, ECU/ECM, kabel/wiring, dan aktuator. ECU/ECM memproses input sensor untuk menentukan pengendalian mesin.</p>
+<div class="diagram"><div class="box ecu">Sensor</div><div class="arrow">→</div><div class="box ecu">ECU/ECM</div><div class="arrow">→</div><div class="box ecu">Aktuator</div></div>
+</div>
+<div class="card"><h3>🌬️ Sistem Induksi Udara</h3>
+<img class="media" src="gambar/sistem induksi udara.jpg" alt="Sistem induksi udara EFI">
+<p>Menyalurkan udara menuju mesin. Komponen dapat meliputi air cleaner, throttle body, intake manifold, serta sensor/aktuator terkait.</p>
+<div class="diagram"><div class="box air">Air Cleaner</div><div class="arrow">→</div><div class="box air">Throttle Body</div><div class="arrow">→</div><div class="box air">Intake</div></div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3>🔍 Komponen Pendukung Sistem Kontrol Elektronik</h3>
+<p>Contoh komponen yang dapat dipelajari siswa:</p>
+<div class="grid">
+<div><img class="media" src="gambar/ECU.jpg" alt="ECU"><b>ECU/ECM</b></div>
+<div><img class="media" src="gambar/gambar sensor fi.jpg" alt="Sensor EFI"><b>Sensor EFI</b></div>
+<div><img class="media" src="gambar/aktuator.jpg" alt="Aktuator"><b>Aktuator</b></div>
+<div><img class="media" src="gambar/RANGKAIAN EMS.jpg" alt="Rangkaian EMS"><b>Rangkaian EMS</b></div>
+</div>
+</div>
+
+<div class="card"><h3>🎬 Animasi Interaktif PGM-FI</h3>
+<p>Animasi PGM-FI dari aplikasi Flash lama dapat dicoba melalui Ruffle pada browser modern.</p>
+<a class="btn" href="animasi-pgmfi/index.html">Buka Animasi PGM-FI ↗</a></div>
+<div class="card"><h3>Ringkasan</h3>
+<p>Engine Management System bekerja sebagai satu kesatuan. <b>Sensor → ECU/ECM → Aktuator</b> merupakan dasar pengendalian elektronik, sedangkan sistem bahan bakar dan induksi udara menyediakan kebutuhan utama proses pembakaran.</p>
+</div>
+</section>
+
+<section id="quiz" class="section">
+<h2>Quis – Wayground</h2>
+<p>Masukkan kode Wayground pada kolom berikut. QR Code akan berubah otomatis dan dapat dipindai siswa.</p>
+<div class="qrwrap">
+<div style="flex:1;min-width:260px">
+<label><b>Link Wayground</b></label>
+<input id="wayLink" placeholder="https://wayground.com/join?gc=123456" oninput="makeQR()">
+<label><b>Kode Game</b></label>
+<input id="gameCode" placeholder="123456" oninput="updateWayLink()">
+<button class="btn" onclick="openWay()">Buka Wayground ↗</button>
+</div>
+<div id="qrcode"></div>
+</div>
+<p class="small">QR dibuat dari link yang dimasukkan. Jika kode berubah, isi kode baru dan link akan diperbarui.</p>
+</section>
+
+<section id="postest" class="section">
+<h2>Evaluasi / Postes</h2>
+<p>Setelah menyelesaikan materi dan Quis, kerjakan evaluasi/postes.</p>
+<a id="postestBtn" class="btn green" target="_blank">Buka Google Form Postes ↗</a>
+</section>
+</main>
+
+<footer>
+Media Pembelajaran Interaktif TSM • Engine Management System • Materi Pelajaran 1
+</footer>
+
 <script>
-function checkQuiz(n){
- const key=[0,0,0,0,0], f=document.getElementById('quizForm'+n), score=0;
- key.forEach((a,i)=>{const x=f.querySelector('input[name="q'+(i+1)+'"]:checked'); if(x&&Number(x.value)===a)score++;});
- document.getElementById('result'+n).textContent='Nilai Quiz: '+score+'/'+key.length+' ('+Math.round(score/key.length*100)+')';
+// ==================== PENGATURAN LINK ====================
+// GANTI 3 BARIS DI BAWAH INI DENGAN LINK MILIK GURU
+const CONFIG = {
+  pretest: "https://forms.gle/BrSZEz9hUcGTuyn89",
+  postest: "https://forms.gle/HtpAQzLBRUjCsSsH9",
+  wayground: "https://wayground.com/join?gc=03794917"
+};
+
+document.getElementById("pretestBtn").href=CONFIG.pretest;
+document.getElementById("postestBtn").href=CONFIG.postest;
+document.getElementById("wayLink").value=CONFIG.wayground;
+
+function showTab(id,btn){
+ document.querySelectorAll(".section").forEach(x=>x.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));
+ btn.classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
 }
+function makeQR(){
+ const box=document.getElementById("qrcode");
+ box.innerHTML="";
+ const link=document.getElementById("wayLink").value.trim();
+ if(link && typeof QRCode!=="undefined"){
+   new QRCode(box,{text:link,width:180,height:180});
+ }
+}
+function updateWayLink(){
+ let code=document.getElementById("gameCode").value.trim();
+ if(code) document.getElementById("wayLink").value="https://wayground.com/join?gc="+code;
+ makeQR();
+}
+function openWay(){
+ const link=document.getElementById("wayLink").value.trim();
+ if(link) window.open(link,"_blank");
+}
+makeQR();
 </script>
-</section>
-
-<section id="posttest" class="panel"><h2>📋 Post Test</h2>
-<p>Tempatkan link Google Form Post Test. Link dapat diganti tanpa mengubah struktur halaman.</p>
-<div class="embed-box"><label><b>URL Google Form Post Test</b></label><input type="url" placeholder="Tempel URL Google Form Post Test di sini"><div class="video-note">KLIK / EMBED FORM POST TEST — siap dihubungkan ke Google Form.</div></div>
-</section>
-
-</main><footer><a class="btn" href="engine-management-system.html">← Kembali ke EMS</a> &nbsp; <a class="btn" href="index.html">Portal Utama</a><p>Media Pembelajaran Interaktif TSM • Engine Management System</p></footer>
-</body></html>
+</body>
+</html>
