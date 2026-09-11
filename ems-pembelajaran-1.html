@@ -6,8 +6,16 @@
 <title>TSM - Engine Management System | Materi 1</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
 
-function goBackEMS(){
-  window.location.href = "../index.html";
+function goBackEMS(event){
+  // Jika materi-1 berada di ems/materi-1/, ini menuju ems/index.html.
+  // Jika struktur Bapak berbeda, riwayat browser menjadi cadangan.
+  const target="../index.html";
+  if(event){
+    // Biarkan link bekerja normal; jika target gagal, pengguna dapat kembali dengan tombol browser.
+    return true;
+  }
+  window.location.href=target;
+  return false;
 }
 
 
@@ -66,6 +74,10 @@ input{width:100%;padding:12px;border:1px solid #b8c5d6;border-radius:9px;font-si
 footer{background:#10233f;color:#fff;text-align:center;padding:25px;margin-top:25px}
 .small{font-size:13px;color:#617083}
 ul li{margin:7px 0}
+
+.nav-back{border:0;background:#e9f0fb;color:#123;padding:11px 14px;border-radius:10px;cursor:pointer;font-weight:bold;text-decoration:none;display:inline-block}
+.nav-back:hover{background:var(--primary);color:#fff}
+
 </style>
 <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 
@@ -89,7 +101,7 @@ ul li{margin:7px 0}
 
 <nav>
 <button class="active" onclick="showTab('beranda',this)">🏠 Beranda</button>
-<button onclick="goBackEMS()">🔙 Kembali ke EMS</button>
+<a class="nav-back" href="../index.html" onclick="return goBackEMS(event)">🔙 Kembali ke EMS</a>
 <button onclick="showTab('pretest',this)">📝 Pretest</button>
 <button onclick="showTab('materi',this)">📚 Materi</button>
 <button onclick="showTab('quiz',this)">🎯 Quis</button>
