@@ -1,0 +1,7 @@
+// Setelah memperoleh URL Google Form, isi di sini.
+// Contoh:
+// const FORM_LINKS = {
+//   pretest: "https://docs.google.com/forms/d/e/....../viewform",
+//   quiz: "https://docs.google.com/forms/d/e/....../viewform",
+//   posttest: "https://docs.google.com/forms/d/e/....../viewform"
+// };

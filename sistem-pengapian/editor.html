@@ -1,0 +1,20 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Editor Media Lokal</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="header-inner"><span class="badge">EDITOR GURU</span><h1>Masukkan Gambar & Video dari Komputer</h1><p class="subtitle">Sistem Pengapian • Kelas XI TSM</p></div></header>
+<main class="container"><div class="nav no-print"><a class="btn secondary" href="index.html">← Kembali</a><a class="btn secondary" href="nilai.html">Nilai / Cetak Kelas</a></div>
+<section class="card"><h2>Upload Media Lokal</h2>
+<div class="form-grid"><div><label>Pilih Submateri</label><select id="category"><option>Sistem Pengapian Baterai Konvensional</option><option>Sistem Pengapian Magnet Konvensional</option><option>Sistem Pengapian AC CDI</option><option>Sistem Pengapian DC CDI</option></select></div>
+<div><label>Keterangan media</label><input id="title" placeholder="Contoh: Rangkaian AC CDI"></div></div>
+<label>Pilih gambar/video dari komputer</label><input id="files" type="file" accept="image/*,video/*" multiple><br><br>
+<button class="btn green" onclick="upload()">Simpan Media ke Browser</button>
+<p class="small">Media tidak dikirim ke internet. File disimpan pada browser komputer ini menggunakan IndexedDB. Untuk GitHub Pages, salin file media ke folder proyek agar siswa lain dapat melihatnya.</p>
+</section>
+<section class="card"><h2>Media Tersimpan di Browser Ini</h2><div id="list" class="media-grid"></div></section>
+<section class="card"><h2>Cara memasukkan media ke GitHub</h2>
+<ol><li>Buat folder <b>media/gambar</b> dan <b>media/video</b> di proyek.</li><li>Salin file gambar/video dari komputer ke folder tersebut.</li><li>Untuk media publik, gunakan nama file sederhana, misalnya <code>rangkaian-ac-cdi.jpg</code> atau <code>video-ac-cdi.mp4</code>.</li><li>Masukkan file melalui GitHub lalu hubungkan dari halaman materi.</li></ol>
+<div class="callout"><b>Catatan:</b> Browser tidak mengizinkan halaman web menyimpan path seperti <code>C:\Users\...</code> untuk dipakai siswa lain. Karena itu editor ini menggunakan penyimpanan lokal browser untuk kebutuhan guru, sedangkan media yang ingin tampil di GitHub harus ikut diunggah ke folder proyek.</div></section>
+</main><footer>Guru Mapel: Wasja, S.Pd</footer>
+<script src="assets/media.js"></script><script>
+async function upload(){let files=document.getElementById('files').files,cat=document.getElementById('category').value,title=document.getElementById('title').value.trim()||'Media Sistem Pengapian';if(!files.length){alert('Pilih gambar atau video terlebih dahulu.');return}for(const f of files){await saveMedia(f,cat,title)}document.getElementById('files').value='';await renderList();alert('Media berhasil disimpan pada browser ini.')}
+async function renderList(){let all=await getAllMedia(),box=document.getElementById('list');box.innerHTML='';for(const x of all){let url=URL.createObjectURL(x.file),d=document.createElement('div');d.className='media-item';d.innerHTML='<b>'+x.title+'</b><p class="small">'+x.category+'<br>'+x.name+'</p>';if(x.type.startsWith('image/')){let im=document.createElement('img');im.src=url;d.appendChild(im)}else{let v=document.createElement('video');v.src=url;v.controls=true;d.appendChild(v)}let b=document.createElement('button');b.className='btn orange';b.textContent='Hapus';b.onclick=async()=>{await deleteMedia(x.id);renderList()};d.appendChild(b);box.appendChild(d)}}
+renderList();
+</script></body></html>

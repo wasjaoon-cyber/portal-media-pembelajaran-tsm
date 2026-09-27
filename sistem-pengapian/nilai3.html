@@ -1,0 +1,57 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nilai Sistem Pengapian</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="header-inner"><span class="badge">PORTAL PEMBELAJARAN KEJURUAN TSM</span><h1>Nilai & Cetak Daftar Nilai</h1><p class="subtitle">Sistem Pengapian • Kelas XI TSM • SMKN 1 Kabupaten Tangerang</p></div></header>
+<main class="container">
+<div class="nav no-print"><a class="btn secondary" href="index.html">← Materi</a><a class="btn secondary" href="tes.html?jenis=pretest">Pre Test</a><a class="btn secondary" href="tes.html?jenis=quiz">Quiz</a><a class="btn secondary" href="tes.html?jenis=posttest">Post Test</a></div>
+<section class="card no-print"><h2>Filter dan Ekspor</h2>
+<div class="form-grid">
+<div><label>Filter Kelas</label><input id="filterKelas" placeholder="Contoh: 11 TSM 1"></div>
+<div><label>Jenis Tes</label><select id="filterJenis">
+<option value="">Semua</option><option value="pretest">Pre Test</option><option value="quiz">Quiz</option><option value="posttest">Post Test</option>
+</select></div>
+</div><br>
+<div class="actions">
+<button class="btn green" onclick="downloadExcel()">📊 Download Excel</button>
+<button class="btn teal" onclick="downloadCSV()">⬇ CSV (kompatibel Excel)</button>
+<button class="btn orange" onclick="window.print()">🖨 Cetak Daftar Nilai</button>
+<button class="btn" onclick="hapusSemua()">🗑 Hapus Semua Data</button>
+</div>
+<p class="small">Gunakan <b>Download Excel</b> agar kolom langsung terpisah saat dibuka di Microsoft Excel.</p>
+</section>
+<section class="card"><h2>Daftar Nilai</h2><div id="tableWrap"></div></section>
+<section class="card no-print"><h2>Alur Penggunaan</h2><ol><li>Siswa mengerjakan tes pada komputer/HP.</li><li>Nama dan kelas diisi sebelum mengerjakan.</li><li>Setelah dikumpulkan, nilai otomatis disimpan di browser.</li><li>Guru membuka halaman ini pada browser yang sama untuk melihat nilai.</li><li>Gunakan Export CSV untuk dibuka di Excel atau Cetak untuk mencetak daftar kelas.</li></ol><div class="callout"><b>Penting:</b> Jika siswa mengerjakan dari HP masing-masing, nilai tersimpan di HP masing-masing. Untuk rekap terpusat seluruh kelas, gunakan Google Forms/Spreadsheet atau kirim file CSV hasil masing-masing perangkat ke guru.</div></section>
+</main><footer>Guru Mapel: Wasja, S.Pd</footer>
+<script>
+function getData(){try{return JSON.parse(localStorage.getItem('nilaiPengapian')||'[]')}catch(e){return[]}}
+function filtered(){
+ const k=document.getElementById('filterKelas').value.toLowerCase().trim();
+ const j=document.getElementById('filterJenis').value;
+ return getData().filter(x=>(!k||String(x.kelas||'').toLowerCase().includes(k))&&(!j||x.jenis===j));
+}
+function labelJenis(j){return j==='pretest'?'Pre Test':j==='quiz'?'Quiz':j==='posttest'?'Post Test':j||''}
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]) )}
+function render(){
+ const d=filtered();
+ let html='<table><tr><th>No</th><th>Nama</th><th>Kelas</th><th>Jenis Tes</th><th>Benar</th><th>Total</th><th>Nilai</th><th>Waktu</th></tr>';
+ d.forEach((x,i)=>html+='<tr><td>'+(i+1)+'</td><td>'+esc(x.nama)+'</td><td>'+esc(x.kelas)+'</td><td>'+esc(labelJenis(x.jenis))+'</td><td>'+esc(x.benar)+'</td><td>'+esc(x.total)+'</td><td><b>'+esc(x.nilai)+'</b></td><td>'+esc(x.waktu)+'</td></tr>');
+ html+='</table>';document.getElementById('tableWrap').innerHTML=d.length?html:'<p>Belum ada data nilai.</p>';
+}
+function downloadCSV(){
+ const d=filtered();if(!d.length){alert('Tidak ada data untuk diekspor.');return}
+ const rows=[['No','Nama','Kelas','Jenis Tes','Benar','Total Soal','Nilai','Waktu'],...d.map((x,i)=>[i+1,x.nama,x.kelas,labelJenis(x.jenis),x.benar,x.total,x.nilai,x.waktu])];
+ const csv='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
+ const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+ a.download='Nilai_Sistem_Pengapian_'+(document.getElementById('filterKelas').value||'Semua_Kelas')+'.csv';document.body.appendChild(a);a.click();a.remove();
+}
+function downloadExcel(){
+ const d=filtered();if(!d.length){alert('Tidak ada data untuk diekspor.');return}
+ let rows='';d.forEach((x,i)=>rows+='<tr><td>'+(i+1)+'</td><td>'+esc(x.nama)+'</td><td>'+esc(x.kelas)+'</td><td>'+esc(labelJenis(x.jenis))+'</td><td>'+esc(x.benar)+'</td><td>'+esc(x.total)+'</td><td>'+esc(x.nilai)+'</td><td>'+esc(x.waktu)+'</td></tr>');
+ const html='<!doctype html><html><head><meta charset="utf-8"></head><body><table border="1"><tr><th>No</th><th>Nama</th><th>Kelas</th><th>Jenis Tes</th><th>Benar</th><th>Total Soal</th><th>Nilai</th><th>Waktu</th></tr>'+rows+'</table></body></html>';
+ const blob=new Blob(['\ufeff',html],{type:'application/vnd.ms-excel;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+ a.download='Nilai_Sistem_Pengapian_'+(document.getElementById('filterKelas').value||'Semua_Kelas')+'.xls';document.body.appendChild(a);a.click();a.remove();
+}
+function hapusSemua(){if(confirm('Hapus seluruh data nilai pada browser ini?')){localStorage.removeItem('nilaiPengapian');render()}}
+document.getElementById('filterKelas').addEventListener('input',render);
+document.getElementById('filterJenis').addEventListener('change',render);
+render();
+</script>
+</body></html>

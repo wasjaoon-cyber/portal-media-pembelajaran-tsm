@@ -1,0 +1,10 @@
+PETUNJUK SINGKAT
+1. Buka index.html.
+2. Menu Materi membuka 4 submateri: Baterai Konvensional, Magnet Konvensional, AC CDI, DC CDI.
+3. Editor Media: pilih gambar/video dari komputer. Media tersimpan pada browser guru.
+4. Untuk ditampilkan kepada siswa melalui GitHub Pages, salin file media ke folder media/gambar atau media/video dan hubungkan dari HTML.
+5. Pre Test = 10 soal, Quiz = 10 soal, Post Test = 20 soal.
+6. Nilai otomatis dihitung 0-100.
+7. Halaman Nilai menyimpan hasil pada browser, dapat difilter berdasarkan kelas dan jenis tes.
+8. Klik Export CSV untuk membuka data di Excel. Klik Cetak untuk mencetak daftar nilai yang sedang ditampilkan.
+9. Jika siswa mengerjakan dari perangkat berbeda, localStorage tidak menggabungkan nilai antarperangkat. Untuk rekap terpusat gunakan Google Forms/Sheets.

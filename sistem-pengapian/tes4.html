@@ -1,0 +1,94 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tes Sistem Pengapian</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="header-inner"><span class="badge">PORTAL PEMBELAJARAN KEJURUAN TSM</span><h1 id="title">Tes Sistem Pengapian</h1><p class="subtitle">Kelas XI TSM • SMKN 1 Kabupaten Tangerang</p></div></header>
+<main class="container">
+<div class="nav no-print"><a class="btn secondary" href="index.html">← Materi</a><a class="btn secondary" href="nilai.html">Nilai / Cetak Kelas</a><a class="btn secondary" href="editor.html">Editor Media</a></div>
+<section class="card no-print">
+<h2>Identitas Siswa</h2>
+<div class="form-grid">
+<div><label>Nama Siswa</label><input id="nama" placeholder="Nama lengkap"></div>
+<div><label>Kelas</label><input id="kelas" placeholder="Contoh: XI TSM 1"></div>
+<div>
+<label>Materi yang Diujikan</label>
+<select id="materi">
+<option value="">-- Pilih Materi --</option>
+<option value="baterai-konvensional">Sistem Pengapian Baterai Konvensional</option>
+<option value="magnet-konvensional">Sistem Pengapian Magnet Konvensional</option>
+<option value="ac-cdi">Sistem Pengapian AC CDI</option>
+<option value="dc-cdi">Sistem Pengapian DC CDI</option>
+</select>
+</div>
+</div>
+</section>
+<form id="testForm"><section class="card"><h2 id="testHeading"></h2><div id="questions"></div><button class="btn green no-print" type="submit">Kumpulkan & Hitung Nilai</button></section></form>
+<section id="hasil" class="card" style="display:none"><h2>Hasil</h2><div class="result" id="resultText"></div><div class="nav no-print" style="margin-top:12px"><button class="btn orange" onclick="window.print()">Cetak Hasil</button><a class="btn" href="nilai.html">Kelola Nilai Kelas</a></div></section>
+</main><footer>Guru Mapel: Wasja, S.Pd</footer>
+<script>const QUESTION_BANK = {"pretest": [{"q": "Fungsi utama sistem pengapian adalah ...", "options": ["Mengatur tekanan ban", "Menghasilkan percikan pada waktu yang tepat", "Mengatur oli mesin", "Mendinginkan mesin", "Mengisi radiator"], "a": 1}, {"q": "Pada pengapian baterai konvensional, sumber energi listrik berasal dari ...", "options": ["Baterai", "Pulser", "Busi", "Kondensor", "Rotor"], "a": 0}, {"q": "Komponen yang memutus dan menghubungkan arus primer pada sistem konvensional adalah ...", "options": ["Busi", "CDI", "Platina", "Pulser", "Spul lampu"], "a": 2}, {"q": "Fungsi koil pengapian adalah ...", "options": ["Menurunkan tegangan", "Menaikkan tegangan", "Mengisi bahan bakar", "Mengatur tekanan oli", "Mendinginkan busi"], "a": 1}, {"q": "Pada AC CDI, energi pengisian kapasitor terutama berasal dari ...", "options": ["Baterai saja", "Exciter/charging coil", "Lampu utama", "Kipas radiator", "Starter"], "a": 1}, {"q": "Pada DC CDI, sumber DC utamanya adalah ...", "options": ["Baterai", "Busi", "Kondensor", "Pulser", "Rotor"], "a": 0}, {"q": "Komponen yang memberikan sinyal waktu pengapian pada CDI adalah ...", "options": ["Pulser/pick-up", "Kondensor", "Baterai", "Kunci kontak", "Busi"], "a": 0}, {"q": "Busi berfungsi untuk ...", "options": ["Menghasilkan percikan bunga api", "Menyimpan bensin", "Mengatur oli", "Mengisi aki", "Mengatur tekanan ban"], "a": 0}, {"q": "Kondensor pada sistem konvensional membantu ...", "options": ["Mengurangi percikan pada platina", "Mendinginkan radiator", "Mengisi baterai", "Mengatur bahan bakar", "Menambah tekanan ban"], "a": 0}, {"q": "Sebelum memeriksa komponen pengapian, tindakan K3 yang tepat adalah ...", "options": ["Memegang kabel tegangan tinggi", "Membiarkan mesin menyala", "Mematikan mesin dan menggunakan alat sesuai prosedur", "Melepas semua kabel tanpa pemeriksaan", "Menyentuh busi saat mesin hidup"], "a": 2}], "quiz": [{"q": "Perbedaan utama AC CDI dan DC CDI adalah ...", "options": ["Jenis businya", "Sumber energi CDI", "Bentuk ban", "Jumlah silinder", "Jenis oli"], "a": 1}, {"q": "Komponen yang menyimpan energi sebelum dilepaskan pada CDI adalah ...", "options": ["Kapasitor", "Busi", "Pulser", "Baterai kendaraan lain", "Platina"], "a": 0}, {"q": "Jika kabel massa buruk, salah satu akibatnya adalah ...", "options": ["Sistem pengapian dapat terganggu", "Ban menjadi keras", "Oli bertambah", "Lampu selalu terang", "Bahan bakar menjadi air"], "a": 0}, {"q": "Pada sistem baterai konvensional, platina membuka menyebabkan ...", "options": ["Arus primer terputus", "Busi hilang", "Baterai terisi penuh", "Ban berputar", "Radiator kosong"], "a": 0}, {"q": "Pemeriksaan CDI sebaiknya mengikuti ...", "options": ["Perkiraan saja", "Manual servis kendaraan", "Warna motor", "Ukuran ban", "Nomor rumah siswa"], "a": 1}, {"q": "Percikan busi lemah dapat disebabkan oleh ...", "options": ["Tegangan suplai rendah", "Kursi rusak", "Spion kotor", "Ban baru", "Cat bodi"], "a": 0}, {"q": "Pulser pada CDI berkaitan dengan ...", "options": ["Sinyal waktu pengapian", "Tekanan ban", "Suhu radiator", "Volume oli", "Lampu sein"], "a": 0}, {"q": "Koil menghasilkan tegangan tinggi melalui prinsip ...", "options": ["Induksi elektromagnetik", "Pembakaran mekanis", "Tekanan hidrolik", "Gesekan ban", "Pendinginan"], "a": 0}, {"q": "Pada DC CDI, sumber tegangan awal berasal dari ...", "options": ["Baterai", "Busi", "Kondensor", "Spul lampu saja", "Knalpot"], "a": 0}, {"q": "Tujuan pemeriksaan sistematis adalah ...", "options": ["Menentukan sumber gangguan berdasarkan prosedur", "Mengganti semua komponen sekaligus", "Mengabaikan manual servis", "Mempercepat kerusakan", "Menghilangkan K3"], "a": 0}], "posttest": [{"q": "Sistem pengapian menghasilkan percikan pada ...", "options": ["Busi", "Radiator", "Karburator", "Knalpot", "Rantai"], "a": 0}, {"q": "Sumber energi utama baterai konvensional adalah ...", "options": ["Baterai/aki", "Pulser", "Kondensor", "Busi", "Magnet saja"], "a": 0}, {"q": "Fungsi platina adalah ...", "options": ["Mengatur pemutusan arus primer", "Menaikkan tegangan ban", "Mengatur oli", "Mengisi bensin", "Mendinginkan mesin"], "a": 0}, {"q": "Ketika platina membuka, arus primer ...", "options": ["Terputus", "Bertambah terus", "Tidak berubah selamanya", "Masuk ke radiator", "Masuk ke ban"], "a": 0}, {"q": "Kondensor dipasang untuk membantu ...", "options": ["Mengurangi percikan pada kontak pemutus", "Menaikkan tekanan ban", "Mengisi tangki", "Mendinginkan busi", "Mengatur rantai"], "a": 0}, {"q": "Koil pengapian berfungsi ...", "options": ["Menaikkan tegangan melalui induksi", "Menurunkan tekanan ban", "Menyaring bensin", "Mengatur oli", "Mengisi radiator"], "a": 0}, {"q": "Pada sistem magnet konvensional, energi listrik dibangkitkan akibat ...", "options": ["Perubahan medan magnet karena putaran", "Tekanan ban", "Aliran oli", "Pembakaran busi", "Putaran kipas"], "a": 0}, {"q": "Komponen penghasil sinyal pemicu CDI adalah ...", "options": ["Pulser/pick-up coil", "Kondensor radiator", "Busi belakang", "Kunci roda", "Filter udara"], "a": 0}, {"q": "AC CDI menggunakan sumber pengisian dari ...", "options": ["Exciter/charging coil", "Baterai saja", "Lampu sein", "Starter mekanis", "Klakson"], "a": 0}, {"q": "DC CDI menggunakan sumber awal ...", "options": ["Baterai DC", "Knalpot", "Rantai", "Radiator", "Busi"], "a": 0}, {"q": "Energi pada CDI disimpan dalam ...", "options": ["Kapasitor", "Ban", "Karburator", "Radiator", "Knalpot"], "a": 0}, {"q": "Urutan sederhana AC CDI yang benar adalah ...", "options": ["Exciter → CDI → koil → busi", "Busi → ban → CDI → radiator", "Ban → koil → aki → knalpot", "Radiator → busi → spul → ban", "Knalpot → CDI → ban → busi"], "a": 0}, {"q": "Urutan sederhana DC CDI yang benar adalah ...", "options": ["Baterai → CDI → koil → busi", "Busi → baterai → ban → CDI", "Ban → radiator → CDI → busi", "Knalpot → aki → ban → koil", "Radiator → CDI → ban → busi"], "a": 0}, {"q": "Jika baterai DC CDI lemah, salah satu dampaknya adalah ...", "options": ["Sistem pengapian dapat terganggu", "Tekanan ban otomatis naik", "Oli berubah menjadi bensin", "Busi menjadi filter", "Rantai bertambah panjang"], "a": 0}, {"q": "Jika tidak ada percikan pada AC CDI, langkah awal yang tepat adalah ...", "options": ["Memeriksa sumber, konektor, pulser, koil, dan busi sesuai prosedur", "Mengganti semua komponen tanpa tes", "Melepas mesin", "Mengganti ban", "Mengecat bodi"], "a": 0}, {"q": "Pemeriksaan tahanan komponen harus dibandingkan dengan ...", "options": ["Spesifikasi/manual servis", "Warna kabel saja", "Ukuran ban", "Jumlah penumpang", "Warna bodi"], "a": 0}, {"q": "Kabel tegangan tinggi perlu diperiksa karena ...", "options": ["Menyalurkan tegangan tinggi ke busi", "Mengisi bensin", "Mengatur oli", "Mengatur ban", "Mendinginkan mesin"], "a": 0}, {"q": "K3 saat pengujian pengapian adalah ...", "options": ["Menghindari bagian bertegangan tinggi dan menggunakan alat sesuai prosedur", "Memegang kabel HV dengan tangan basah", "Bekerja tanpa alat pelindung", "Menyentuh busi saat mesin hidup", "Melepas semua kabel sembarangan"], "a": 0}, {"q": "Troubleshooting yang baik dilakukan dengan ...", "options": ["Pemeriksaan sistematis dari sumber menuju komponen terkait", "Menebak komponen", "Mengganti semua komponen", "Mengabaikan gejala", "Tidak menggunakan alat ukur"], "a": 0}, {"q": "Tujuan pembelajaran materi ini salah satunya adalah ...", "options": ["Membedakan AC CDI dan DC CDI", "Menghafal semua merek motor", "Mengganti ban", "Mengecat rangka", "Membongkar mesin tanpa prosedur"], "a": 0}]};
+const params=new URLSearchParams(location.search);
+const jenis=params.get('jenis')||'pretest';
+const materiParam=params.get('materi')||'';
+const MATERI_LABELS={
+  'baterai-konvensional':'Sistem Pengapian Baterai Konvensional',
+  'magnet-konvensional':'Sistem Pengapian Magnet Konvensional',
+  'ac-cdi':'Sistem Pengapian AC CDI',
+  'dc-cdi':'Sistem Pengapian DC CDI'
+};
+const materiSelect=document.getElementById('materi');
+if(materiParam && MATERI_LABELS[materiParam]){
+  materiSelect.value=materiParam;
+  materiSelect.disabled=true;
+}
+const titles={pretest:'PRE TEST',quiz:'QUIZ',posttest:'POST TEST'}; const data=QUESTION_BANK[jenis]||QUESTION_BANK.pretest;
+document.getElementById('title').textContent=titles[jenis]+' SISTEM PENGAPIAN';
+const materiLabel=MATERI_LABELS[materiParam]||'';
+document.getElementById('testHeading').textContent=titles[jenis]+' — '+data.length+' Soal'+(materiLabel?' • '+materiLabel:'');
+const box=document.getElementById('questions');
+data.forEach((x,i)=>{let d=document.createElement('div');d.className='question';d.innerHTML='<b>'+ (i+1)+'. '+x.q+'</b>'+x.options.map((o,j)=>'<label class="option"><input type="radio" name="q'+i+'" value="'+j+'"> '+String.fromCharCode(65+j)+'. '+o+'</label>').join('');box.appendChild(d);});
+document.getElementById('testForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const nama=document.getElementById('nama').value.trim()||'Tanpa Nama';
+ const kelas=document.getElementById('kelas').value.trim()||'Belum diisi';
+ const materi=materiSelect.value;
+
+ if(!materi){
+   alert('Silakan pilih materi yang diujikan terlebih dahulu.');
+   materiSelect.focus();
+   return;
+ }
+
+ let benar=0;
+ data.forEach((x,i)=>{
+   const el=document.querySelector('input[name=q'+i+']:checked');
+   if(el && +el.value===x.a) benar++;
+ });
+
+ const nilai=Math.round((benar/data.length)*100);
+ const now=new Date();
+ const waktu=now.toLocaleString('id-ID');
+
+ const rec={
+   nama,
+   kelas,
+   materi,
+   materiNama:MATERI_LABELS[materi],
+   jenis,
+   waktu,
+   benar,
+   total:data.length,
+   nilai
+ };
+
+ const all=JSON.parse(localStorage.getItem('nilaiPengapian')||'[]');
+ all.push(rec);
+ localStorage.setItem('nilaiPengapian',JSON.stringify(all));
+
+ document.getElementById('resultText').innerHTML=
+   '<b>'+nama+'</b><br>'+
+   'Kelas: '+kelas+'<br>'+
+   'Materi: '+MATERI_LABELS[materi]+'<br>'+
+   titles[jenis]+': '+benar+'/'+data.length+' benar<br>'+
+   '<span style="font-size:30px">Nilai: '+nilai+'</span>';
+
+ document.getElementById('hasil').style.display='block';
+ window.scrollTo({top:document.getElementById('hasil').offsetTop-20,behavior:'smooth'});
+});
+</script></body></html>

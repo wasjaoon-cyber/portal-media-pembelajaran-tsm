@@ -1,0 +1,42 @@
+CARA MENGHUBUNGKAN DENGAN GOOGLE FORMS & GOOGLE SHEETS
+
+A. MEMBUAT FORM OTOMATIS
+1. Buka https://script.google.com/
+2. Buat project baru.
+3. Buka file Code.gs.
+4. Hapus kode contoh, lalu salin seluruh isi Code.gs dari folder google-apps-script paket ini.
+5. Simpan.
+6. Pilih fungsi setupSistemPengapian.
+7. Klik Run.
+8. Beri izin akses Google saat diminta.
+9. Buka Execution log. Di sana akan muncul:
+   - URL Spreadsheet
+   - URL Pre Test
+   - URL Quiz
+   - URL Post Test
+   - URL edit masing-masing Form.
+
+B. NILAI OTOMATIS
+- Pre Test: 10 soal x 10 poin = 100.
+- Quiz: 10 soal x 10 poin = 100.
+- Post Test: 20 soal x 5 poin = 100.
+- Google Forms otomatis menilai soal pilihan ganda.
+- Respons masuk ke Spreadsheet yang dibuat oleh script.
+
+C. MENCETAK NILAI PER KELAS
+Di Spreadsheet:
+1. Buka sheet respons.
+2. Gunakan Data > Filter.
+3. Filter kolom "Kelas".
+4. Pilih misalnya "XI TSM 1".
+5. Print sheet yang sudah difilter.
+6. Atau gunakan File > Download > Microsoft Excel (.xlsx).
+
+D. MENGHUBUNGKAN TOMBOL PORTAL
+Setelah URL Form diperoleh, buka index.html dan ganti tombol Pre Test/Quiz/Post Test
+dengan URL Google Form. Contoh:
+<a class="btn" href="URL_FORM_PRETEST" target="_blank">Pre Test</a>
+
+E. CATATAN
+Versi Google Forms/Sheets adalah versi yang direkomendasikan jika siswa mengerjakan
+dari HP masing-masing, karena respons seluruh siswa terkumpul di Spreadsheet guru.

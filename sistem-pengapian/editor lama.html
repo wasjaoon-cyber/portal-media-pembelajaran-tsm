@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Editor Media Sistem Pengapian</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+ <div class="header-inner">
+  <span class="badge">EDITOR GURU</span>
+  <h1>Editor Media Sistem Pengapian</h1>
+  <p class="subtitle">Kelistrikan Sepeda Motor • Kelas XI TSM • SMKN 1 Kabupaten Tangerang</p>
+ </div>
+</header>
+
+<main class="container">
+ <div class="nav">
+  <a class="btn secondary" href="index.html">← Kembali</a>
+  <a class="btn secondary" href="nilai.html">Nilai / Cetak Kelas</a>
+ </div>
+
+ <section class="card">
+  <h2>Tambah Media</h2>
+  <div class="form-grid">
+   <div>
+    <label for="category">Pilih Submateri</label>
+    <select id="category">
+     <option>Sistem Pengapian Baterai Konvensional</option>
+     <option>Sistem Pengapian Magnet Konvensional</option>
+     <option>Sistem Pengapian AC CDI</option>
+     <option>Sistem Pengapian DC CDI</option>
+    </select>
+   </div>
+   <div>
+    <label for="title">Keterangan Media</label>
+    <input id="title" placeholder="Contoh: Rangkaian AC CDI">
+   </div>
+  </div>
+  <label for="files">Pilih gambar/video dari komputer</label>
+  <input id="files" type="file" accept="image/*,video/*" multiple>
+  <p id="selection" class="small">Belum ada file dipilih.</p>
+  <div class="actions">
+   <button class="btn green" onclick="upload()">💾 Simpan Media</button>
+   <button class="btn secondary" onclick="clearForm()">↺ Bersihkan</button>
+  </div>
+  <div class="callout">
+   <b>Penting:</b> Media disimpan di browser komputer ini menggunakan IndexedDB.
+   Media tidak otomatis masuk ke GitHub.
+  </div>
+ </section>
+
+ <section class="card">
+  <div class="list-header">
+   <div>
+    <h2>Media Tersimpan di Browser Ini</h2>
+    <p class="small">Pilih submateri untuk melihat media tertentu.</p>
+   </div>
+   <div class="toolbar">
+    <select id="filter" onchange="renderList()">
+     <option value="">Semua Submateri</option>
+     <option>Sistem Pengapian Baterai Konvensional</option>
+     <option>Sistem Pengapian Magnet Konvensional</option>
+     <option>Sistem Pengapian AC CDI</option>
+     <option>Sistem Pengapian DC CDI</option>
+    </select>
+    <button class="btn danger" onclick="deleteAll()">🗑 Hapus Semua</button>
+   </div>
+  </div>
+  <div id="list" class="media-grid"></div>
+ </section>
+</main>
+
+<div id="previewModal" class="modal" onclick="closePreview(event)">
+ <div class="modal-box" onclick="event.stopPropagation()">
+  <button class="close" onclick="closePreview()">×</button>
+  <h2 id="previewTitle">Preview</h2>
+  <div id="previewContent"></div>
+ </div>
+</div>
+
+<footer>Guru Mapel: Wasja, S.Pd</footer>
+
+<script src="assets/media.js"></script>
+<script>
+function esc(s){
+ return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+function bytes(n){
+ if(!n)return '0 B';
+ const u=['B','KB','MB','GB'];
+ const i=Math.min(Math.floor(Math.log(n)/Math.log(1024)),3);
+ return (n/Math.pow(1024,i)).toFixed(i?1:0)+' '+u[i];
+}
+document.getElementById('files').addEventListener('change',()=>{
+ const f=[...document.getElementById('files').files];
+ document.getElementById('selection').textContent=f.length
+ ? f.length+' file: '+f.map(x=>x.name).join(', ')
+ : 'Belum ada file dipilih.';
+});
+
+async function upload(){
+ const input=document.getElementById('files');
+ const files=[...input.files];
+ const cat=document.getElementById('category').value;
+ const title=document.getElementById('title').value.trim()||'Media Sistem Pengapian';
+ if(!files.length){alert('Pilih gambar atau video terlebih dahulu.');return;}
+ for(const f of files){
+  if(f.type.startsWith('image/')||f.type.startsWith('video/')){
+   await saveMedia(f,cat,title);
+  }
+ }
+ input.value='';
+ document.getElementById('title').value='';
+ document.getElementById('selection').textContent='Belum ada file dipilih.';
+ await renderList();
+ alert('Media berhasil disimpan.');
+}
+
+function clearForm(){
+ document.getElementById('files').value='';
+ document.getElementById('title').value='';
+ document.getElementById('selection').textContent='Belum ada file dipilih.';
+}
+
+async function renderList(){
+ const all=await getAllMedia();
+ const filter=document.getElementById('filter').value;
+ const items=filter?all.filter(x=>x.category===filter):all;
+ const box=document.getElementById('list');
+ box.innerHTML='';
+ if(!items.length){
+  box.innerHTML='<div class="empty">Belum ada media.</div>';
+  return;
+ }
+ for(const x of items){
+  const url=URL.createObjectURL(x.file);
+  const d=document.createElement('div');
+  d.className='media-item';
+  const media=x.type.startsWith('image/')
+   ? '<img src="'+url+'" alt="'+esc(x.name)+'">'
+   : '<video src="'+url+'" controls></video>';
+  d.innerHTML=
+   '<div class="media-title">'+esc(x.title)+'</div>'+
+   '<div class="small">'+esc(x.category)+'</div>'+
+   '<div class="filename">'+esc(x.name)+'</div>'+
+   media+
+   '<div class="meta">'+bytes(x.file.size)+' • '+new Date(x.created||Date.now()).toLocaleString('id-ID')+'</div>'+
+   '<div class="item-actions">'+
+   '<button class="btn preview" onclick="previewMedia('+x.id+')">👁 Preview</button>'+
+   '<button class="btn orange" onclick="replaceMedia('+x.id+')">🔄 Ganti</button>'+
+   '<button class="btn danger" onclick="removeOne('+x.id+')">🗑 Hapus</button>'+
+   '</div>';
+  box.appendChild(d);
+ }
+}
+
+async function removeOne(id){
+ const all=await getAllMedia();
+ const x=all.find(a=>a.id===id);
+ if(!x)return;
+ if(!confirm('Hapus media ini?\n\n'+x.name+'\n'+x.category))return;
+ await deleteMedia(id);
+ await renderList();
+}
+
+async function deleteAll(){
+ const filter=document.getElementById('filter').value;
+ const all=await getAllMedia();
+ const items=filter?all.filter(x=>x.category===filter):all;
+ if(!items.length){alert('Tidak ada media.');return;}
+ if(!confirm('Hapus '+items.length+' media?\n\nTindakan ini tidak dapat dibatalkan.'))return;
+ for(const x of items) await deleteMedia(x.id);
+ await renderList();
+ alert('Media berhasil dihapus.');
+}
+
+async function replaceMedia(id){
+ const all=await getAllMedia();
+ const old=all.find(x=>x.id===id);
+ if(!old)return;
+ const input=document.createElement('input');
+ input.type='file';
+ input.accept='image/*,video/*';
+ input.onchange=async()=>{
+  const file=input.files[0];
+  if(!file)return;
+  if(!confirm('Ganti "'+old.name+'" dengan "'+file.name+'"?'))return;
+  await deleteMedia(id);
+  await saveMedia(file,old.category,old.title);
+  await renderList();
+ };
+ input.click();
+}
+
+async function previewMedia(id){
+ const all=await getAllMedia();
+ const x=all.find(a=>a.id===id);
+ if(!x)return;
+ const url=URL.createObjectURL(x.file);
+ document.getElementById('previewTitle').textContent=x.title+' — '+x.name;
+ document.getElementById('previewContent').innerHTML=x.type.startsWith('image/')
+ ? '<img class="preview-img" src="'+url+'">'
+ : '<video class="preview-video" src="'+url+'" controls autoplay></video>';
+ document.getElementById('previewModal').classList.add('show');
+}
+function closePreview(e){
+ if(e && e.target && e.target.id!=='previewModal')return;
+ document.getElementById('previewModal').classList.remove('show');
+ document.getElementById('previewContent').innerHTML='';
+}
+renderList();
+</script>
+</body>
+</html>

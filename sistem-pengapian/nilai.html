@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nilai Sistem Pengapian</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.filter-note{margin-top:10px}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:15px 0}
+.summary .box{background:#f7fbff;border:1px solid #d8e3ef;border-radius:10px;padding:12px}
+.summary b{font-size:20px}
+@media print{.no-print{display:none!important}}
+</style>
+</head>
+<body>
+<header><div class="header-inner">
+<span class="badge">PORTAL PEMBELAJARAN KEJURUAN TSM</span>
+<h1>Nilai & Cetak Daftar Nilai</h1>
+<p class="subtitle">Sistem Pengapian • Kelas XI TSM • SMKN 1 Kabupaten Tangerang</p>
+</div></header>
+
+<main class="container">
+<div class="nav no-print">
+<a class="btn secondary" href="index.html">← Materi</a>
+<a class="btn secondary" href="tes.html?jenis=pretest">Pre Test</a>
+<a class="btn secondary" href="tes.html?jenis=quiz">Quiz</a>
+<a class="btn secondary" href="tes.html?jenis=posttest">Post Test</a>
+</div>
+
+<section class="card no-print">
+<h2>Filter Nilai</h2>
+<div class="form-grid">
+<div>
+<label>Materi yang Diujikan</label>
+<select id="filterMateri">
+<option value="">Semua Materi</option>
+<option value="baterai-konvensional">Baterai Konvensional</option>
+<option value="magnet-konvensional">Magnet Konvensional</option>
+<option value="ac-cdi">AC CDI</option>
+<option value="dc-cdi">DC CDI</option>
+</select>
+</div>
+<div>
+<label>Jenis Tes</label>
+<select id="filterJenis">
+<option value="">Semua</option>
+<option value="pretest">Pre Test</option>
+<option value="quiz">Quiz</option>
+<option value="posttest">Post Test</option>
+</select>
+</div>
+<div>
+<label>Filter Kelas</label>
+<input id="filterKelas" placeholder="Contoh: 11 TSM 1">
+</div>
+</div>
+
+<div class="actions" style="margin-top:15px">
+<button class="btn green" onclick="downloadXLSX()">📊 Download Excel (.xlsx)</button>
+<button class="btn teal" onclick="downloadCSV()">⬇ CSV</button>
+<button class="btn orange" onclick="window.print()">🖨 Cetak</button>
+<button class="btn" onclick="hapusSemua()">🗑 Hapus Semua Data</button>
+</div>
+
+<p class="small filter-note">
+<strong>Catatan:</strong> Pilih materi + jenis tes + kelas untuk mendapatkan daftar yang hanya sesuai dengan ujian tersebut.
+</p>
+<div class="callout" style="margin-top:10px">
+<strong>Catatan sistem:</strong> Nilai lama yang tersimpan sebagai
+<code>baterai-konvensional</code>, <code>dc-cdi</code>, dan kode materi lainnya
+tetap akan dikenali. Jadi filter menggunakan kode materi yang sama dengan data tes.
+</div>
+</section>
+
+<section class="card">
+<h2>Daftar Nilai</h2>
+<div id="summary"></div>
+<div id="tableWrap"></div>
+</section>
+
+<section class="card no-print">
+<h2>Alur Penggunaan</h2>
+<ol>
+<li>Siswa memilih/masuk ke tes untuk materi tertentu.</li>
+<li>Nama dan kelas diisi sebelum mengerjakan.</li>
+<li>Saat dikumpulkan, data menyimpan <strong>materi + jenis tes + nama + kelas + nilai</strong>.</li>
+<li>Guru memilih materi dan jenis tes pada halaman ini.</li>
+<li>Gunakan Download Excel untuk membuat rekap hanya dari pilihan tersebut.</li>
+</ol>
+<div class="callout">
+<b>Penting:</b> Data lama yang dibuat sebelum kolom materi ditambahkan tidak memiliki informasi materi. Data lama akan ditampilkan sebagai <b>Belum ditentukan</b>. Tes yang baru harus menyimpan field <code>materi</code>.
+</div>
+</section>
+</main>
+
+<footer>Guru Mapel: Wasja, S.Pd • SMKN 1 Kabupaten Tangerang</footer>
+
+<script>
+function getData(){
+  try{return JSON.parse(localStorage.getItem('nilaiPengapian')||'[]')}
+  catch(e){return[]}
+}
+function norm(v){return String(v??'').trim()}
+
+const MATERI_MAP={
+  'baterai-konvensional':'Sistem Pengapian Baterai Konvensional',
+  'magnet-konvensional':'Sistem Pengapian Magnet Konvensional',
+  'ac-cdi':'Sistem Pengapian AC CDI',
+  'dc-cdi':'Sistem Pengapian DC CDI'
+};
+
+function canonicalMateri(v){
+  const s=norm(v);
+  if(!s) return '';
+  const key=s.toLowerCase()
+    .replace(/[–—]/g,'-')
+    .replace(/\s+/g,' ')
+    .trim();
+
+  if(MATERI_MAP[key]) return key;
+
+  const aliases={
+    'sistem pengapian baterai konvensional':'baterai-konvensional',
+    'baterai konvensional':'baterai-konvensional',
+    'sistem pengapian magnet konvensional':'magnet-konvensional',
+    'magnet konvensional':'magnet-konvensional',
+    'sistem pengapian ac cdi':'ac-cdi',
+    'ac cdi':'ac-cdi',
+    'sistem pengapian dc cdi':'dc-cdi',
+    'dc cdi':'dc-cdi'
+  };
+  return aliases[key] || key;
+}
+
+function labelJenis(j){
+  const k=norm(j).toLowerCase();
+  return k==='pretest'?'Pre Test':k==='quiz'?'Quiz':k==='posttest'?'Post Test':j||'';
+}
+
+function labelMateri(m){
+  const key=canonicalMateri(m);
+  return MATERI_MAP[key] || (key ? norm(m) : 'Belum ditentukan');
+}
+
+function filtered(){
+  const k=norm(document.getElementById('filterKelas').value).toLowerCase();
+  const j=norm(document.getElementById('filterJenis').value).toLowerCase();
+  const m=norm(document.getElementById('filterMateri').value).toLowerCase();
+
+  return getData().filter(x=>{
+    const kelas=norm(x.kelas).toLowerCase();
+    const jenis=norm(x.jenis).toLowerCase();
+    const materi=canonicalMateri(x.materi || x.module || x.topik);
+
+    return (!k||kelas.includes(k)) &&
+           (!j||jenis===j) &&
+           (!m||materi===m);
+  });
+}
+function esc(v){
+  return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+function render(){
+  const d=filtered();
+  const total=d.length;
+  const avg=total?Math.round(d.reduce((s,x)=>s+(Number(x.nilai)||0),0)/total):0;
+  const max=total?Math.max(...d.map(x=>Number(x.nilai)||0)):0;
+  const min=total?Math.min(...d.map(x=>Number(x.nilai)||0)):0;
+  document.getElementById('summary').innerHTML=`
+  <div class="summary">
+    <div class="box">Jumlah Peserta<br><b>${total}</b></div>
+    <div class="box">Rata-rata<br><b>${avg}</b></div>
+    <div class="box">Nilai Tertinggi<br><b>${max}</b></div>
+    <div class="box">Nilai Terendah<br><b>${min}</b></div>
+  </div>`;
+
+  if(!d.length){
+    document.getElementById('tableWrap').innerHTML='<div class="empty">Belum ada data untuk pilihan filter tersebut.</div>';
+    return;
+  }
+
+  let h='<table><tr><th>No</th><th>Nama</th><th>Kelas</th><th>Materi</th><th>Jenis Tes</th><th>Benar</th><th>Total</th><th>Nilai</th><th>Waktu</th></tr>';
+  d.forEach((x,i)=>{
+    h+=`<tr>
+      <td>${i+1}</td>
+      <td>${esc(x.nama)}</td>
+      <td>${esc(x.kelas)}</td>
+      <td>${esc(labelMateri(x.materi||x.module||x.topik))}</td>
+      <td>${esc(labelJenis(x.jenis))}</td>
+      <td>${esc(x.benar)}</td>
+      <td>${esc(x.total)}</td>
+      <td><b>${esc(x.nilai)}</b></td>
+      <td>${esc(x.waktu)}</td>
+    </tr>`;
+  });
+  h+='</table>';
+  document.getElementById('tableWrap').innerHTML=h;
+}
+
+/* ---------- CSV ---------- */
+function downloadCSV(){
+  const d=filtered();
+  if(!d.length){alert('Tidak ada data sesuai filter.');return;}
+  const rows=[
+    ['No','Nama','Kelas','Materi','Jenis Tes','Benar','Total Soal','Nilai','Waktu'],
+    ...d.map((x,i)=>[
+      i+1,x.nama,x.kelas,labelMateri(x.materi||x.module||x.topik),
+      labelJenis(x.jenis),x.benar,x.total,x.nilai,x.waktu
+    ])
+  ];
+  const csv='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
+  saveBlob(new Blob([csv],{type:'text/csv;charset=utf-8'}),'Nilai_Sistem_Pengapian.csv');
+}
+
+/* ---------- XLSX asli ---------- */
+function crc32(bytes){
+  if(!crc32.t){
+    crc32.t=[];
+    for(let n=0;n<256;n++){
+      let c=n;
+      for(let k=0;k<8;k++)c=(c&1)?(0xedb88320^(c>>>1)):(c>>>1);
+      crc32.t[n]=c>>>0;
+    }
+  }
+  let c=0xffffffff;
+  for(let i=0;i<bytes.length;i++)c=crc32.t[(c^bytes[i])&255]^(c>>>8);
+  return(c^0xffffffff)>>>0;
+}
+function u16(n){return new Uint8Array([n&255,n>>>8&255])}
+function u32(n){return new Uint8Array([n&255,n>>>8&255,n>>>16&255,n>>>24&255])}
+function cat(a){
+  let n=a.reduce((s,x)=>s+x.length,0),o=new Uint8Array(n),p=0;
+  for(const x of a){o.set(x,p);p+=x.length}
+  return o;
+}
+function utf8(s){return new TextEncoder().encode(s)}
+function zip(files){
+  let loc=[],cen=[],off=0;
+  for(const f of files){
+    const n=utf8(f.n),d=f.d,c=crc32(d);
+    const lh=cat([u32(0x04034b50),u16(20),u16(0),u16(0),u16(0),u16(0),u32(c),u32(d.length),u32(d.length),u16(n.length),u16(0),n]);
+    loc.push(lh,d);
+    cen.push(cat([u32(0x02014b50),u16(20),u16(20),u16(0),u16(0),u16(0),u16(0),u32(c),u32(d.length),u32(d.length),u16(n.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(off),n]));
+    off+=lh.length+d.length;
+  }
+  const b=cat(loc),c=cat(cen);
+  const e=cat([u32(0x06054b50),u16(0),u16(0),u16(files.length),u16(files.length),u32(c.length),u32(b.length),u16(0)]);
+  return cat([b,c,e]);
+}
+function xesc(s){
+  return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
+}
+function cell(v){
+  return typeof v==='number'&&isFinite(v)
+    ? '<c t="n"><v>'+v+'</v></c>'
+    : '<c t="inlineStr"><is><t>'+xesc(v)+'</t></is></c>';
+}
+function makeXlsx(rows){
+  const sr=rows.map(r=>'<row>'+r.map(cell).join('')+'</row>').join('');
+  const sheet='<?xml version="1.0" encoding="UTF-8"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetData>'+sr+'</sheetData></worksheet>';
+  const wb='<?xml version="1.0" encoding="UTF-8"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Daftar Nilai" sheetId="1" r:id="rId1"/></sheets></workbook>';
+  const rel='<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/></Relationships>';
+  const root='<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>';
+  const types='<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/></Types>';
+  return zip([
+    {n:'[Content_Types].xml',d:utf8(types)},
+    {n:'_rels/.rels',d:utf8(root)},
+    {n:'xl/workbook.xml',d:utf8(wb)},
+    {n:'xl/_rels/workbook.xml.rels',d:utf8(rel)},
+    {n:'xl/worksheets/sheet1.xml',d:utf8(sheet)}
+  ]);
+}
+function downloadXLSX(){
+  const d=filtered();
+  if(!d.length){alert('Tidak ada data sesuai filter.');return;}
+  const rows=[
+    ['No','Nama','Kelas','Materi','Jenis Tes','Benar','Total Soal','Nilai','Waktu'],
+    ...d.map((x,i)=>[
+      i+1,x.nama,x.kelas,labelMateri(x.materi||x.module||x.topik),
+      labelJenis(x.jenis),Number(x.benar)||0,Number(x.total)||0,Number(x.nilai)||0,x.waktu
+    ])
+  ];
+  const materi=document.getElementById('filterMateri').value||'Semua_Materi';
+  const jenis=document.getElementById('filterJenis').value||'Semua_Tes';
+  const kelas=document.getElementById('filterKelas').value||'Semua_Kelas';
+  saveBlob(
+    new Blob([makeXlsx(rows)],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}),
+    'Nilai_'+materi.replace(/\s+/g,'_')+'_'+jenis+'_'+kelas.replace(/\s+/g,'_')+'.xlsx'
+  );
+}
+function saveBlob(blob,name){
+  const u=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(u),1000);
+}
+function hapusSemua(){
+  if(confirm('Hapus seluruh data nilai pada browser ini?')){
+    localStorage.removeItem('nilaiPengapian');render();
+  }
+}
+document.getElementById('filterKelas').addEventListener('input',render);
+document.getElementById('filterJenis').addEventListener('change',render);
+document.getElementById('filterMateri').addEventListener('change',render);
+render();
+</script>
+</body>
+</html>
